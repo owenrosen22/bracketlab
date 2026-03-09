@@ -1,0 +1,64 @@
+Round,TeamA,TeamB,Pick,Prob
+R64,Duke,Tennessee St,Duke,0.998
+R64,Missouri,Iowa,Iowa,0.654
+R64,Gonzaga,UNC Wilmington,Gonzaga,0.95
+R64,Arkansas,High Point,Arkansas,0.921
+R64,Illinois,Navy,Illinois,0.989
+R64,Kentucky,UCLA,UCLA,0.528
+R64,Iowa St,Merrimack,Iowa St,0.979
+R64,Miami FL,Texas A&M,Texas A&M,0.52
+R64,Michigan,UMBC,Michigan,0.996
+R64,Clemson,Texas,Clemson,0.523
+R64,Kansas,Liberty,Kansas,0.929
+R64,North Carolina,South Florida,North Carolina,0.744
+R64,Texas Tech,Hawaii,Texas Tech,0.961
+R64,Wisconsin,Santa Clara,Wisconsin,0.605
+R64,Florida,ETSU,Florida,0.992
+R64,UCF,Miami OH,UCF,0.69
+R64,Connecticut,Howard,Connecticut,0.987
+R64,Utah St,Georgia,Georgia,0.514
+R64,Virginia,Utah Valley,Virginia,0.903
+R64,Vanderbilt,Yale,Vanderbilt,0.918
+R64,Nebraska,North Dakota St.,Nebraska,0.94
+R64,St Mary's CA,SMU,St Mary's CA,0.611
+R64,Houston,Austin Peay,Houston,0.988
+R64,BYU,N.C. State,N.C. State,0.519
+R64,Arizona,Portland St,Arizona,0.99
+R64,Villanova,St Louis,St Louis,0.515
+R64,Alabama,SF Austin,Alabama,0.906
+R64,St John's,Belmont,St John's,0.817
+R64,Purdue,Troy,Purdue,0.984
+R64,Tennessee,Ohio St,Tennessee,0.657
+R64,Michigan St,Wright St,Michigan St,0.963
+R64,Louisville,TCU,Louisville,0.842
+R32,Duke,Iowa,Duke,0.902
+R32,Gonzaga,Arkansas,Arkansas,0.502
+R32,Illinois,UCLA,Illinois,0.871
+R32,Iowa St,Texas A&M,Iowa St,0.749
+R32,Michigan,Clemson,Michigan,0.926
+R32,Kansas,North Carolina,Kansas,0.596
+R32,Texas Tech,Wisconsin,Texas Tech,0.668
+R32,Florida,UCF,Florida,0.93
+R32,Connecticut,Georgia,Connecticut,0.778
+R32,Virginia,Vanderbilt,Vanderbilt,0.519
+R32,Nebraska,St Mary's CA,Nebraska,0.596
+R32,Houston,N.C. State,Houston,0.862
+R32,Arizona,St Louis,Arizona,0.889
+R32,Alabama,St John's,Alabama,0.616
+R32,Purdue,Tennessee,Purdue,0.635
+R32,Michigan St,Louisville,Michigan St,0.538
+S16,Duke,Arkansas,Duke,0.835
+S16,Illinois,Iowa St,Illinois,0.714
+S16,Michigan,Kansas,Michigan,0.863
+S16,Texas Tech,Florida,Florida,0.69
+S16,Connecticut,Vanderbilt,Connecticut,0.626
+S16,Nebraska,Houston,Houston,0.767
+S16,Arizona,Alabama,Arizona,0.76
+S16,Purdue,Michigan St,Purdue,0.614
+E8,Duke,Illinois,Duke,0.613
+E8,Michigan,Florida,Michigan,0.623
+E8,Connecticut,Houston,Houston,0.623
+E8,Arizona,Purdue,Arizona,0.647
+F4,Duke,Michigan,Michigan,0.503
+F4,Houston,Arizona,Arizona,0.56
+Title,Michigan,Arizona,Michigan,0.606

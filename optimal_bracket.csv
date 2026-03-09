@@ -1,0 +1,68 @@
+Round,TeamA,TeamB,Pick,Prob,ExpPoints
+PLAYIN,UMBC,LIU Brooklyn,LIU Brooklyn,0.672,
+PLAYIN,VCU,Santa Clara,VCU,0.749,
+PLAYIN,SMU,New Mexico,New Mexico,0.595,
+PLAYIN,Howard,Bethune-Cookman,Bethune-Cookman,0.684,
+R64,Duke,Tennessee St,Duke,0.945,9.45
+R64,Missouri,Iowa,Missouri,0.734,7.34
+R64,Gonzaga,UNC Wilmington,Gonzaga,0.583,5.83
+R64,Arkansas,High Point,High Point,0.786,7.86
+R64,Illinois,Navy,Illinois,0.801,8.01
+R64,Kentucky,UCLA,UCLA,0.54,5.4
+R64,Iowa St,Merrimack,Iowa St,0.783,7.83
+R64,Miami FL,Texas A&M,Texas A&M,0.932,9.32
+R64,Michigan,LIU Brooklyn,Michigan,0.813,8.13
+R64,Clemson,Texas,Clemson,0.794,7.94
+R64,Kansas,Liberty,Liberty,0.705,7.05
+R64,North Carolina,South Florida,North Carolina,0.804,8.04
+R64,Texas Tech,Hawaii,Texas Tech,0.887,8.87
+R64,Wisconsin,VCU,VCU,0.629,6.29
+R64,Florida,ETSU,Florida,0.873,8.73
+R64,UCF,Miami OH,Miami OH,0.756,7.56
+R64,Connecticut,Bethune-Cookman,Connecticut,0.797,7.97
+R64,Utah St,Georgia,Utah St,0.696,6.96
+R64,Virginia,Utah Valley,Utah Valley,0.824,8.24
+R64,Vanderbilt,Yale,Yale,0.689,6.89
+R64,Nebraska,N Dakota St,N Dakota St,0.602,6.02
+R64,St Mary's CA,New Mexico,St Mary's CA,0.599,5.99
+R64,Houston,Austin Peay,Houston,0.958,9.58
+R64,BYU,NC State,BYU,0.879,8.79
+R64,Arizona,Portland St,Arizona,0.688,6.88
+R64,Villanova,St Louis,Villanova,0.574,5.74
+R64,Alabama,SF Austin,Alabama,0.904,9.04
+R64,St John's,Belmont,St John's,0.813,8.13
+R64,Purdue,Troy,Troy,0.508,5.08
+R64,Tennessee,Ohio St,Tennessee,0.81,8.1
+R64,Michigan St,Wright St,Michigan St,0.908,9.08
+R64,Louisville,TCU,Louisville,0.856,8.56
+R32,Duke,Missouri,Duke,0.822,16.45
+R32,Gonzaga,High Point,High Point,0.533,10.65
+R32,Illinois,UCLA,UCLA,0.554,11.08
+R32,Iowa St,Texas A&M,Iowa St,0.607,12.14
+R32,Michigan,Clemson,Clemson,0.628,12.56
+R32,Liberty,North Carolina,Liberty,0.723,14.45
+R32,Texas Tech,VCU,VCU,0.572,11.43
+R32,Florida,Miami OH,Florida,0.775,15.5
+R32,Connecticut,Utah St,Utah St,0.591,11.82
+R32,Utah Valley,Yale,Yale,0.559,11.19
+R32,N Dakota St,St Mary's CA,St Mary's CA,0.787,15.73
+R32,Houston,BYU,Houston,0.718,14.37
+R32,Arizona,Villanova,Arizona,0.615,12.29
+R32,Alabama,St John's,St John's,0.665,13.31
+R32,Troy,Tennessee,Tennessee,0.678,13.55
+R32,Michigan St,Louisville,Michigan St,0.541,10.81
+S16,Duke,High Point,Duke,0.672,26.9
+S16,UCLA,Iowa St,Iowa St,0.578,23.13
+S16,Clemson,Liberty,Clemson,0.525,21.0
+S16,VCU,Florida,Florida,0.595,23.8
+S16,Utah St,Yale,Utah St,0.523,20.91
+S16,St Mary's CA,Houston,Houston,0.582,23.27
+S16,Arizona,St John's,St John's,0.768,30.72
+S16,Tennessee,Michigan St,Michigan St,0.518,20.7
+E8,Duke,Iowa St,Duke,0.767,61.33
+E8,Clemson,Florida,Florida,0.627,50.18
+E8,Utah St,Houston,Houston,0.674,53.93
+E8,St John's,Michigan St,St John's,0.592,47.33
+F4,Duke,Florida,Duke,0.582,93.18
+F4,Houston,St John's,Houston,0.532,85.11
+Title,Duke,Houston,Duke,0.587,187.83
