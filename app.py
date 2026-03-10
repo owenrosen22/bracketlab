@@ -264,6 +264,250 @@ st.markdown(
         font-size: 0.8rem;
         margin-top: 1rem;
     }
+
+    .matchup-card {
+        padding: 1.3rem 1.4rem;
+    }
+
+    .matchup-grid {
+        display: grid;
+        grid-template-columns: 1.6fr 260px 1.6fr;
+        align-items: center;
+        gap: 34px;
+    }
+
+    .matchup-team {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .matchup-team.right {
+        justify-content: flex-end;
+    }
+
+    .matchup-logo {
+        width: 110px;
+        height: 110px;
+        border-radius: 999px;
+        object-fit: cover;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.12);
+        box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+        flex-shrink: 0;
+    }
+
+    .matchup-name {
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: #f8fafc;
+        line-height: 1.12;
+    }
+
+    .matchup-sub {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        margin-top: 4px;
+    }
+
+    .matchup-center {
+        text-align: center;
+    }
+
+    .matchup-vs {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 96px;
+        height: 96px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, rgba(37,99,235,0.78), rgba(16,185,129,0.70));
+        border: 1px solid rgba(255,255,255,0.12);
+        font-weight: 800;
+        color: #fff;
+        font-size: 1.2rem;
+        box-shadow: 0 12px 28px rgba(0,0,0,0.24);
+    }
+
+    .matchup-edge-label {
+        margin-top: 12px;
+        font-size: 0.8rem;
+        color: #93c5fd;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .matchup-prob {
+        font-size: 2.1rem;
+        font-weight: 800;
+        color: #f8fafc;
+    }
+
+    .matchup-bar {
+        height: 12px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 999px;
+        overflow: hidden;
+        margin-top: 10px;
+    }
+
+    .matchup-bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg,#2563eb,#10b981);
+    }
+
+    .matchup-split {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.82rem;
+        color: #94a3b8;
+        margin-top: 8px;
+    }
+
+    .matchup-text.right {
+        text-align: right;
+    }
+
+    .mobile-bracket-note {
+        display: none;
+        margin-top: 0.5rem;
+        color: #94a3b8;
+        font-size: 0.82rem;
+    }
+
+    @media (max-width: 1100px) {
+        .block-container {
+            max-width: 100%;
+            padding-left: 0.8rem;
+            padding-right: 0.8rem;
+        }
+
+        .hero-title {
+            font-size: 2rem;
+        }
+
+        .insight-strip {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .matchup-grid {
+            grid-template-columns: 1fr;
+            gap: 22px;
+        }
+
+        .matchup-center {
+            order: -1;
+        }
+
+        .matchup-team,
+        .matchup-team.right {
+            justify-content: flex-start;
+        }
+
+        .matchup-team.right {
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+
+        .matchup-text.right {
+            text-align: right;
+        }
+    }
+
+    @media (max-width: 760px) {
+        .hero {
+            padding: 1.1rem 1rem;
+            border-radius: 22px;
+        }
+
+        .hero-title {
+            font-size: 1.65rem;
+        }
+
+        .hero-sub {
+            font-size: 0.92rem;
+        }
+
+        .pill-row {
+            gap: 0.4rem;
+        }
+
+        .pill {
+            font-size: 0.78rem;
+            padding: 0.38rem 0.62rem;
+        }
+
+        .section-card {
+            padding: 0.9rem 0.95rem;
+            border-radius: 18px;
+        }
+
+        .insight-strip {
+            grid-template-columns: 1fr;
+        }
+
+        .matchup-card {
+            padding: 1rem 0.9rem;
+        }
+
+        .matchup-grid {
+            gap: 18px;
+        }
+
+        .matchup-team,
+        .matchup-team.right {
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            gap: 12px;
+        }
+
+        .matchup-text,
+        .matchup-text.right {
+            text-align: center;
+        }
+
+        .matchup-logo {
+            width: 84px;
+            height: 84px;
+        }
+
+        .matchup-name {
+            font-size: 1.1rem;
+        }
+
+        .matchup-sub {
+            font-size: 0.82rem;
+        }
+
+        .matchup-vs {
+            width: 74px;
+            height: 74px;
+            font-size: 1rem;
+        }
+
+        .matchup-edge-label {
+            font-size: 0.72rem;
+            margin-top: 10px;
+        }
+
+        .matchup-prob {
+            font-size: 1.7rem;
+        }
+
+        .matchup-bar {
+            height: 10px;
+        }
+
+        .matchup-split {
+            font-size: 0.76rem;
+        }
+
+        .mobile-bracket-note {
+            display: block;
+        }
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -864,32 +1108,32 @@ with left:
         right_logo = logo_src(team_b)
         st.markdown(
             f'''
-            <div class="section-card" style="padding:1.3rem 1.4rem;">
-                <div style="display:grid;grid-template-columns:1.6fr 260px 1.6fr;align-items:center;gap:34px;">
-                    <div style="display:flex;align-items:center;gap:18px;justify-content:flex-start;">
-                        <img src="{left_logo}" style="width:110px;height:110px;border-radius:999px;object-fit:cover;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);box-shadow:0 10px 24px rgba(0,0,0,0.22);" />
-                        <div>
-                            <div style="font-size:1.4rem;font-weight:800;color:#f8fafc;line-height:1.12;">{team_a}</div>
-                            <div style="font-size:0.9rem;color:#94a3b8;margin-top:4px;">Selected team A</div>
+            <div class="section-card matchup-card">
+                <div class="matchup-grid">
+                    <div class="matchup-team">
+                        <img src="{left_logo}" class="matchup-logo" />
+                        <div class="matchup-text">
+                            <div class="matchup-name">{team_a}</div>
+                            <div class="matchup-sub">Selected team A</div>
                         </div>
                     </div>
-                    <div style="text-align:center;">
-                        <div style="display:inline-flex;align-items:center;justify-content:center;width:96px;height:96px;border-radius:999px;background:linear-gradient(135deg, rgba(37,99,235,0.78), rgba(16,185,129,0.70));border:1px solid rgba(255,255,255,0.12);font-weight:800;color:#fff;font-size:1.2rem;box-shadow:0 12px 28px rgba(0,0,0,0.24);">VS</div>
-                        <div style="margin-top:12px;font-size:0.8rem;color:#93c5fd;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;">Win edge</div>
-                        <div style="font-size:2.1rem;font-weight:800;color:#f8fafc;">{p:.1%}</div>
-                        <div style="height:12px;background:rgba(255,255,255,0.08);border-radius:999px;overflow:hidden;margin-top:10px;">
-                            <div style="width:{p*100:.1f}%;height:100%;background:linear-gradient(90deg,#2563eb,#10b981);"></div>
+                    <div class="matchup-center">
+                        <div class="matchup-vs">VS</div>
+                        <div class="matchup-edge-label">Win edge</div>
+                        <div class="matchup-prob">{p:.1%}</div>
+                        <div class="matchup-bar">
+                            <div class="matchup-bar-fill" style="width:{p*100:.1f}%;"></div>
                         </div>
-                        <div style="display:flex;justify-content:space-between;font-size:0.82rem;color:#94a3b8;margin-top:8px;">
+                        <div class="matchup-split">
                             <span>{p:.1%}</span><span>{1-p:.1%}</span>
                         </div>
                     </div>
-                    <div style="display:flex;align-items:center;gap:18px;justify-content:flex-end;">
-                        <div style="text-align:right;">
-                            <div style="font-size:1.4rem;font-weight:800;color:#f8fafc;line-height:1.12;">{team_b}</div>
-                            <div style="font-size:0.9rem;color:#94a3b8;margin-top:4px;">Selected team B</div>
+                    <div class="matchup-team right">
+                        <img src="{right_logo}" class="matchup-logo" />
+                        <div class="matchup-text right">
+                            <div class="matchup-name">{team_b}</div>
+                            <div class="matchup-sub">Selected team B</div>
                         </div>
-                        <img src="{right_logo}" style="width:110px;height:110px;border-radius:999px;object-fit:cover;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);box-shadow:0 10px 24px rgba(0,0,0,0.22);" />
                     </div>
                 </div>
             </div>
@@ -936,7 +1180,7 @@ if show_upsets:
 if build_bracket:
     bracket_df = build_pick_bracket(bracket_style)
     st.markdown(
-        f'''<div class="section-card"><p class="section-title">Bracket Board</p><p class="section-sub">A four-region bracket layout with logos, connecting lines, Final Four, and champion. Generated using the <b>{bracket_style}</b> style.</p></div>''',
+        f'''<div class="section-card"><p class="section-title">Bracket Board</p><p class="section-sub">A four-region bracket layout with logos, connecting lines, Final Four, and champion. Generated using the <b>{bracket_style}</b> style.</p><p class="mobile-bracket-note">On smaller screens, the bracket works best in landscape or with horizontal scrolling.</p></div>''',
         unsafe_allow_html=True,
     )
     render_actual_bracket(bracket_df)
