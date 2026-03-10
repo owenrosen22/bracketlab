@@ -2,6 +2,8 @@ import json
 import numpy as np
 import pandas as pd
 
+from ratings_utils import canonical_team, prepare_ratings
+
 def sigmoid(z: float) -> float:
     return 1.0 / (1.0 + np.exp(-z))
 
@@ -12,47 +14,12 @@ INTERCEPT = float(M["intercept"])
 COEF_ADJEM = float(M["coef"]["d_AdjEM"])
 
 df = pd.read_csv("master_ratings.csv")
-df["Team"] = df["Team"].astype(str).str.strip()
+df = prepare_ratings(df)
 
-adj_em = dict(zip(df["Team"], df["AdjEM_blend"]))
+adj_em = dict(zip(df["Team"], df["AdjEM_current"]))
 DEFAULT_ADJEM = float(pd.Series(list(adj_em.values())).dropna().mean())
 
 _missing_teams = set()
-
-def load_name_map():
-    try:
-        m = pd.read_csv("name_map.csv")
-        m["From"] = m["From"].astype(str).str.strip()
-        m["To"] = m["To"].astype(str).str.strip()
-        return dict(zip(m["From"], m["To"]))
-    except:
-        return {}
-
-NAME_MAP = load_name_map()
-
-ALIASES = {
-    "ETSU": "East Tennessee St.",
-    "East Tennessee State": "East Tennessee St.",
-    "LIU Brooklyn": "LIU",
-    "LIU": "LIU",
-}
-
-def canonical_team(name: str) -> str:
-    s = str(name).strip().replace("*", "")
-    s = " ".join(s.split())
-    s = NAME_MAP.get(s, s)
-    s = ALIASES.get(s, s)
-
-    if s in adj_em:
-        return s
-
-    if s.endswith(" St") and (s + ".") in adj_em:
-        return s + "."
-
-    if s == "NC State" and "N.C. State" in adj_em:
-        return "N.C. State"
-
-    return s
 
 def win_prob(team_a: str, team_b: str) -> float:
     a_raw = str(team_a).strip()
@@ -60,6 +27,15 @@ def win_prob(team_a: str, team_b: str) -> float:
 
     a = canonical_team(a_raw)
     b = canonical_team(b_raw)
+
+    if a not in adj_em and a.endswith(" St") and (a + ".") in adj_em:
+        a = a + "."
+    if b not in adj_em and b.endswith(" St") and (b + ".") in adj_em:
+        b = b + "."
+    if a not in adj_em and a == "NC State" and "N.C. State" in adj_em:
+        a = "N.C. State"
+    if b not in adj_em and b == "NC State" and "N.C. State" in adj_em:
+        b = "N.C. State"
 
     if a not in adj_em:
         _missing_teams.add(a_raw)

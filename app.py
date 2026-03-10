@@ -6,6 +6,7 @@ import altair as alt
 import streamlit.components.v1 as components
 
 from predict_proba import win_prob
+from ratings_utils import prepare_ratings
 
 st.set_page_config(page_title="BracketLab", page_icon="🏀", layout="wide")
 
@@ -42,6 +43,10 @@ st.markdown(
     [data-testid="stSidebar"] {
         background: linear-gradient(180deg, rgba(12,19,33,0.96), rgba(9,14,24,0.96));
         border-right: 1px solid rgba(255,255,255,0.06);
+    }
+
+    [data-testid="collapsedControl"] {
+        display: none;
     }
 
     h1, h2, h3, h4, h5, h6, p, span, div, label {
@@ -224,6 +229,36 @@ st.markdown(
         margin: 0.2rem 0;
         color: #cbd5e1;
         font-size: 0.82rem;
+    }
+
+    .top-controls-card {
+        border: 1px solid rgba(255,255,255,0.08);
+        background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
+        border-radius: 22px;
+        padding: 0.85rem 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .top-controls-text {
+        min-width: 0;
+    }
+
+    .top-controls-title {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 800;
+        color: #f8fafc;
+    }
+
+    .top-controls-sub {
+        margin: 0.18rem 0 0 0;
+        font-size: 0.82rem;
+        color: #94a3b8;
     }
 
     .stButton > button, .stDownloadButton > button {
@@ -481,6 +516,20 @@ st.markdown(
             border-radius: 18px;
         }
 
+        .top-controls-card {
+            padding: 0.8rem 0.9rem;
+            border-radius: 18px;
+            align-items: flex-start;
+        }
+
+        .top-controls-title {
+            font-size: 0.94rem;
+        }
+
+        .top-controls-sub {
+            font-size: 0.76rem;
+        }
+
         .insight-strip {
             grid-template-columns: 1fr;
         }
@@ -628,8 +677,8 @@ def logo_src(team: str):
 @st.cache_data
 def load_master_ratings():
     df = pd.read_csv("master_ratings.csv")
-    df["Team"] = df["Team"].astype(str).str.strip()
-    return df
+    df = prepare_ratings(df)
+    return df.sort_values("AdjEM_current", ascending=False).reset_index(drop=True)
 
 
 @st.cache_data
@@ -868,42 +917,80 @@ def render_bracket_board(bracket_df, mode="desktop"):
     regions, final_left, final_right, champ = split_bracket_frames(bracket_df)
 
     if mode == "desktop":
-        card_w = 196
-        line_w = 58
-        final_gap = 228
-        r64_space = (8, 8)
-        r32_space = (34, 34)
-        s16_space = (72, 72)
-        e8_space = (136, 136)
-        height = 1460
-        min_width = 1680
+        card_w = 212
+        line_w = 68
+        final_gap = 252
+        r64_space = (10, 10)
+        r32_space = (44, 44)
+        s16_space = (94, 94)
+        e8_space = (188, 188)
+        height = 1880
+        min_width = 1800
     else:
-        card_w = 156
-        line_w = 44
-        final_gap = 184
+        card_w = 176
+        line_w = 52
+        final_gap = 198
         r64_space = (4, 4)
-        r32_space = (20, 20)
-        s16_space = (42, 42)
-        e8_space = (82, 82)
-        height = 1080
-        min_width = 1220
+        r32_space = (28, 28)
+        s16_space = (58, 58)
+        e8_space = (112, 112)
+        height = 1470
+        min_width = 1380
 
     spacing = {"R64": r64_space, "R32": r32_space, "S16": s16_space, "E8": e8_space}
-    box_h = 68 if mode == "desktop" else 56
-    logo = 30 if mode == "desktop" else 24
-    title_font = "0.9rem" if mode == "desktop" else "0.8rem"
-    sub_font = "0.72rem" if mode == "desktop" else "0.64rem"
-    team_font = "0.9rem" if mode == "desktop" else "0.8rem"
+    box_h = 112 if mode == "desktop" else 96
+    logo = 26 if mode == "desktop" else 22
+    title_font = "0.82rem" if mode == "desktop" else "0.72rem"
+    sub_font = "0.72rem" if mode == "desktop" else "0.62rem"
+    team_font = "0.82rem" if mode == "desktop" else "0.74rem"
+    stage_label_h = 28 if mode == "desktop" else 24
+    line_pad_top = 8 if mode == "desktop" else 6
+    stage_row_gap = 10 if mode == "desktop" else 8
+
+    def escape_html(text):
+        return (
+            str(text)
+            .replace("&", "&amp;")
+            .replace("<", "&lt;")
+            .replace(">", "&gt;")
+            .replace('"', "&quot;")
+            .replace("'", "&#39;")
+        )
+
+    def team_row(team, is_winner, prob):
+        badge_bg = "linear-gradient(135deg, rgba(34,197,94,0.34), rgba(22,163,74,0.18))" if is_winner else "linear-gradient(135deg, rgba(148,163,184,0.14), rgba(100,116,139,0.08))"
+        badge_border = "rgba(34,197,94,0.48)" if is_winner else "rgba(148,163,184,0.24)"
+        badge_text = "✓" if is_winner else "✕"
+        badge_color = "#86efac" if is_winner else "#94a3b8"
+        row_bg = "linear-gradient(90deg, rgba(30,41,59,0.94), rgba(15,23,42,0.92))" if is_winner else "rgba(15,23,42,0.56)"
+        row_border = "rgba(96,165,250,0.24)" if is_winner else "rgba(148,163,184,0.14)"
+        prob_html = f'<div style="font-size:{sub_font};font-weight:800;color:#86efac;white-space:nowrap;">{prob:.1%}</div>' if is_winner else '<div style="font-size:{sub_font};font-weight:700;color:#64748b;white-space:nowrap;">-</div>'
+        return f'''
+        <div style="display:grid;grid-template-columns:{logo}px minmax(0, 1fr) auto 20px;gap:8px;align-items:center;padding:{'7px 8px' if mode == 'desktop' else '6px 7px'};border-radius:12px;border:1px solid {row_border};background:{row_bg};">
+            <img src="{logo_src(team)}" style="width:{logo}px;height:{logo}px;border-radius:999px;object-fit:cover;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);" />
+            <div style="min-width:0;font-weight:{800 if is_winner else 700};font-size:{team_font};line-height:1.15;color:{'#f8fafc' if is_winner else '#cbd5e1'};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{escape_html(team)}</div>
+            {prob_html}
+            <div style="width:20px;height:20px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:{badge_bg};border:1px solid {badge_border};color:{badge_color};font-size:0.76rem;font-weight:900;">{badge_text}</div>
+        </div>
+        '''
 
     def card(row, mt, mb):
+        winner = str(row["Pick"])
+        prob = float(row["Prob"])
+        team_a = str(row["TeamA"])
+        team_b = str(row["TeamB"])
+        win_team = team_a if winner == team_a else team_b if winner == team_b else winner
+        lose_team = team_b if win_team == team_a else team_a
         return f'''
-        <div style="margin-top:{mt}px;margin-bottom:{mb}px;border:1px solid rgba(255,255,255,0.10);background:linear-gradient(180deg, rgba(15,23,42,0.96), rgba(15,23,42,0.90));border-radius:16px;padding:12px 13px;min-height:{box_h}px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 10px 22px rgba(0,0,0,0.22);">
-            <div style="display:flex;align-items:center;gap:10px;">
-                <img src="{logo_src(row['Pick'])}" style="width:{logo}px;height:{logo}px;border-radius:999px;object-fit:cover;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);" />
-                <div style="font-weight:800;font-size:{team_font};line-height:1.15;color:#f8fafc;">{row['Pick']}</div>
+        <div style="margin-top:{mt}px;margin-bottom:{mb}px;border:1px solid rgba(255,255,255,0.11);background:linear-gradient(180deg, rgba(15,23,42,0.98), rgba(12,18,30,0.94));border-radius:18px;padding:{'10px' if mode == 'desktop' else '9px'};min-height:{box_h}px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 12px 28px rgba(0,0,0,0.26), inset 0 1px 0 rgba(255,255,255,0.04);">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;">
+                <div style="font-size:{title_font};font-weight:800;color:#93c5fd;letter-spacing:0.06em;text-transform:uppercase;">{escape_html(str(row['Round']))}</div>
+                <div style="font-size:{sub_font};font-weight:700;color:#cbd5e1;">Pick: {escape_html(win_team)}</div>
             </div>
-            <div style="margin-top:5px;font-size:{title_font};color:#93c5fd;">Win prob: {float(row['Prob']):.1%}</div>
-            <div style="margin-top:4px;font-size:{sub_font};color:#94a3b8;line-height:1.25;">{row['TeamA']} vs {row['TeamB']}</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+                {team_row(win_team, True, prob)}
+                {team_row(lose_team, False, 1 - prob)}
+            </div>
         </div>
         '''
 
@@ -922,16 +1009,22 @@ def render_bracket_board(bracket_df, mode="desktop"):
         prev_centers, prev_h = centers(winners_count * 2, prev_stage)
         curr_centers, curr_h = centers(winners_count, stage)
         height_svg = max(prev_h, curr_h)
-        mid = line_w / 2
         x1, x2 = (0, line_w) if not reverse else (line_w, 0)
-        stroke = "#315fcb"
+        stroke = "rgba(96,165,250,0.98)"
+        glow = "rgba(59,130,246,0.20)"
+        elbow = line_w * 0.56 if not reverse else line_w * 0.44
         paths = []
+        glow_paths = []
         for i, cy in enumerate(curr_centers):
             p1 = prev_centers[2 * i]
             p2 = prev_centers[2 * i + 1]
-            paths.append(f'<path d="M {x1} {p1} L {mid} {p1} L {mid} {cy} L {x2} {cy}" fill="none" stroke="{stroke}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>')
-            paths.append(f'<path d="M {x1} {p2} L {mid} {p2} L {mid} {cy} L {x2} {cy}" fill="none" stroke="{stroke}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>')
-        return f'<svg width="{line_w}" height="{height_svg}" style="overflow:visible">{"".join(paths)}</svg>'
+            path_one = f'M {x1} {p1} L {elbow} {p1} L {elbow} {cy} L {x2} {cy}'
+            path_two = f'M {x1} {p2} L {elbow} {p2} L {elbow} {cy} L {x2} {cy}'
+            glow_paths.append(f'<path d="{path_one}" fill="none" stroke="{glow}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>')
+            glow_paths.append(f'<path d="{path_two}" fill="none" stroke="{glow}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>')
+            paths.append(f'<path d="{path_one}" fill="none" stroke="{stroke}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.96"/>')
+            paths.append(f'<path d="{path_two}" fill="none" stroke="{stroke}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.96"/>')
+        return f'<svg width="{line_w}" height="{height_svg}" style="overflow:visible">{"".join(glow_paths)}{"".join(paths)}</svg>'
 
     def region_html(region, reverse=False):
         data_map = {"R64": region["r64"], "R32": region["r32"], "S16": region["s16"], "E8": region["e8"]}
@@ -941,19 +1034,19 @@ def render_bracket_board(bracket_df, mode="desktop"):
         for idx, stage in enumerate(order):
             df = data_map[stage]
             if reverse:
-                html.append('<div style="display:flex;flex-direction:column;gap:8px;">')
-                html.append(f'<div style="text-align:center;font-weight:700;color:#e2e8f0;font-size:{"0.92rem" if mode=="desktop" else "0.82rem"};margin-bottom:6px;">{stage}</div>')
+                html.append(f'<div style="display:flex;flex-direction:column;gap:{stage_row_gap}px;">')
+                html.append(f'<div style="height:{stage_label_h}px;text-align:center;font-weight:700;color:#e2e8f0;font-size:{"0.92rem" if mode=="desktop" else "0.82rem"};margin-bottom:6px;">{stage}</div>')
                 mt, mb = spacing[stage]
                 for _, row in df.iterrows():
                     html.append(card(row, mt, mb))
                 html.append('</div>')
                 if stage != "R64":
-                    html.append(f'<div style="display:flex;justify-content:center;align-items:flex-start;padding-top:26px;">{line_svg(stage, len(df), reverse=True)}</div>')
+                    html.append(f'<div style="display:flex;flex-direction:column;align-items:center;"><div style="height:{stage_label_h + line_pad_top}px;"></div>{line_svg(stage, len(df), reverse=True)}</div>')
             else:
                 if idx > 0:
-                    html.append(f'<div style="display:flex;justify-content:center;align-items:flex-start;padding-top:26px;">{line_svg(stage, len(df), reverse=False)}</div>')
-                html.append('<div style="display:flex;flex-direction:column;gap:8px;">')
-                html.append(f'<div style="text-align:center;font-weight:700;color:#e2e8f0;font-size:{"0.92rem" if mode=="desktop" else "0.82rem"};margin-bottom:6px;">{stage}</div>')
+                    html.append(f'<div style="display:flex;flex-direction:column;align-items:center;"><div style="height:{stage_label_h + line_pad_top}px;"></div>{line_svg(stage, len(df), reverse=False)}</div>')
+                html.append(f'<div style="display:flex;flex-direction:column;gap:{stage_row_gap}px;">')
+                html.append(f'<div style="height:{stage_label_h}px;text-align:center;font-weight:700;color:#e2e8f0;font-size:{"0.92rem" if mode=="desktop" else "0.82rem"};margin-bottom:6px;">{stage}</div>')
                 mt, mb = spacing[stage]
                 for _, row in df.iterrows():
                     html.append(card(row, mt, mb))
@@ -964,32 +1057,67 @@ def render_bracket_board(bracket_df, mode="desktop"):
     left_html = region_html(regions[0], False) + region_html(regions[1], False)
     right_html = region_html(regions[2], True) + region_html(regions[3], True)
 
-    center_logo = 38 if mode == "desktop" else 30
-    center_team_font = "0.96rem" if mode == "desktop" else "0.84rem"
-    center_prob_font = "0.8rem" if mode == "desktop" else "0.7rem"
-    center_box_min_h = 72 if mode == "desktop" else 60
+    center_logo = 28 if mode == "desktop" else 24
+    center_team_font = "0.84rem" if mode == "desktop" else "0.76rem"
+    center_prob_font = "0.72rem" if mode == "desktop" else "0.64rem"
+    center_box_min_h = 120 if mode == "desktop" else 102
+
+    def final_matchup_svg(width, height):
+        stroke = "rgba(96,165,250,0.98)"
+        glow = "rgba(59,130,246,0.20)"
+        elbow = width * 0.58
+        top_y = 12
+        bottom_y = height - 12
+        center_y = height / 2
+        return f'''
+        <svg width="{width}" height="{height}" style="overflow:visible">
+            <path d="M 0 {top_y} L {elbow:.1f} {top_y} L {elbow:.1f} {center_y} L {width:.1f} {center_y}" fill="none" stroke="{glow}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 0 {bottom_y} L {elbow:.1f} {bottom_y} L {elbow:.1f} {center_y} L {width:.1f} {center_y}" fill="none" stroke="{glow}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 0 {top_y} L {elbow:.1f} {top_y} L {elbow:.1f} {center_y} L {width:.1f} {center_y}" fill="none" stroke="{stroke}" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 0 {bottom_y} L {elbow:.1f} {bottom_y} L {elbow:.1f} {center_y} L {width:.1f} {center_y}" fill="none" stroke="{stroke}" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        '''
+
+    def title_svg(width, height):
+        stroke = "rgba(96,165,250,0.98)"
+        glow = "rgba(59,130,246,0.20)"
+        cy = height / 2
+        return f'''
+        <svg width="{width}" height="{height}" style="overflow:visible">
+            <path d="M 0 {cy:.1f} L {width:.1f} {cy:.1f}" fill="none" stroke="{glow}" stroke-width="6" stroke-linecap="round"/>
+            <path d="M 0 {cy:.1f} L {width:.1f} {cy:.1f}" fill="none" stroke="{stroke}" stroke-width="2.8" stroke-linecap="round"/>
+        </svg>
+        '''
 
     def center_box(row):
+        winner = str(row["Pick"])
+        prob = float(row["Prob"])
+        team_a = str(row["TeamA"])
+        team_b = str(row["TeamB"])
+        win_team = team_a if winner == team_a else team_b if winner == team_b else winner
+        lose_team = team_b if win_team == team_a else team_a
         return f'''
-        <div style="width:100%;border:1px solid rgba(255,255,255,0.10);background:linear-gradient(180deg, rgba(15,23,42,0.96), rgba(15,23,42,0.90));border-radius:16px;padding:12px 14px;min-height:{center_box_min_h}px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 10px 22px rgba(0,0,0,0.22);">
-            <div style="display:flex;align-items:center;gap:10px;">
-                <img src="{logo_src(row['Pick'])}" style="width:{center_logo}px;height:{center_logo}px;border-radius:999px;object-fit:cover;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);" />
-                <div style="font-weight:800;font-size:{center_team_font};line-height:1.15;color:#f8fafc;">{row['Pick']}</div>
+        <div style="width:100%;border:1px solid rgba(255,255,255,0.11);background:linear-gradient(180deg, rgba(15,23,42,0.98), rgba(12,18,30,0.94));border-radius:18px;padding:{'11px' if mode == 'desktop' else '10px'};min-height:{center_box_min_h}px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 12px 28px rgba(0,0,0,0.26), inset 0 1px 0 rgba(255,255,255,0.04);">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;">
+                <div style="font-size:{center_prob_font};font-weight:800;color:#93c5fd;letter-spacing:0.06em;text-transform:uppercase;">Semifinal</div>
+                <div style="font-size:{sub_font};font-weight:700;color:#cbd5e1;">{prob:.1%}</div>
             </div>
-            <div style="margin-top:5px;font-size:{center_prob_font};color:#93c5fd;">Win prob: {float(row['Prob']):.1%}</div>
-            <div style="margin-top:4px;font-size:{"0.72rem" if mode=="desktop" else "0.64rem"};color:#94a3b8;line-height:1.2;">{row['TeamA']} vs {row['TeamB']}</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+                {team_row(win_team, True, prob)}
+                {team_row(lose_team, False, 1 - prob)}
+            </div>
         </div>
         '''
 
-    center_html = ['<div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding-top:28px;">', f'<div style="text-align:center;font-weight:800;color:#f8fafc;letter-spacing:0.02em;font-size:{"0.96rem" if mode=="desktop" else "0.84rem"};">Final Four & Title</div>']
+    center_html = ['<div style="display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:40px;">', f'<div style="text-align:center;font-weight:800;color:#f8fafc;letter-spacing:0.06em;text-transform:uppercase;font-size:{"0.92rem" if mode=="desktop" else "0.8rem"};">Final Four & Title</div>']
     if final_left is not None:
         center_html.append(center_box(final_left))
-    center_html.append(f'<div style="width:{final_gap/1.7:.0f}px;height:{52 if mode=="desktop" else 42}px;display:flex;align-items:center;justify-content:center;"><svg width="{final_gap/1.7:.0f}" height="{52 if mode=="desktop" else 42}"><path d="M 0 10 L {(final_gap/3.4):.0f} 10 L {(final_gap/3.4):.0f} {(26 if mode=="desktop" else 21)} L {(final_gap/1.7):.0f} {(26 if mode=="desktop" else 21)}" fill="none" stroke="#315fcb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/><path d="M 0 {(42 if mode=="desktop" else 32)} L {(final_gap/3.4):.0f} {(42 if mode=="desktop" else 32)} L {(final_gap/3.4):.0f} {(26 if mode=="desktop" else 21)} L {(final_gap/1.7):.0f} {(26 if mode=="desktop" else 21)}" fill="none" stroke="#315fcb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/></svg></div>')
+    center_html.append(f'<div style="width:{final_gap/1.45:.0f}px;height:{62 if mode=="desktop" else 52}px;display:flex;align-items:center;justify-content:center;">{final_matchup_svg(final_gap/1.45, 62 if mode=="desktop" else 52)}</div>')
     if final_right is not None:
         center_html.append(center_box(final_right))
     if champ is not None:
-        center_html.append(f'<div style="width:{final_gap/2:.0f}px;height:{36 if mode=="desktop" else 30}px;display:flex;align-items:center;justify-content:center;"><svg width="{final_gap/2:.0f}" height="{36 if mode=="desktop" else 30}"><path d="M 0 {(18 if mode=="desktop" else 15)} L {(final_gap/2):.0f} {(18 if mode=="desktop" else 15)}" fill="none" stroke="#315fcb" stroke-width="2.2" stroke-linecap="round" opacity="0.95"/></svg></div>')
-        center_html.append(f'''<div style="width:100%;background:linear-gradient(135deg, rgba(234,179,8,0.22), rgba(59,130,246,0.20));border:1px solid rgba(255,255,255,0.18);border-radius:18px;padding:14px;text-align:center;box-shadow:0 16px 30px rgba(0,0,0,0.22);"><div style="font-weight:700;color:#e2e8f0;font-size:{"0.88rem" if mode=="desktop" else "0.78rem"};margin-bottom:2px;">Champion</div><img src="{logo_src(champ['Pick'])}" style="width:{52 if mode=="desktop" else 42}px;height:{52 if mode=="desktop" else 42}px;border-radius:999px;object-fit:cover;margin:8px auto 10px auto;display:block;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);" /><div style="font-weight:800;font-size:{"1.06rem" if mode=="desktop" else "0.94rem"};line-height:1.15;color:#f8fafc;">{champ['Pick']}</div><div style="margin-top:5px;font-size:{"0.76rem" if mode=="desktop" else "0.68rem"};color:#93c5fd;">Title win prob: {float(champ['Prob']):.1%}</div></div>''')
+        center_html.append(f'<div style="width:{final_gap/1.9:.0f}px;height:{36 if mode=="desktop" else 30}px;display:flex;align-items:center;justify-content:center;">{title_svg(final_gap/1.9, 36 if mode=="desktop" else 30)}</div>')
+        center_html.append(f'''<div style="width:100%;background:linear-gradient(135deg, rgba(234,179,8,0.24), rgba(59,130,246,0.18));border:1px solid rgba(255,255,255,0.18);border-radius:20px;padding:15px;text-align:center;box-shadow:0 18px 34px rgba(0,0,0,0.24);"><div style="font-weight:800;color:#f8fafc;letter-spacing:0.06em;text-transform:uppercase;font-size:{"0.82rem" if mode=="desktop" else "0.74rem"};margin-bottom:6px;">Champion</div><img src="{logo_src(champ['Pick'])}" style="width:{58 if mode=="desktop" else 46}px;height:{58 if mode=="desktop" else 46}px;border-radius:999px;object-fit:cover;margin:6px auto 10px auto;display:block;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);" /><div style="font-weight:800;font-size:{"1.12rem" if mode=="desktop" else "0.98rem"};line-height:1.15;color:#f8fafc;">{escape_html(champ['Pick'])}</div><div style="margin-top:6px;font-size:{"0.76rem" if mode=="desktop" else "0.68rem"};color:#fde68a;">Title win prob: {float(champ['Prob']):.1%}</div></div>''')
     center_html.append('</div>')
 
     board_cols = f"1fr {final_gap}px 1fr"
@@ -1033,8 +1161,96 @@ def render_region_cards(bracket_df):
             st.markdown(f'''<div class="section-card" style="text-align:center;"><img src="{logo_src(champ['Pick'])}" style="width:74px;height:74px;border-radius:999px;object-fit:cover;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);margin-bottom:10px;" /><div style="font-weight:800;font-size:1.28rem;">{champ['Pick']}</div></div>''', unsafe_allow_html=True)
 
 
+def render_responsive_bracket(bracket_df):
+    st.markdown('<div class="bracket-mode-start" data-bracket-mode="desktop"></div>', unsafe_allow_html=True)
+    render_bracket_board(bracket_df, "desktop")
+    st.markdown('<div class="bracket-mode-end" data-bracket-mode="desktop"></div>', unsafe_allow_html=True)
+
+    st.markdown('<div class="bracket-mode-start" data-bracket-mode="tablet"></div>', unsafe_allow_html=True)
+    render_bracket_board(bracket_df, "tablet")
+    st.markdown('<div class="bracket-mode-end" data-bracket-mode="tablet"></div>', unsafe_allow_html=True)
+
+    st.markdown('<div class="bracket-mode-start" data-bracket-mode="mobile"></div>', unsafe_allow_html=True)
+    render_region_cards(bracket_df)
+    st.markdown('<div class="bracket-mode-end" data-bracket-mode="mobile"></div>', unsafe_allow_html=True)
+
+    components.html(
+        """
+        <script>
+        const START_SELECTOR = '.bracket-mode-start[data-bracket-mode]';
+        const END_SELECTOR = '.bracket-mode-end[data-bracket-mode]';
+        const CONTAINER_SELECTOR = '[data-testid="stElementContainer"]';
+
+        function getParentDoc() {
+          try {
+            return window.parent.document;
+          } catch (err) {
+            return document;
+          }
+        }
+
+        function getWidth(doc) {
+          try {
+            return window.parent.innerWidth || doc.documentElement.clientWidth || window.innerWidth;
+          } catch (err) {
+            return doc.documentElement.clientWidth || window.innerWidth;
+          }
+        }
+
+        function closestContainer(el) {
+          return el.closest(CONTAINER_SELECTOR) || el.parentElement;
+        }
+
+        function activeMode(width) {
+          if (width <= 900) return 'mobile';
+          if (width <= 1450) return 'tablet';
+          return 'desktop';
+        }
+
+        function toggleBracketBlocks() {
+          const doc = getParentDoc();
+          const width = getWidth(doc);
+          const mode = activeMode(width);
+          const starts = Array.from(doc.querySelectorAll(START_SELECTOR));
+
+          starts.forEach((start) => {
+            const bracketMode = start.dataset.bracketMode;
+            const startContainer = closestContainer(start);
+            if (!startContainer) return;
+
+            startContainer.style.display = 'none';
+
+            let node = startContainer.nextElementSibling;
+            while (node) {
+              const endMarker = node.querySelector(`${END_SELECTOR}[data-bracket-mode="${bracketMode}"]`);
+              if (endMarker) {
+                node.style.display = 'none';
+                break;
+              }
+
+              node.style.display = bracketMode === mode ? '' : 'none';
+              node = node.nextElementSibling;
+            }
+          });
+        }
+
+        function scheduleToggle() {
+          toggleBracketBlocks();
+          window.setTimeout(toggleBracketBlocks, 120);
+          window.setTimeout(toggleBracketBlocks, 400);
+        }
+
+        scheduleToggle();
+        window.addEventListener('resize', scheduleToggle);
+        </script>
+        """,
+        height=0,
+    )
+
+
 ratings = load_master_ratings()
 teams = sorted(ratings["Team"].dropna().unique().tolist())
+full_source_blend_ready = bool(len(ratings)) and int(ratings["source_count"].max()) >= 3
 
 st.markdown(
     """
@@ -1054,30 +1270,49 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-with st.sidebar:
+controls_col, summary_col = st.columns([0.6, 1.4], gap="large")
+with controls_col:
+    with st.popover("☰ Options", use_container_width=True):
+        st.markdown(
+            """
+            <div class="sidebar-brand">
+                <h3>BracketLab Controls</h3>
+                <p>Set your sim count, choose a bracket style, and launch the outputs from one compact panel.</p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        n_sims = st.slider("Number of simulations", min_value=1000, max_value=100000, step=1000, value=20000)
+        bracket_style = st.selectbox("Bracket style", ["Safe", "Balanced", "Chaos", "Upset-heavy"], index=1, help="Safe hugs favorites. Balanced mixes value and realism. Chaos creates a wilder bracket. Upset-heavy hunts for separation.")
+        run_button = st.button("Run tournament simulations", use_container_width=True)
+        st.markdown(
+            """
+            <div class="mini-guide">
+                <h4>How to use it</h4>
+                <p>1. Compare a matchup</p>
+                <p>2. Run sims</p>
+                <p>3. Review featured insights</p>
+                <p>4. Build a bracket and share it</p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+with summary_col:
     st.markdown(
-        """
-        <div class="sidebar-brand">
-            <h3>🏀 BracketLab</h3>
-            <p>Professional-looking bracket analysis built for simulation, storytelling, and sharing.</p>
+        f"""
+        <div class="top-controls-card">
+            <div class="top-controls-text">
+                <p class="top-controls-title">Options</p>
+                <p class="top-controls-sub">Open the menu to adjust simulations and bracket style. Current setup: <b>{bracket_style if 'bracket_style' in locals() else 'Balanced'}</b> with <b>{n_sims if 'n_sims' in locals() else 20000:,}</b> simulations.</p>
+            </div>
         </div>
         """,
         unsafe_allow_html=True,
     )
-    st.header("Controls")
-    n_sims = st.slider("Number of simulations", min_value=1000, max_value=100000, step=1000, value=20000)
-    bracket_style = st.selectbox("Bracket style", ["Safe", "Balanced", "Chaos", "Upset-heavy"], index=1, help="Safe hugs favorites. Balanced mixes value and realism. Chaos creates a wilder bracket. Upset-heavy hunts for separation.")
-    run_button = st.button("Run tournament simulations", use_container_width=True)
+
+if not full_source_blend_ready:
     st.markdown(
-        """
-        <div class="mini-guide">
-            <h4>How to use it</h4>
-            <p>1. Compare a matchup</p>
-            <p>2. Run sims</p>
-            <p>3. Review featured insights</p>
-            <p>4. Build a bracket and share it</p>
-        </div>
-        """,
+        '<div class="section-card"><p class="section-title">Ratings Input Status</p><p class="section-sub">The model is now wired for a balanced Torvik + KenPom + EvanMiya blend plus injury adjustments, but the current checked-in ratings still only include Torvik data. Add values to <b>kenpom_ratings.csv</b> and <b>evanmiya_ratings.csv</b>, then run <b>python3 build_master_ratings.py</b> to activate the full blend.</p></div>',
         unsafe_allow_html=True,
     )
 
@@ -1144,15 +1379,7 @@ if show_upsets:
 if build_bracket:
     bracket_df = build_pick_bracket(bracket_style)
     st.markdown(f'<div class="section-card"><p class="section-title">Bracket Board</p><p class="section-sub">A responsive bracket system tuned for desktop, split-screen, and phone. Generated using the <b>{bracket_style}</b> style.</p><p class="mobile-bracket-note">On smaller screens, region view is easier to read than the full board.</p></div>', unsafe_allow_html=True)
-    st.markdown('<div class="desktop-only">', unsafe_allow_html=True)
-    render_bracket_board(bracket_df, "desktop")
-    st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown('<div class="tablet-only">', unsafe_allow_html=True)
-    render_bracket_board(bracket_df, "tablet")
-    st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown('<div class="mobile-only">', unsafe_allow_html=True)
-    render_region_cards(bracket_df)
-    st.markdown('</div>', unsafe_allow_html=True)
+    render_responsive_bracket(bracket_df)
     with st.expander("Show bracket table"):
         st.dataframe(bracket_df, use_container_width=True)
     st.download_button("Download bracket_picks.csv", bracket_df.to_csv(index=False).encode("utf-8"), file_name="bracket_picks.csv", mime="text/csv")
@@ -1191,8 +1418,11 @@ if not ratings_view.empty:
     rating_rows = []
     for _, row in ratings_view.iterrows():
         sources_text = row.get("sources_used", "") if "sources_used" in ratings_view.columns else ""
-        rating_rows.append(f'''<div style="display:grid;grid-template-columns:72px 1.8fr 0.7fr 1fr;gap:16px;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.06);"><div><img src="{logo_src(row['Team'])}" style="width:48px;height:48px;border-radius:999px;object-fit:cover;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);" /></div><div style="font-weight:700;color:#f8fafc;font-size:1rem;">{row['Team']}</div><div style="text-align:right;color:#e2e8f0;">{row['AdjEM_blend']:.2f}</div><div style="color:#94a3b8;">{sources_text}</div></div>''')
-    ratings_html = '<html><body style="margin:0;background:transparent;font-family:Inter,system-ui,sans-serif;"><div style="border:1px solid rgba(255,255,255,0.08);border-radius:22px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));"><div style="display:grid;grid-template-columns:72px 1.8fr 0.7fr 1fr;gap:16px;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:#94a3b8;font-weight:700;"><div>Logo</div><div>Team</div><div style="text-align:right;">AdjEM</div><div>Sources</div></div>' + ''.join(rating_rows) + '</div></body></html>'
+        injury_adj = float(row.get("InjuryAdj", 0.0))
+        current_adj = float(row.get("AdjEM_current", row["AdjEM_blend"]))
+        injury_text = f'{injury_adj:+.2f}' if abs(injury_adj) > 1e-9 else '0.00'
+        rating_rows.append(f'''<div style="display:grid;grid-template-columns:72px 1.7fr 0.7fr 0.7fr 1fr;gap:16px;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.06);"><div><img src="{logo_src(row['Team'])}" style="width:48px;height:48px;border-radius:999px;object-fit:cover;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);" /></div><div style="font-weight:700;color:#f8fafc;font-size:1rem;">{row['Team']}</div><div style="text-align:right;color:#e2e8f0;">{current_adj:.2f}</div><div style="text-align:right;color:{'#fca5a5' if injury_adj < 0 else '#86efac' if injury_adj > 0 else '#94a3b8'};">{injury_text}</div><div style="color:#94a3b8;">{sources_text}</div></div>''')
+    ratings_html = '<html><body style="margin:0;background:transparent;font-family:Inter,system-ui,sans-serif;"><div style="border:1px solid rgba(255,255,255,0.08);border-radius:22px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));"><div style="display:grid;grid-template-columns:72px 1.7fr 0.7fr 0.7fr 1fr;gap:16px;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:#94a3b8;font-weight:700;"><div>Logo</div><div>Team</div><div style="text-align:right;">AdjEM</div><div style="text-align:right;">Injury</div><div>Sources</div></div>' + ''.join(rating_rows) + '</div></body></html>'
     components.html(ratings_html, height=1050, scrolling=False)
 
 st.markdown('<p class="footer-note">BracketLab • designed for shareable bracket analysis and polished tournament storytelling</p>', unsafe_allow_html=True)

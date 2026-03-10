@@ -1,27 +1,14 @@
 import pandas as pd
+from ratings_utils import canonical_team, prepare_ratings
 
 # ---- weights (edit later if you want) ----
-W_TORVIK = 0.45
-W_KENPOM = 0.45
-W_EVANMIYA = 0.10
+W_TORVIK = 0.40
+W_KENPOM = 0.40
+W_EVANMIYA = 0.20
 
-def load_name_map(path="name_map.csv"):
-    try:
-        m = pd.read_csv(path)
-        m["From"] = m["From"].astype(str).str.strip()
-        m["To"] = m["To"].astype(str).str.strip()
-        return dict(zip(m["From"], m["To"]))
-    except FileNotFoundError:
-        return {}
-
-NAME_MAP = load_name_map()
 
 def norm_team(s: str) -> str:
-    s = str(s).strip().replace("*", "")
-    s = " ".join(s.split())
-    # normalize a few common punctuation patterns
-    s = s.replace("St.", "St").replace("St  ", "St ")
-    return NAME_MAP.get(s, s)
+    return canonical_team(s).replace("St.", "St").replace("St  ", "St ")
 
 def safe_read_csv(path: str):
     try:
@@ -124,11 +111,12 @@ def main():
     blended = base.apply(blend_row, axis=1)
     out = pd.concat([base, blended], axis=1)
 
-    out = out.sort_values("AdjEM_blend", ascending=False)
+    out = prepare_ratings(out)
+    out = out.sort_values("AdjEM_current", ascending=False)
     out.to_csv("master_ratings.csv", index=False)
 
     print("Created master_ratings.csv with", len(out), "teams")
-    print(out[["Team", "AdjEM_blend", "sources_used"]].head(20).to_string(index=False))
+    print(out[["Team", "AdjEM_blend", "AdjEM_current", "sources_used"]].head(20).to_string(index=False))
 
 if __name__ == "__main__":
     main()
