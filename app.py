@@ -419,6 +419,44 @@ st.markdown(
         }
     }
 
+    @media (max-width: 1180px) {
+        .hero-title {
+            font-size: 1.95rem;
+        }
+
+        .matchup-card {
+            padding: 1rem 1rem;
+        }
+
+        .matchup-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .matchup-center {
+            order: -1;
+        }
+
+        .matchup-team,
+        .matchup-team.right {
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .matchup-logo {
+            width: 72px;
+            height: 72px;
+        }
+
+        .matchup-name {
+            font-size: 1rem;
+        }
+
+        .matchup-prob {
+            font-size: 1.5rem;
+        }
+    }
+
     @media (max-width: 900px) {
         .hero {
             padding: 1.1rem 1rem;
@@ -830,32 +868,32 @@ def render_bracket_board(bracket_df, mode="desktop"):
     regions, final_left, final_right, champ = split_bracket_frames(bracket_df)
 
     if mode == "desktop":
-        card_w = 215
-        line_w = 70
-        final_gap = 260
-        r64_space = (10, 10)
-        r32_space = (42, 42)
-        s16_space = (92, 92)
-        e8_space = (178, 178)
-        height = 1620
-        min_width = 1860
+        card_w = 196
+        line_w = 58
+        final_gap = 228
+        r64_space = (8, 8)
+        r32_space = (34, 34)
+        s16_space = (72, 72)
+        e8_space = (136, 136)
+        height = 1460
+        min_width = 1680
     else:
-        card_w = 172
-        line_w = 52
-        final_gap = 210
-        r64_space = (6, 6)
-        r32_space = (28, 28)
-        s16_space = (60, 60)
-        e8_space = (118, 118)
-        height = 1260
-        min_width = 1420
+        card_w = 156
+        line_w = 44
+        final_gap = 184
+        r64_space = (4, 4)
+        r32_space = (20, 20)
+        s16_space = (42, 42)
+        e8_space = (82, 82)
+        height = 1080
+        min_width = 1220
 
     spacing = {"R64": r64_space, "R32": r32_space, "S16": s16_space, "E8": e8_space}
-    box_h = 74 if mode == "desktop" else 62
-    logo = 34 if mode == "desktop" else 28
-    title_font = "0.96rem" if mode == "desktop" else "0.84rem"
-    sub_font = "0.76rem" if mode == "desktop" else "0.68rem"
-    team_font = "0.96rem" if mode == "desktop" else "0.86rem"
+    box_h = 68 if mode == "desktop" else 56
+    logo = 30 if mode == "desktop" else 24
+    title_font = "0.9rem" if mode == "desktop" else "0.8rem"
+    sub_font = "0.72rem" if mode == "desktop" else "0.64rem"
+    team_font = "0.9rem" if mode == "desktop" else "0.8rem"
 
     def card(row, mt, mb):
         return f'''
@@ -926,10 +964,10 @@ def render_bracket_board(bracket_df, mode="desktop"):
     left_html = region_html(regions[0], False) + region_html(regions[1], False)
     right_html = region_html(regions[2], True) + region_html(regions[3], True)
 
-    center_logo = 42 if mode == "desktop" else 34
-    center_team_font = "1rem" if mode == "desktop" else "0.9rem"
-    center_prob_font = "0.84rem" if mode == "desktop" else "0.74rem"
-    center_box_min_h = 78 if mode == "desktop" else 66
+    center_logo = 38 if mode == "desktop" else 30
+    center_team_font = "0.96rem" if mode == "desktop" else "0.84rem"
+    center_prob_font = "0.8rem" if mode == "desktop" else "0.7rem"
+    center_box_min_h = 72 if mode == "desktop" else 60
 
     def center_box(row):
         return f'''
@@ -943,7 +981,7 @@ def render_bracket_board(bracket_df, mode="desktop"):
         </div>
         '''
 
-    center_html = ['<div style="display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:34px;">', f'<div style="text-align:center;font-weight:800;color:#f8fafc;letter-spacing:0.02em;font-size:{"1rem" if mode=="desktop" else "0.88rem"};">Final Four & Title</div>']
+    center_html = ['<div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding-top:28px;">', f'<div style="text-align:center;font-weight:800;color:#f8fafc;letter-spacing:0.02em;font-size:{"0.96rem" if mode=="desktop" else "0.84rem"};">Final Four & Title</div>']
     if final_left is not None:
         center_html.append(center_box(final_left))
     center_html.append(f'<div style="width:{final_gap/1.7:.0f}px;height:{52 if mode=="desktop" else 42}px;display:flex;align-items:center;justify-content:center;"><svg width="{final_gap/1.7:.0f}" height="{52 if mode=="desktop" else 42}"><path d="M 0 10 L {(final_gap/3.4):.0f} 10 L {(final_gap/3.4):.0f} {(26 if mode=="desktop" else 21)} L {(final_gap/1.7):.0f} {(26 if mode=="desktop" else 21)}" fill="none" stroke="#315fcb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/><path d="M 0 {(42 if mode=="desktop" else 32)} L {(final_gap/3.4):.0f} {(42 if mode=="desktop" else 32)} L {(final_gap/3.4):.0f} {(26 if mode=="desktop" else 21)} L {(final_gap/1.7):.0f} {(26 if mode=="desktop" else 21)}" fill="none" stroke="#315fcb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/></svg></div>')
@@ -951,15 +989,15 @@ def render_bracket_board(bracket_df, mode="desktop"):
         center_html.append(center_box(final_right))
     if champ is not None:
         center_html.append(f'<div style="width:{final_gap/2:.0f}px;height:{36 if mode=="desktop" else 30}px;display:flex;align-items:center;justify-content:center;"><svg width="{final_gap/2:.0f}" height="{36 if mode=="desktop" else 30}"><path d="M 0 {(18 if mode=="desktop" else 15)} L {(final_gap/2):.0f} {(18 if mode=="desktop" else 15)}" fill="none" stroke="#315fcb" stroke-width="2.2" stroke-linecap="round" opacity="0.95"/></svg></div>')
-        center_html.append(f'''<div style="width:100%;background:linear-gradient(135deg, rgba(234,179,8,0.22), rgba(59,130,246,0.20));border:1px solid rgba(255,255,255,0.18);border-radius:18px;padding:16px;text-align:center;box-shadow:0 16px 30px rgba(0,0,0,0.22);"><div style="font-weight:700;color:#e2e8f0;font-size:{"0.92rem" if mode=="desktop" else "0.82rem"};margin-bottom:2px;">Champion</div><img src="{logo_src(champ['Pick'])}" style="width:{56 if mode=="desktop" else 46}px;height:{56 if mode=="desktop" else 46}px;border-radius:999px;object-fit:cover;margin:8px auto 10px auto;display:block;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);" /><div style="font-weight:800;font-size:{"1.14rem" if mode=="desktop" else "1rem"};line-height:1.15;color:#f8fafc;">{champ['Pick']}</div><div style="margin-top:5px;font-size:{"0.8rem" if mode=="desktop" else "0.72rem"};color:#93c5fd;">Title win prob: {float(champ['Prob']):.1%}</div></div>''')
+        center_html.append(f'''<div style="width:100%;background:linear-gradient(135deg, rgba(234,179,8,0.22), rgba(59,130,246,0.20));border:1px solid rgba(255,255,255,0.18);border-radius:18px;padding:14px;text-align:center;box-shadow:0 16px 30px rgba(0,0,0,0.22);"><div style="font-weight:700;color:#e2e8f0;font-size:{"0.88rem" if mode=="desktop" else "0.78rem"};margin-bottom:2px;">Champion</div><img src="{logo_src(champ['Pick'])}" style="width:{52 if mode=="desktop" else 42}px;height:{52 if mode=="desktop" else 42}px;border-radius:999px;object-fit:cover;margin:8px auto 10px auto;display:block;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);" /><div style="font-weight:800;font-size:{"1.06rem" if mode=="desktop" else "0.94rem"};line-height:1.15;color:#f8fafc;">{champ['Pick']}</div><div style="margin-top:5px;font-size:{"0.76rem" if mode=="desktop" else "0.68rem"};color:#93c5fd;">Title win prob: {float(champ['Prob']):.1%}</div></div>''')
     center_html.append('</div>')
 
     board_cols = f"1fr {final_gap}px 1fr"
     html = f'''
     <html><head><style>
     body {{ margin:0; background:transparent; font-family:Inter,system-ui,sans-serif; }}
-    .shell {{ background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.08); border-radius:24px; padding:16px; overflow:auto; }}
-    .board {{ min-width:{min_width}px; display:grid; grid-template-columns:{board_cols}; gap:{36 if mode=="desktop" else 24}px; align-items:start; color:#f8fafc; transform:scale(1); transform-origin:top left; }}
+    .shell {{ background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.08); border-radius:24px; padding:{14 if mode=="desktop" else 12}px; overflow-x:auto; overflow-y:hidden; }}
+    .board {{ min-width:{min_width}px; display:grid; grid-template-columns:{board_cols}; gap:{28 if mode=="desktop" else 18}px; align-items:start; color:#f8fafc; transform:scale(1); transform-origin:top left; }}
     </style></head><body><div class="shell"><div class="board"><div>{left_html}</div>{''.join(center_html)}<div>{right_html}</div></div></div></body></html>
     '''
     components.html(html, height=height, scrolling=True)
@@ -1043,7 +1081,7 @@ with st.sidebar:
         unsafe_allow_html=True,
     )
 
-left, right = st.columns([1.18, 0.82])
+left, right = st.columns([1.12, 0.88], gap="large")
 with left:
     st.markdown('<div class="section-card"><p class="section-title">Single Game Predictor</p><p class="section-sub">Check any matchup on demand.</p></div>', unsafe_allow_html=True)
     col1, col2 = st.columns(2)
