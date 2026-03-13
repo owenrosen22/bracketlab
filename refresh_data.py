@@ -9,21 +9,28 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parent
 
 REQUIRED_FILES = {
-    "torvik_ratings.csv": ["Team", "AdjEM_torvik", "Tempo_torvik"],
+    "torvik_ratings.csv": ["team", "adjoe", "adjde", "adjt"],
     "kenpom_ratings.csv": ["Team", "AdjEM", "Tempo"],
     "evanmiya_ratings.csv": ["Team", "AdjEM", "Tempo"],
+    "injury_reports.csv": ["Team", "Player", "Status"],
     "injury_adjustments.csv": ["Team", "Player", "AdjEM_delta", "Status", "Note"],
     "bracket_round1.csv": ["TeamA", "TeamB"],
     "play_in.csv": ["Slot", "Team1", "Team2"],
 }
 
+OPTIONAL_FILES = {"injury_reports.csv"}
+
 
 def check_file(name: str):
     path = ROOT / name
     if not path.exists():
+        if name in OPTIONAL_FILES:
+            return True, f"{name}: not present (optional)"
         return False, f"missing file: {name}"
 
     if path.stat().st_size == 0:
+        if name in OPTIONAL_FILES:
+            return True, f"{name}: empty template (optional)"
         return False, f"empty file: {name}"
 
     try:
@@ -34,6 +41,8 @@ def check_file(name: str):
     required = REQUIRED_FILES[name]
     missing = [col for col in required if col not in df.columns]
     if missing:
+        if name in OPTIONAL_FILES:
+            return True, f"{name}: ignored, missing optional columns {', '.join(missing)}"
         return False, f"{name} missing columns: {', '.join(missing)}"
 
     if name in {"kenpom_ratings.csv", "evanmiya_ratings.csv"} and df.empty:

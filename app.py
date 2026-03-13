@@ -1,4 +1,6 @@
 import urllib.parse
+from datetime import datetime
+from pathlib import Path
 import pandas as pd
 import numpy as np
 import streamlit as st
@@ -6,11 +8,17 @@ import altair as alt
 import streamlit.components.v1 as components
 
 from predict_proba import win_prob
-from ratings_utils import prepare_ratings
+from ratings_utils import AUTO_INJURY_FILE, INJURY_FILE, canonical_team, load_injury_adjustments_table as load_combined_injury_table, prepare_ratings
 
 st.set_page_config(page_title="BracketLab", page_icon="🏀", layout="wide")
 
 REGION_NAMES = ["East", "West", "South", "Midwest"]
+
+ACCENT_PRIMARY = "#005EB8"
+ACCENT_PRIMARY_ALT = "#2C84E0"
+ACCENT_COOL = "#D8E0E8"
+ACCENT_STEEL = "#8B95A3"
+ACCENT_SOFT = "#F8FAFC"
 
 st.markdown(
     """
@@ -23,9 +31,9 @@ st.markdown(
 
     .stApp {
         background:
-            radial-gradient(circle at top left, rgba(59,130,246,0.18), transparent 28%),
-            radial-gradient(circle at top right, rgba(16,185,129,0.14), transparent 24%),
-            linear-gradient(180deg, #081120 0%, #0b1220 35%, #0f172a 100%);
+            radial-gradient(circle at top left, rgba(0,94,184,0.22), transparent 30%),
+            radial-gradient(circle at top right, rgba(167,178,194,0.12), transparent 24%),
+            linear-gradient(180deg, #05070b 0%, #0b1018 34%, #111827 100%);
     }
 
     .block-container {
@@ -58,27 +66,33 @@ st.markdown(
         overflow: hidden;
         border: 1px solid rgba(255,255,255,0.10);
         background:
-            linear-gradient(135deg, rgba(37,99,235,0.30), rgba(16,185,129,0.18)),
+            radial-gradient(circle at top right, rgba(44,132,224,0.22), transparent 28%),
+            linear-gradient(135deg, rgba(0,94,184,0.28), rgba(17,24,39,0.08)),
             linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
         border-radius: 28px;
-        padding: 1.45rem 1.5rem 1.3rem 1.5rem;
-        margin-bottom: 1rem;
+        padding: 1.55rem 1.6rem 1.45rem 1.6rem;
+        margin-bottom: 0.85rem;
         box-shadow:
             0 20px 60px rgba(0,0,0,0.35),
-            0 0 60px rgba(59,130,246,0.15);
+            0 0 60px rgba(0,94,184,0.20);
     }
 
     .hero:before {
         content: "";
         position: absolute;
         inset: 0;
-        background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.12), transparent 22%);
+        background:
+            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(180deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+            radial-gradient(circle at 80% 20%, rgba(255,255,255,0.12), transparent 22%);
+        background-size: 26px 26px, 26px 26px, auto;
+        opacity: 0.35;
         pointer-events: none;
     }
 
     .hero-kicker {
         margin: 0;
-        color: #bfdbfe;
+        color: #7BB9F1;
         font-weight: 700;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -96,17 +110,17 @@ st.markdown(
     .hero-sub {
         margin-top: 0.65rem;
         margin-bottom: 0;
-        color: #dbeafe;
-        font-size: 1rem;
-        line-height: 1.45;
-        max-width: 920px;
+        color: #e5e7eb;
+        font-size: 0.98rem;
+        line-height: 1.5;
+        max-width: 860px;
     }
 
     .pill-row {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 0.95rem;
+        gap: 0.45rem;
+        margin-top: 0.85rem;
     }
 
     .pill {
@@ -120,6 +134,69 @@ st.markdown(
         padding: 0.45rem 0.75rem;
         font-size: 0.86rem;
         font-weight: 600;
+    }
+
+    div[data-testid="stRadio"] > div {
+        background: rgba(15,23,42,0.30);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 18px;
+        padding: 0.3rem;
+    }
+
+    div[data-testid="stRadio"] label {
+        background: transparent;
+        border-radius: 14px;
+        padding: 0.45rem 0.7rem;
+        border: 1px solid transparent;
+    }
+
+    div[data-testid="stRadio"] label p {
+        color: #cbd5e1;
+        font-size: 0.82rem;
+        font-weight: 700;
+    }
+
+    div[data-testid="stRadio"] label[data-baseweb="radio"] input:checked + div {
+        background: rgba(0,94,184,0.18);
+        border-radius: 12px;
+    }
+
+    .hero-meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 1rem;
+    }
+
+    .hero-meta-card {
+        background: rgba(15,23,42,0.34);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 16px;
+        padding: 0.75rem 0.85rem;
+        backdrop-filter: blur(10px);
+    }
+
+    .hero-meta-label {
+        margin: 0;
+        color: #7BB9F1;
+        font-size: 0.67rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .hero-meta-value {
+        margin: 0.24rem 0 0 0;
+        color: #f8fafc;
+        font-size: 0.95rem;
+        font-weight: 800;
+    }
+
+    .hero-meta-sub {
+        margin: 0.18rem 0 0 0;
+        color: #94a3b8;
+        font-size: 0.76rem;
+        line-height: 1.35;
     }
 
     .section-card {
@@ -161,7 +238,7 @@ st.markdown(
     }
 
     .insight-label {
-        color: #93c5fd;
+        color: #7BB9F1;
         font-size: 0.76rem;
         font-weight: 700;
         text-transform: uppercase;
@@ -192,7 +269,7 @@ st.markdown(
 
     .sidebar-brand {
         border: 1px solid rgba(255,255,255,0.08);
-        background: linear-gradient(135deg, rgba(59,130,246,0.18), rgba(16,185,129,0.12));
+        background: linear-gradient(135deg, rgba(0,94,184,0.18), rgba(167,178,194,0.10));
         border-radius: 20px;
         padding: 1rem;
         margin-bottom: 0.9rem;
@@ -232,16 +309,12 @@ st.markdown(
     }
 
     .top-controls-card {
-        border: 1px solid rgba(255,255,255,0.08);
-        background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
-        border-radius: 22px;
-        padding: 0.85rem 1rem;
-        margin-bottom: 1rem;
-        box-shadow: 0 12px 30px rgba(0,0,0,0.18);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
+        border: 1px solid rgba(255,255,255,0.07);
+        background: rgba(15,23,42,0.24);
+        border-radius: 18px;
+        padding: 0.72rem 0.92rem;
+        margin-bottom: 0.8rem;
+        box-shadow: none;
     }
 
     .top-controls-text {
@@ -250,22 +323,84 @@ st.markdown(
 
     .top-controls-title {
         margin: 0;
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-weight: 800;
         color: #f8fafc;
+        letter-spacing: 0.02em;
     }
 
     .top-controls-sub {
-        margin: 0.18rem 0 0 0;
-        font-size: 0.82rem;
+        margin: 0.14rem 0 0 0;
+        font-size: 0.76rem;
         color: #94a3b8;
+        line-height: 1.4;
+    }
+
+    .controls-summary-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 0.55rem;
+    }
+
+    .controls-summary-pill {
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 999px;
+        padding: 0.42rem 0.65rem;
+        background: rgba(15,23,42,0.34);
+    }
+
+    .controls-summary-label {
+        margin: 0;
+        color: #7BB9F1;
+        font-size: 0.64rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .controls-summary-value {
+        margin: 0.16rem 0 0 0;
+        color: #f8fafc;
+        font-size: 0.82rem;
+        font-weight: 800;
+    }
+
+    .snapshot-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 12px;
+        margin-bottom: 0.9rem;
+    }
+
+    .snapshot-card {
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 18px;
+        background: rgba(15,23,42,0.34);
+        padding: 0.9rem 0.95rem;
+    }
+
+    .snapshot-label {
+        margin: 0;
+        color: #7BB9F1;
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .snapshot-text {
+        margin: 0.28rem 0 0 0;
+        color: #e2e8f0;
+        font-size: 0.87rem;
+        line-height: 1.45;
     }
 
     .stButton > button, .stDownloadButton > button {
         width: 100%;
         border-radius: 14px;
         border: none;
-        background: linear-gradient(135deg,#2563eb,#10b981);
+        background: linear-gradient(135deg,#005EB8,#2C84E0);
         color: white;
         font-weight: 700;
         padding: 0.75rem 1rem;
@@ -343,7 +478,7 @@ st.markdown(
         width: 86px;
         height: 86px;
         border-radius: 999px;
-        background: linear-gradient(135deg, rgba(37,99,235,0.78), rgba(16,185,129,0.70));
+        background: linear-gradient(135deg, rgba(0,94,184,0.90), rgba(44,132,224,0.76));
         border: 1px solid rgba(255,255,255,0.12);
         font-weight: 800;
         color: #fff;
@@ -354,7 +489,7 @@ st.markdown(
     .matchup-edge-label {
         margin-top: 12px;
         font-size: 0.78rem;
-        color: #93c5fd;
+        color: #9FD1FF;
         font-weight: 800;
         letter-spacing: 0.1em;
         text-transform: uppercase;
@@ -376,7 +511,7 @@ st.markdown(
 
     .matchup-bar-fill {
         height: 100%;
-        background: linear-gradient(90deg,#2563eb,#10b981);
+        background: linear-gradient(90deg,#005EB8,#2C84E0);
     }
 
     .matchup-split {
@@ -511,6 +646,10 @@ st.markdown(
             padding: 0.38rem 0.62rem;
         }
 
+        .hero-meta {
+            grid-template-columns: 1fr;
+        }
+
         .section-card {
             padding: 0.9rem 0.95rem;
             border-radius: 18px;
@@ -528,6 +667,10 @@ st.markdown(
 
         .top-controls-sub {
             font-size: 0.76rem;
+        }
+
+        .snapshot-grid {
+            grid-template-columns: 1fr;
         }
 
         .insight-strip {
@@ -634,7 +777,7 @@ def clean_name(name, name_map):
 def load_team_logos():
     try:
         df = pd.read_csv("team_logos.csv")
-        df["Team"] = df["Team"].astype(str).str.strip()
+        df["Team"] = df["Team"].astype(str).map(canonical_team)
         df["LogoURL"] = df["LogoURL"].astype(str).str.strip()
         df = df[df["LogoURL"] != ""]
         return dict(zip(df["Team"], df["LogoURL"]))
@@ -652,8 +795,8 @@ def monogram_logo_data_uri(team: str):
     <svg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'>
       <defs>
         <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
-          <stop offset='0%' stop-color='#2563eb'/>
-          <stop offset='100%' stop-color='#10b981'/>
+          <stop offset='0%' stop-color='{ACCENT_PRIMARY_ALT}'/>
+          <stop offset='100%' stop-color='{ACCENT_PRIMARY}'/>
         </linearGradient>
       </defs>
       <circle cx='42' cy='42' r='39' fill='url(#g)'/>
@@ -665,7 +808,7 @@ def monogram_logo_data_uri(team: str):
 
 
 def logo_url(team: str):
-    team = str(team).strip()
+    team = canonical_team(team)
     return TEAM_LOGOS.get(team, "")
 
 
@@ -674,11 +817,31 @@ def logo_src(team: str):
     return url if url else monogram_logo_data_uri(team)
 
 
+def format_timestamp(path: str):
+    p = Path(path)
+    if not p.exists():
+        return "Missing"
+    return datetime.fromtimestamp(p.stat().st_mtime).strftime("%b %d, %Y %I:%M %p")
+
+
+def format_latest_timestamp(*paths: str):
+    existing = [Path(path) for path in paths if Path(path).exists()]
+    if not existing:
+        return "Missing"
+    latest = max(existing, key=lambda p: p.stat().st_mtime)
+    return format_timestamp(str(latest))
+
+
 @st.cache_data
 def load_master_ratings():
     df = pd.read_csv("master_ratings.csv")
     df = prepare_ratings(df)
     return df.sort_values("AdjEM_current", ascending=False).reset_index(drop=True)
+
+
+@st.cache_data
+def load_injury_adjustments_table():
+    return load_combined_injury_table()
 
 
 @st.cache_data
@@ -739,6 +902,7 @@ def simulate_tournament(games, rng):
     return depth
 
 
+@st.cache_data
 def run_simulations(n_sims):
     rng = np.random.default_rng(42)
     playins = load_playins()
@@ -765,6 +929,7 @@ def run_simulations(n_sims):
     return to_df(sweet16, "Sweet16Prob"), to_df(elite8, "Elite8Prob"), to_df(final4, "Final4Prob"), to_df(champ, "ChampProb")
 
 
+@st.cache_data
 def build_upset_watch():
     playins = load_playins()
     round1 = load_round1()
@@ -787,21 +952,54 @@ def build_upset_watch():
     return pd.DataFrame(rows).sort_values("Closeness").reset_index(drop=True)
 
 
+def _team_injury(team: str) -> float:
+    info = ratings_lookup.get(team, {})
+    return float(info.get("InjuryAdj", 0.0) or 0.0)
+
+
+def _favorite_pick_rate(favorite_prob: float, mode: str, favorite_injury: float, underdog_injury: float) -> float:
+    favorite_injury_pressure = max(0.0, abs(favorite_injury) - abs(underdog_injury))
+
+    if mode == "Safe":
+        rate = 0.70 + (favorite_prob - 0.50) * 0.95
+        if favorite_prob < 0.74:
+            rate -= min(0.08, favorite_injury_pressure * 0.24)
+    elif mode == "Balanced":
+        rate = 0.60 + (favorite_prob - 0.50) * 0.82
+        if 0.58 <= favorite_prob <= 0.76:
+            rate -= min(0.10, favorite_injury_pressure * 0.34)
+    elif mode == "Chaos":
+        if favorite_prob >= 0.84:
+            rate = 0.83 + (favorite_prob - 0.84) * 0.55
+        elif favorite_prob >= 0.66:
+            rate = 0.49 + (favorite_prob - 0.66) * 0.92
+        else:
+            rate = 0.47 + (favorite_prob - 0.50) * 0.62
+        rate -= min(0.12, favorite_injury_pressure * 0.40)
+    elif mode == "Upset-heavy":
+        if favorite_prob >= 0.86:
+            rate = 0.79 + (favorite_prob - 0.86) * 0.58
+        elif favorite_prob >= 0.68:
+            rate = 0.41 + (favorite_prob - 0.68) * 0.86
+        else:
+            rate = 0.44 + (favorite_prob - 0.50) * 0.52
+        rate -= min(0.15, favorite_injury_pressure * 0.48)
+    else:
+        rate = favorite_prob
+
+    return max(0.04, min(0.985, rate))
+
+
 def choose_pick(a, b, mode, rng):
     p = float(win_prob(a, b))
-    if mode == "Safe":
-        pick_a_prob = p
-    elif mode == "Balanced":
-        if p >= 0.72:
-            pick_a_prob = p
-        else:
-            pick_a_prob = 0.5 + (p - 0.5) * 0.65
-    elif mode == "Chaos":
-        pick_a_prob = 0.5 + (p - 0.5) * 0.35
-    elif mode == "Upset-heavy":
-        pick_a_prob = 0.5 + (p - 0.5) * 0.15
-    else:
-        pick_a_prob = p
+    a_injury = _team_injury(a)
+    b_injury = _team_injury(b)
+    favorite = a if p >= 0.5 else b
+    favorite_prob = p if favorite == a else 1 - p
+    favorite_injury = a_injury if favorite == a else b_injury
+    underdog_injury = b_injury if favorite == a else a_injury
+    favorite_pick_rate = _favorite_pick_rate(favorite_prob, mode, favorite_injury, underdog_injury)
+    pick_a_prob = favorite_pick_rate if favorite == a else 1 - favorite_pick_rate
     pick_a_prob = max(0.02, min(0.98, pick_a_prob))
     winner = a if rng.random() < pick_a_prob else b
     confidence = p if winner == a else 1 - p
@@ -850,7 +1048,7 @@ def metric_cards(champ_df, upset_df):
         st.metric("Best Upset Watch", closest)
 
 
-def probability_chart(df, col, title, color="#34d399"):
+def probability_chart(df, col, title, color=ACCENT_PRIMARY):
     top = df.head(12).copy()
     if top.empty:
         return None
@@ -913,6 +1111,63 @@ def split_bracket_frames(bracket_df):
     return regions, final_left, final_right, champ
 
 
+def explain_pick_html(row, ratings_map):
+    def esc(text):
+        return (
+            str(text)
+            .replace("&", "&amp;")
+            .replace("<", "&lt;")
+            .replace(">", "&gt;")
+            .replace('"', "&quot;")
+            .replace("'", "&#39;")
+        )
+
+    team_a = str(row["TeamA"])
+    team_b = str(row["TeamB"])
+    pick = str(row["Pick"])
+    prob = float(row["Prob"])
+    a = ratings_map.get(team_a, {})
+    b = ratings_map.get(team_b, {})
+    a_adj = float(a.get("AdjEM_current", a.get("AdjEM_blend", 0.0)) or 0.0)
+    b_adj = float(b.get("AdjEM_current", b.get("AdjEM_blend", 0.0)) or 0.0)
+    a_tempo = a.get("Tempo_blend")
+    b_tempo = b.get("Tempo_blend")
+    a_injury = float(a.get("InjuryAdj", 0.0) or 0.0)
+    b_injury = float(b.get("InjuryAdj", 0.0) or 0.0)
+    rating_gap = a_adj - b_adj
+    favored = team_a if rating_gap >= 0 else team_b
+    upset_flag = pick != favored
+    style = str(row.get("Style", "Balanced"))
+    tempo_text = "Neutral tempo environment" if pd.isna(a_tempo) or pd.isna(b_tempo) else f"Projected pace blend {((float(a_tempo) + float(b_tempo)) / 2):.1f}"
+    injury_edge = a_injury - b_injury
+    if abs(injury_edge) < 1e-9:
+        injury_text = "Injury edge is neutral"
+    elif injury_edge < 0:
+        injury_text = f"{esc(team_b)} is healthier by {abs(injury_edge):.2f} AdjEM"
+    else:
+        injury_text = f"{esc(team_a)} is healthier by {abs(injury_edge):.2f} AdjEM"
+    style_text = {
+        "Safe": "Style protects favorites unless the matchup gets genuinely fragile.",
+        "Balanced": "Style stays close to model EV while still allowing pool-friendly deviations.",
+        "Chaos": "Style increases variance in the upset window instead of flipping every coin.",
+        "Upset-heavy": "Style actively hunts underdogs where the model leaves room for separation.",
+    }.get(style, "Style follows the base model.")
+    edge_team = team_a if rating_gap >= 0 else team_b
+    edge_value = abs(rating_gap)
+    summary = "Style pick leans upset against the current favorite." if upset_flag else "Pick stays with the current favorite."
+    return (
+        f"<details style='margin-top:8px;'>"
+        f"<summary style='cursor:pointer;color:{ACCENT_PRIMARY_ALT};font-size:0.72rem;font-weight:800;letter-spacing:0.04em;'>Why this pick</summary>"
+        f"<div style='margin-top:8px;padding:8px 9px;border:1px solid rgba(255,255,255,0.08);border-radius:12px;background:rgba(255,255,255,0.03);color:#cbd5e1;font-size:0.68rem;line-height:1.48;'>"
+        f"<div style='font-weight:800;color:#f8fafc;margin-bottom:6px;'>{esc(pick)} projects at {prob:.1%}. {summary}</div>"
+        f"<div><span style='color:{ACCENT_PRIMARY_ALT};font-weight:800;'>Rating edge:</span> {esc(edge_team)} by {edge_value:.2f} AdjEM ({esc(team_a)} {a_adj:.2f} vs {esc(team_b)} {b_adj:.2f})</div>"
+        f"<div><span style='color:{ACCENT_PRIMARY_ALT};font-weight:800;'>Injury edge:</span> {injury_text}</div>"
+        f"<div><span style='color:{ACCENT_PRIMARY_ALT};font-weight:800;'>Tempo:</span> {tempo_text}</div>"
+        f"<div><span style='color:{ACCENT_PRIMARY_ALT};font-weight:800;'>Style note:</span> {style_text}</div>"
+        f"</div></details>"
+    )
+
+
 def render_bracket_board(bracket_df, mode="desktop"):
     regions, final_left, final_right, champ = split_bracket_frames(bracket_df)
 
@@ -958,13 +1213,13 @@ def render_bracket_board(bracket_df, mode="desktop"):
         )
 
     def team_row(team, is_winner, prob):
-        badge_bg = "linear-gradient(135deg, rgba(34,197,94,0.34), rgba(22,163,74,0.18))" if is_winner else "linear-gradient(135deg, rgba(148,163,184,0.14), rgba(100,116,139,0.08))"
-        badge_border = "rgba(34,197,94,0.48)" if is_winner else "rgba(148,163,184,0.24)"
+        badge_bg = "linear-gradient(135deg, rgba(0,94,184,0.40), rgba(44,132,224,0.22))" if is_winner else "linear-gradient(135deg, rgba(148,163,184,0.14), rgba(100,116,139,0.08))"
+        badge_border = "rgba(44,132,224,0.48)" if is_winner else "rgba(148,163,184,0.24)"
         badge_text = "✓" if is_winner else "✕"
-        badge_color = "#86efac" if is_winner else "#94a3b8"
+        badge_color = ACCENT_SOFT if is_winner else "#94a3b8"
         row_bg = "linear-gradient(90deg, rgba(30,41,59,0.94), rgba(15,23,42,0.92))" if is_winner else "rgba(15,23,42,0.56)"
-        row_border = "rgba(96,165,250,0.24)" if is_winner else "rgba(148,163,184,0.14)"
-        prob_html = f'<div style="font-size:{sub_font};font-weight:800;color:#86efac;white-space:nowrap;">{prob:.1%}</div>' if is_winner else '<div style="font-size:{sub_font};font-weight:700;color:#64748b;white-space:nowrap;">-</div>'
+        row_border = "rgba(44,132,224,0.34)" if is_winner else "rgba(148,163,184,0.14)"
+        prob_html = f'<div style="font-size:{sub_font};font-weight:800;color:{ACCENT_PRIMARY_ALT};white-space:nowrap;">{prob:.1%}</div>' if is_winner else '<div style="font-size:{sub_font};font-weight:700;color:#64748b;white-space:nowrap;">-</div>'
         return f'''
         <div style="display:grid;grid-template-columns:{logo}px minmax(0, 1fr) auto 20px;gap:8px;align-items:center;padding:{'7px 8px' if mode == 'desktop' else '6px 7px'};border-radius:12px;border:1px solid {row_border};background:{row_bg};">
             <img src="{logo_src(team)}" style="width:{logo}px;height:{logo}px;border-radius:999px;object-fit:cover;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);" />
@@ -981,16 +1236,18 @@ def render_bracket_board(bracket_df, mode="desktop"):
         team_b = str(row["TeamB"])
         win_team = team_a if winner == team_a else team_b if winner == team_b else winner
         lose_team = team_b if win_team == team_a else team_a
+        why_html = explain_pick_html(row, ratings_lookup)
         return f'''
         <div style="margin-top:{mt}px;margin-bottom:{mb}px;border:1px solid rgba(255,255,255,0.11);background:linear-gradient(180deg, rgba(15,23,42,0.98), rgba(12,18,30,0.94));border-radius:18px;padding:{'10px' if mode == 'desktop' else '9px'};min-height:{box_h}px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 12px 28px rgba(0,0,0,0.26), inset 0 1px 0 rgba(255,255,255,0.04);">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;">
-                <div style="font-size:{title_font};font-weight:800;color:#93c5fd;letter-spacing:0.06em;text-transform:uppercase;">{escape_html(str(row['Round']))}</div>
-                <div style="font-size:{sub_font};font-weight:700;color:#cbd5e1;">Pick: {escape_html(win_team)}</div>
+                <div style="font-size:{title_font};font-weight:800;color:{ACCENT_PRIMARY_ALT};letter-spacing:0.06em;text-transform:uppercase;">{escape_html(str(row['Round']))}</div>
+                <div style="font-size:{sub_font};font-weight:700;color:#cbd5e1;">{prob:.1%}</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:8px;">
                 {team_row(win_team, True, prob)}
                 {team_row(lose_team, False, 1 - prob)}
             </div>
+            {why_html}
         </div>
         '''
 
@@ -1010,8 +1267,8 @@ def render_bracket_board(bracket_df, mode="desktop"):
         curr_centers, curr_h = centers(winners_count, stage)
         height_svg = max(prev_h, curr_h)
         x1, x2 = (0, line_w) if not reverse else (line_w, 0)
-        stroke = "rgba(96,165,250,0.98)"
-        glow = "rgba(59,130,246,0.20)"
+        stroke = "rgba(44,132,224,0.98)"
+        glow = "rgba(0,94,184,0.24)"
         elbow = line_w * 0.56 if not reverse else line_w * 0.44
         paths = []
         glow_paths = []
@@ -1030,7 +1287,7 @@ def render_bracket_board(bracket_df, mode="desktop"):
         data_map = {"R64": region["r64"], "R32": region["r32"], "S16": region["s16"], "E8": region["e8"]}
         order = ["R64", "R32", "S16", "E8"] if not reverse else ["E8", "S16", "R32", "R64"]
         template = f"{card_w}px {line_w}px {card_w}px {line_w}px {card_w}px {line_w}px {card_w}px" if not reverse else f"{card_w}px {line_w}px {card_w}px {line_w}px {card_w}px {line_w}px {card_w}px"
-        html = [f'<div><div style="text-align:center;color:#93c5fd;font-weight:800;margin-bottom:12px;font-size:{"1rem" if mode=="desktop" else "0.9rem"};">{region["name"]}</div><div style="display:grid;grid-template-columns:{template};gap:0;align-items:start;">']
+        html = [f'<div><div style="text-align:center;color:{ACCENT_PRIMARY_ALT};font-weight:800;margin-bottom:12px;font-size:{"1rem" if mode=="desktop" else "0.9rem"};">{region["name"]}</div><div style="display:grid;grid-template-columns:{template};gap:0;align-items:start;">']
         for idx, stage in enumerate(order):
             df = data_map[stage]
             if reverse:
@@ -1057,14 +1314,12 @@ def render_bracket_board(bracket_df, mode="desktop"):
     left_html = region_html(regions[0], False) + region_html(regions[1], False)
     right_html = region_html(regions[2], True) + region_html(regions[3], True)
 
-    center_logo = 28 if mode == "desktop" else 24
-    center_team_font = "0.84rem" if mode == "desktop" else "0.76rem"
     center_prob_font = "0.72rem" if mode == "desktop" else "0.64rem"
-    center_box_min_h = 120 if mode == "desktop" else 102
+    center_box_min_h = 130 if mode == "desktop" else 108
 
     def final_matchup_svg(width, height):
-        stroke = "rgba(96,165,250,0.98)"
-        glow = "rgba(59,130,246,0.20)"
+        stroke = "rgba(44,132,224,0.98)"
+        glow = "rgba(0,94,184,0.24)"
         elbow = width * 0.58
         top_y = 12
         bottom_y = height - 12
@@ -1079,8 +1334,8 @@ def render_bracket_board(bracket_df, mode="desktop"):
         '''
 
     def title_svg(width, height):
-        stroke = "rgba(96,165,250,0.98)"
-        glow = "rgba(59,130,246,0.20)"
+        stroke = "rgba(44,132,224,0.98)"
+        glow = "rgba(0,94,184,0.24)"
         cy = height / 2
         return f'''
         <svg width="{width}" height="{height}" style="overflow:visible">
@@ -1096,20 +1351,22 @@ def render_bracket_board(bracket_df, mode="desktop"):
         team_b = str(row["TeamB"])
         win_team = team_a if winner == team_a else team_b if winner == team_b else winner
         lose_team = team_b if win_team == team_a else team_a
+        why_html = explain_pick_html(row, ratings_lookup)
         return f'''
         <div style="width:100%;border:1px solid rgba(255,255,255,0.11);background:linear-gradient(180deg, rgba(15,23,42,0.98), rgba(12,18,30,0.94));border-radius:18px;padding:{'11px' if mode == 'desktop' else '10px'};min-height:{center_box_min_h}px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 12px 28px rgba(0,0,0,0.26), inset 0 1px 0 rgba(255,255,255,0.04);">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;">
-                <div style="font-size:{center_prob_font};font-weight:800;color:#93c5fd;letter-spacing:0.06em;text-transform:uppercase;">Semifinal</div>
+                <div style="font-size:{center_prob_font};font-weight:800;color:{ACCENT_PRIMARY_ALT};letter-spacing:0.06em;text-transform:uppercase;">Final Four</div>
                 <div style="font-size:{sub_font};font-weight:700;color:#cbd5e1;">{prob:.1%}</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:8px;">
                 {team_row(win_team, True, prob)}
                 {team_row(lose_team, False, 1 - prob)}
             </div>
+            {why_html}
         </div>
         '''
 
-    center_html = ['<div style="display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:40px;">', f'<div style="text-align:center;font-weight:800;color:#f8fafc;letter-spacing:0.06em;text-transform:uppercase;font-size:{"0.92rem" if mode=="desktop" else "0.8rem"};">Final Four & Title</div>']
+    center_html = ['<div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding-top:28px;">', f'<div style="text-align:center;font-weight:800;color:#f8fafc;letter-spacing:0.06em;text-transform:uppercase;font-size:{"0.88rem" if mode=="desktop" else "0.76rem"};">Final Four & Title</div>']
     if final_left is not None:
         center_html.append(center_box(final_left))
     center_html.append(f'<div style="width:{final_gap/1.45:.0f}px;height:{62 if mode=="desktop" else 52}px;display:flex;align-items:center;justify-content:center;">{final_matchup_svg(final_gap/1.45, 62 if mode=="desktop" else 52)}</div>')
@@ -1117,7 +1374,7 @@ def render_bracket_board(bracket_df, mode="desktop"):
         center_html.append(center_box(final_right))
     if champ is not None:
         center_html.append(f'<div style="width:{final_gap/1.9:.0f}px;height:{36 if mode=="desktop" else 30}px;display:flex;align-items:center;justify-content:center;">{title_svg(final_gap/1.9, 36 if mode=="desktop" else 30)}</div>')
-        center_html.append(f'''<div style="width:100%;background:linear-gradient(135deg, rgba(234,179,8,0.24), rgba(59,130,246,0.18));border:1px solid rgba(255,255,255,0.18);border-radius:20px;padding:15px;text-align:center;box-shadow:0 18px 34px rgba(0,0,0,0.24);"><div style="font-weight:800;color:#f8fafc;letter-spacing:0.06em;text-transform:uppercase;font-size:{"0.82rem" if mode=="desktop" else "0.74rem"};margin-bottom:6px;">Champion</div><img src="{logo_src(champ['Pick'])}" style="width:{58 if mode=="desktop" else 46}px;height:{58 if mode=="desktop" else 46}px;border-radius:999px;object-fit:cover;margin:6px auto 10px auto;display:block;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);" /><div style="font-weight:800;font-size:{"1.12rem" if mode=="desktop" else "0.98rem"};line-height:1.15;color:#f8fafc;">{escape_html(champ['Pick'])}</div><div style="margin-top:6px;font-size:{"0.76rem" if mode=="desktop" else "0.68rem"};color:#fde68a;">Title win prob: {float(champ['Prob']):.1%}</div></div>''')
+        center_html.append(f'''<div style="width:100%;background:linear-gradient(135deg, rgba(0,94,184,0.28), rgba(44,132,224,0.16));border:1px solid rgba(255,255,255,0.18);border-radius:20px;padding:15px;text-align:center;box-shadow:0 18px 34px rgba(0,0,0,0.24);"><div style="font-weight:800;color:#f8fafc;letter-spacing:0.06em;text-transform:uppercase;font-size:{"0.82rem" if mode=="desktop" else "0.74rem"};margin-bottom:6px;">Champion</div><img src="{logo_src(champ['Pick'])}" style="width:{58 if mode=="desktop" else 46}px;height:{58 if mode=="desktop" else 46}px;border-radius:999px;object-fit:cover;margin:6px auto 10px auto;display:block;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);" /><div style="font-weight:800;font-size:{"1.12rem" if mode=="desktop" else "0.98rem"};line-height:1.15;color:#f8fafc;">{escape_html(champ['Pick'])}</div><div style="margin-top:6px;font-size:{"0.76rem" if mode=="desktop" else "0.68rem"};color:{ACCENT_PRIMARY_ALT};">Title win prob: {float(champ['Prob']):.1%}</div></div>''')
     center_html.append('</div>')
 
     board_cols = f"1fr {final_gap}px 1fr"
@@ -1145,8 +1402,9 @@ def render_region_cards(bracket_df):
                             <img src="{logo_src(row['Pick'])}" style="width:42px;height:42px;border-radius:999px;object-fit:cover;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);" />
                             <div>
                                 <div style="font-weight:800; font-size:1rem; color:#f8fafc;">{row['Pick']}</div>
-                                <div style="font-size:0.84rem; color:#93c5fd; margin-top:2px;">Win prob: {float(row['Prob']):.1%}</div>
+                                <div style="font-size:0.84rem; color:{ACCENT_PRIMARY_ALT}; margin-top:2px;">Win prob: {float(row['Prob']):.1%}</div>
                                 <div style="font-size:0.78rem; color:#94a3b8; margin-top:2px;">{row['TeamA']} vs {row['TeamB']}</div>
+                                {explain_pick_html(row, ratings_lookup)}
                             </div>
                         </div>
                     </div>
@@ -1251,19 +1509,42 @@ def render_responsive_bracket(bracket_df):
 ratings = load_master_ratings()
 teams = sorted(ratings["Team"].dropna().unique().tolist())
 full_source_blend_ready = bool(len(ratings)) and int(ratings["source_count"].max()) >= 3
+injury_table = load_injury_adjustments_table()
+injury_count = len(injury_table[injury_table.get("AdjEM_delta", pd.Series(dtype=float)) != 0]) if not injury_table.empty else 0
+source_mix = {
+    "Torvik": int(ratings["AdjEM_torvik"].notna().sum()) if "AdjEM_torvik" in ratings.columns else 0,
+    "KenPom": int(ratings["AdjEM_kenpom"].notna().sum()) if "AdjEM_kenpom" in ratings.columns else 0,
+    "EvanMiya": int(ratings["AdjEM_evanmiya"].notna().sum()) if "AdjEM_evanmiya" in ratings.columns else 0,
+}
+ratings_lookup = ratings.set_index("Team").to_dict("index") if not ratings.empty else {}
 
 st.markdown(
-    """
+    f"""
     <div class="hero">
         <p class="hero-kicker">BracketLab • share-ready analytics</p>
         <h1 class="hero-title">BracketLab</h1>
-        <p class="hero-sub">A polished March Madness dashboard for building, simulating, and sharing smarter brackets. Compare matchups, run tournament sims, surface upset candidates, and visualize the full bracket path in one place.</p>
+        <p class="hero-sub">Build sharper March Madness brackets with a blended ratings model, live injury adjustments, tournament simulations, and a full responsive bracket board that still feels clean on desktop, split-screen, and mobile.</p>
         <div class="pill-row">
-            <div class="pill">🏀 Matchup Predictor</div>
-            <div class="pill">📈 Simulation Dashboard</div>
-            <div class="pill">⚡ Featured Insights</div>
-            <div class="pill">🧩 Bracket Board</div>
-            <div class="pill">⬇️ Exportable Picks</div>
+            <div class="pill">Blended Ratings</div>
+            <div class="pill">Injury-Adjusted Picks</div>
+            <div class="pill">Responsive Bracket Board</div>
+        </div>
+        <div class="hero-meta">
+            <div class="hero-meta-card">
+                <p class="hero-meta-label">Ratings Refresh</p>
+                <p class="hero-meta-value">{format_timestamp('master_ratings.csv')}</p>
+                <p class="hero-meta-sub">Current model file used by the predictor, simulator, and bracket builder.</p>
+            </div>
+            <div class="hero-meta-card">
+                <p class="hero-meta-label">Blend Coverage</p>
+                <p class="hero-meta-value">T {source_mix['Torvik']} · K {source_mix['KenPom']} · E {source_mix['EvanMiya']}</p>
+                <p class="hero-meta-sub">{'All three major sources are active in the current blend.' if full_source_blend_ready else 'One or more source files still need to be refreshed.'}</p>
+            </div>
+            <div class="hero-meta-card">
+                <p class="hero-meta-label">Injury Layer</p>
+                <p class="hero-meta-value">{injury_count} active adjustments</p>
+                <p class="hero-meta-sub">Latest injury inputs updated {format_latest_timestamp(INJURY_FILE, AUTO_INJURY_FILE)}.</p>
+            </div>
         </div>
     </div>
     """,
@@ -1284,7 +1565,7 @@ with controls_col:
         )
         n_sims = st.slider("Number of simulations", min_value=1000, max_value=100000, step=1000, value=20000)
         bracket_style = st.selectbox("Bracket style", ["Safe", "Balanced", "Chaos", "Upset-heavy"], index=1, help="Safe hugs favorites. Balanced mixes value and realism. Chaos creates a wilder bracket. Upset-heavy hunts for separation.")
-        run_button = st.button("Run tournament simulations", use_container_width=True)
+        run_button = st.button("Run tournament simulations", width="stretch")
         st.markdown(
             """
             <div class="mini-guide">
@@ -1302,89 +1583,119 @@ with summary_col:
         f"""
         <div class="top-controls-card">
             <div class="top-controls-text">
-                <p class="top-controls-title">Options</p>
-                <p class="top-controls-sub">Open the menu to adjust simulations and bracket style. Current setup: <b>{bracket_style if 'bracket_style' in locals() else 'Balanced'}</b> with <b>{n_sims if 'n_sims' in locals() else 20000:,}</b> simulations.</p>
+                <p class="top-controls-title">Current Setup</p>
+                <p class="top-controls-sub">Adjust sims and bracket style from the menu. Right now the model is running a <b>{bracket_style if 'bracket_style' in locals() else 'Balanced'}</b> build across <b>{n_sims if 'n_sims' in locals() else 20000:,}</b> tournament simulations.</p>
+                <div class="controls-summary-grid">
+                    <div class="controls-summary-pill">
+                        <p class="controls-summary-label">Field</p>
+                        <p class="controls-summary-value">{'Official field' if len(load_round1()) == 32 else 'Placeholder field'}</p>
+                    </div>
+                    <div class="controls-summary-pill">
+                        <p class="controls-summary-label">Injury Model</p>
+                        <p class="controls-summary-value">{'Layered auto + manual' if injury_count else 'Manual only'}</p>
+                    </div>
+                    <div class="controls-summary-pill">
+                        <p class="controls-summary-label">Output</p>
+                        <p class="controls-summary-value">Predictor + sims + bracket board</p>
+                    </div>
+                </div>
             </div>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-if not full_source_blend_ready:
-    st.markdown(
-        '<div class="section-card"><p class="section-title">Ratings Input Status</p><p class="section-sub">The model is now wired for a balanced Torvik + KenPom + EvanMiya blend plus injury adjustments, but the current checked-in ratings still only include Torvik data. Add values to <b>kenpom_ratings.csv</b> and <b>evanmiya_ratings.csv</b>, then run <b>python3 build_master_ratings.py</b> to activate the full blend.</p></div>',
-        unsafe_allow_html=True,
-    )
+current_view = st.radio(
+    "View",
+    ["Home", "Bracket", "Simulations", "Model & Injuries"],
+    horizontal=True,
+    label_visibility="collapsed",
+    key="page_view",
+)
 
-left, right = st.columns([1.12, 0.88], gap="large")
-with left:
-    st.markdown('<div class="section-card"><p class="section-title">Single Game Predictor</p><p class="section-sub">Check any matchup on demand.</p></div>', unsafe_allow_html=True)
-    col1, col2 = st.columns(2)
-    with col1:
-        team_a = st.selectbox("Team A", teams, index=0)
-    with col2:
-        team_b = st.selectbox("Team B", teams, index=1)
-    if team_a == team_b:
-        st.info("Choose two different teams.")
-    else:
-        p = win_prob(team_a, team_b)
-        left_logo = logo_src(team_a)
-        right_logo = logo_src(team_b)
-        st.markdown(f'''
-            <div class="section-card matchup-card">
-                <div class="matchup-grid">
-                    <div class="matchup-team">
-                        <img src="{left_logo}" class="matchup-logo" />
-                        <div class="matchup-text">
-                            <div class="matchup-name">{team_a}</div>
-                            <div class="matchup-sub">Selected team A</div>
+show_upsets = False
+build_bracket = False
+run_sims_now = False
+
+if current_view == "Home":
+    left, right = st.columns([1.12, 0.88], gap="large")
+    with left:
+        st.markdown('<div class="section-card"><p class="section-title">Single Game Predictor</p><p class="section-sub">Check any matchup on demand.</p></div>', unsafe_allow_html=True)
+        col1, col2 = st.columns(2)
+        with col1:
+            team_a = st.selectbox("Team A", teams, index=0)
+        with col2:
+            team_b = st.selectbox("Team B", teams, index=1)
+        if team_a == team_b:
+            st.info("Choose two different teams.")
+        else:
+            p = win_prob(team_a, team_b)
+            left_logo = logo_src(team_a)
+            right_logo = logo_src(team_b)
+            st.markdown(f'''
+                <div class="section-card matchup-card">
+                    <div class="matchup-grid">
+                        <div class="matchup-team">
+                            <img src="{left_logo}" class="matchup-logo" />
+                            <div class="matchup-text">
+                                <div class="matchup-name">{team_a}</div>
+                                <div class="matchup-sub">Selected team A</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="matchup-center">
-                        <div class="matchup-vs">VS</div>
-                        <div class="matchup-edge-label">Win edge</div>
-                        <div class="matchup-prob">{p:.1%}</div>
-                        <div class="matchup-bar"><div class="matchup-bar-fill" style="width:{p*100:.1f}%;"></div></div>
-                        <div class="matchup-split"><span>{p:.1%}</span><span>{1-p:.1%}</span></div>
-                    </div>
-                    <div class="matchup-team right">
-                        <img src="{right_logo}" class="matchup-logo" />
-                        <div class="matchup-text right">
-                            <div class="matchup-name">{team_b}</div>
-                            <div class="matchup-sub">Selected team B</div>
+                        <div class="matchup-center">
+                            <div class="matchup-vs">VS</div>
+                            <div class="matchup-edge-label">Win edge</div>
+                            <div class="matchup-prob">{p:.1%}</div>
+                            <div class="matchup-bar"><div class="matchup-bar-fill" style="width:{p*100:.1f}%;"></div></div>
+                            <div class="matchup-split"><span>{p:.1%}</span><span>{1-p:.1%}</span></div>
+                        </div>
+                        <div class="matchup-team right">
+                            <img src="{right_logo}" class="matchup-logo" />
+                            <div class="matchup-text right">
+                                <div class="matchup-name">{team_b}</div>
+                                <div class="matchup-sub">Selected team B</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        ''', unsafe_allow_html=True)
-        c1, c2 = st.columns([0.9, 1.1])
-        with c1:
-            st.metric(f"P({team_a} wins)", f"{p:.1%}")
-        with c2:
-            st.markdown(f'''<div class="section-card" style="height:100%;"><p class="section-title" style="font-size:1rem;">Quick take</p><p class="section-sub"><b>{team_a}</b> gets a <b>{p:.1%}</b> win probability over <b>{team_b}</b> from the current model.</p></div>''', unsafe_allow_html=True)
-with right:
-    st.markdown('<div class="section-card"><p class="section-title">Quick Actions</p><p class="section-sub">Jump straight to the outputs people want to see.</p></div>', unsafe_allow_html=True)
-    st.markdown(f'''<div class="section-card" style="padding:0.9rem 1rem;"><p class="section-title" style="font-size:0.98rem;">Generate My Bracket</p><p class="section-sub">Current style: <b>{bracket_style}</b></p><div style="margin-top:8px;color:#cbd5e1;font-size:0.84rem;line-height:1.4;">Safe = chalky and stable. Balanced = realistic pool-friendly mix. Chaos = more volatility. Upset-heavy = hunts for bracket separation.</div></div>''', unsafe_allow_html=True)
+            ''', unsafe_allow_html=True)
+            c1, c2 = st.columns([0.9, 1.1])
+            with c1:
+                st.metric(f"P({team_a} wins)", f"{p:.1%}")
+            with c2:
+                st.markdown(f'''<div class="section-card" style="height:100%;"><p class="section-title" style="font-size:1rem;">Quick take</p><p class="section-sub"><b>{team_a}</b> gets a <b>{p:.1%}</b> win probability over <b>{team_b}</b> from the current model.</p></div>''', unsafe_allow_html=True)
+    with right:
+        st.markdown('<div class="section-card"><p class="section-title">Navigate BracketLab</p><p class="section-sub">Split the workflow into cleaner views so the app feels less cramped.</p></div>', unsafe_allow_html=True)
+        st.markdown(f'''<div class="section-card" style="padding:0.9rem 1rem;"><p class="section-title" style="font-size:0.98rem;">Bracket View</p><p class="section-sub">Generate and inspect a <b>{bracket_style}</b> bracket board with upset watch and download tools.</p></div>''', unsafe_allow_html=True)
+        st.markdown(f'''<div class="section-card" style="padding:0.9rem 1rem;"><p class="section-title" style="font-size:0.98rem;">Simulation View</p><p class="section-sub">Run <b>{n_sims:,}</b> tournament simulations, compare title odds, and inspect the strongest paths.</p></div>''', unsafe_allow_html=True)
+        st.markdown('''<div class="section-card" style="padding:0.9rem 1rem;"><p class="section-title" style="font-size:0.98rem;">Model & Injuries</p><p class="section-sub">Review methodology, top injury hits, and the ratings table driving the app.</p></div>''', unsafe_allow_html=True)
+
+if current_view == "Bracket":
+    st.markdown('<div class="section-card"><p class="section-title">Bracket Tools</p><p class="section-sub">Generate the full bracket board or surface the tightest first-round edges.</p></div>', unsafe_allow_html=True)
     col3, col4 = st.columns(2)
     with col3:
-        show_upsets = st.button("Show upset watch", use_container_width=True)
+        show_upsets = st.button("Show upset watch", width="stretch")
     with col4:
-        build_bracket = st.button("Generate my bracket", use_container_width=True)
+        build_bracket = st.button("Generate my bracket", width="stretch")
 
 if show_upsets:
     upset_df = build_upset_watch()
     st.markdown('<div class="section-card"><p class="section-title">Upset Watch</p><p class="section-sub">The smallest model edges in the bracket — these are the pressure points.</p></div>', unsafe_allow_html=True)
-    st.dataframe(upset_df.head(20), use_container_width=True, height=520)
+    st.dataframe(upset_df.head(20), width="stretch", height=520)
 
 if build_bracket:
     bracket_df = build_pick_bracket(bracket_style)
     st.markdown(f'<div class="section-card"><p class="section-title">Bracket Board</p><p class="section-sub">A responsive bracket system tuned for desktop, split-screen, and phone. Generated using the <b>{bracket_style}</b> style.</p><p class="mobile-bracket-note">On smaller screens, region view is easier to read than the full board.</p></div>', unsafe_allow_html=True)
     render_responsive_bracket(bracket_df)
     with st.expander("Show bracket table"):
-        st.dataframe(bracket_df, use_container_width=True)
+        st.dataframe(bracket_df, width="stretch")
     st.download_button("Download bracket_picks.csv", bracket_df.to_csv(index=False).encode("utf-8"), file_name="bracket_picks.csv", mime="text/csv")
 
-if run_button:
+if current_view == "Simulations":
+    st.markdown('<div class="section-card"><p class="section-title">Tournament Simulations</p><p class="section-sub">Run the tournament engine and inspect title odds, Final Four odds, and upset pressure points.</p></div>', unsafe_allow_html=True)
+    run_sims_now = st.button("Run tournament simulations", width="stretch", key="run_sims_page")
+
+if current_view == "Simulations" and run_sims_now:
     with st.spinner("Running simulations..."):
         sweet16_df, elite8_df, final4_df, champ_df = run_simulations(n_sims)
         upset_df = build_upset_watch()
@@ -1392,37 +1703,108 @@ if run_button:
     metric_cards(champ_df, upset_df)
     c1, c2 = st.columns(2)
     with c1:
-        chart = probability_chart(champ_df, "ChampProb", "Top Championship Odds", "#34d399")
+        chart = probability_chart(champ_df, "ChampProb", "Top Championship Odds", ACCENT_PRIMARY)
         if chart is not None:
-            st.altair_chart(chart, use_container_width=True)
+            st.altair_chart(chart, width="stretch")
     with c2:
-        chart = probability_chart(final4_df, "Final4Prob", "Top Final Four Odds", "#60a5fa")
+        chart = probability_chart(final4_df, "Final4Prob", "Top Final Four Odds", ACCENT_PRIMARY_ALT)
         if chart is not None:
-            st.altair_chart(chart, use_container_width=True)
+            st.altair_chart(chart, width="stretch")
     tabs = st.tabs(["Sweet 16", "Elite 8", "Final Four", "Champion", "Upset Watch"])
     with tabs[0]:
-        st.dataframe(sweet16_df.head(20), use_container_width=True, height=500)
+        st.dataframe(sweet16_df.head(20), width="stretch", height=500)
     with tabs[1]:
-        st.dataframe(elite8_df.head(20), use_container_width=True, height=500)
+        st.dataframe(elite8_df.head(20), width="stretch", height=500)
     with tabs[2]:
-        st.dataframe(final4_df.head(15), use_container_width=True, height=500)
+        st.dataframe(final4_df.head(15), width="stretch", height=500)
     with tabs[3]:
-        st.dataframe(champ_df.head(15), use_container_width=True, height=500)
+        st.dataframe(champ_df.head(15), width="stretch", height=500)
         st.download_button("Download championship_odds.csv", champ_df.to_csv(index=False).encode("utf-8"), file_name="championship_odds.csv", mime="text/csv")
     with tabs[4]:
-        st.dataframe(upset_df.head(20), use_container_width=True, height=500)
+        st.dataframe(upset_df.head(20), width="stretch", height=500)
 
-st.markdown('<div class="section-card"><p class="section-title">Current Top Teams By Blended Rating</p><p class="section-sub">The rating table driving BracketLab right now.</p></div>', unsafe_allow_html=True)
-ratings_view = ratings.head(20).copy()
-if not ratings_view.empty:
-    rating_rows = []
-    for _, row in ratings_view.iterrows():
-        sources_text = row.get("sources_used", "") if "sources_used" in ratings_view.columns else ""
-        injury_adj = float(row.get("InjuryAdj", 0.0))
-        current_adj = float(row.get("AdjEM_current", row["AdjEM_blend"]))
-        injury_text = f'{injury_adj:+.2f}' if abs(injury_adj) > 1e-9 else '0.00'
-        rating_rows.append(f'''<div style="display:grid;grid-template-columns:72px 1.7fr 0.7fr 0.7fr 1fr;gap:16px;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.06);"><div><img src="{logo_src(row['Team'])}" style="width:48px;height:48px;border-radius:999px;object-fit:cover;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);" /></div><div style="font-weight:700;color:#f8fafc;font-size:1rem;">{row['Team']}</div><div style="text-align:right;color:#e2e8f0;">{current_adj:.2f}</div><div style="text-align:right;color:{'#fca5a5' if injury_adj < 0 else '#86efac' if injury_adj > 0 else '#94a3b8'};">{injury_text}</div><div style="color:#94a3b8;">{sources_text}</div></div>''')
-    ratings_html = '<html><body style="margin:0;background:transparent;font-family:Inter,system-ui,sans-serif;"><div style="border:1px solid rgba(255,255,255,0.08);border-radius:22px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));"><div style="display:grid;grid-template-columns:72px 1.7fr 0.7fr 0.7fr 1fr;gap:16px;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:#94a3b8;font-weight:700;"><div>Logo</div><div>Team</div><div style="text-align:right;">AdjEM</div><div style="text-align:right;">Injury</div><div>Sources</div></div>' + ''.join(rating_rows) + '</div></body></html>'
-    components.html(ratings_html, height=1050, scrolling=False)
+if current_view == "Model & Injuries":
+    if not full_source_blend_ready:
+        st.markdown(
+            '<div class="section-card"><p class="section-title">Ratings Input Status</p><p class="section-sub">The model is now wired for a balanced Torvik + KenPom + EvanMiya blend plus injury adjustments, but one or more source files still need to be refreshed.</p></div>',
+            unsafe_allow_html=True,
+        )
+    st.markdown(
+        f"""
+        <div class="snapshot-grid">
+            <div class="snapshot-card">
+                <p class="snapshot-label">Model Snapshot</p>
+                <p class="snapshot-text">BracketLab blends Torvik, KenPom, and EvanMiya into one current team-strength rating, then layers injuries on top before matchup probabilities and tournament simulations are run.</p>
+            </div>
+            <div class="snapshot-card">
+                <p class="snapshot-label">Data Freshness</p>
+                <p class="snapshot-text">Bracket file last updated {format_timestamp('bracket_round1.csv')}. Injury inputs last updated {format_latest_timestamp(INJURY_FILE, AUTO_INJURY_FILE)}.</p>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    most_impacted = ratings[ratings["InjuryAdj"] < 0].copy()
+    if not most_impacted.empty:
+        most_impacted = most_impacted.sort_values("InjuryAdj").head(6)
+        chips = "".join(
+            f'<div class="controls-summary-pill"><p class="controls-summary-label">{row["Team"]}</p><p class="controls-summary-value">{float(row["InjuryAdj"]):+.2f}</p></div>'
+            for _, row in most_impacted.iterrows()
+        )
+        st.markdown(
+            f"""
+            <div class="top-controls-card">
+                <div class="top-controls-text">
+                    <p class="top-controls-title">Most Impacted Teams</p>
+                    <p class="top-controls-sub">Largest current injury downgrades in the model after the automatic weighting and manual overrides are combined.</p>
+                    <div class="controls-summary-grid">{chips}</div>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    with st.expander("How BracketLab Works"):
+        st.markdown(
+            """
+            BracketLab blends adjusted efficiency ratings from Torvik, KenPom, and EvanMiya into one current strength number.
+
+            The injury layer applies weighted automatic downgrades across the full injury report, adjusts them by position and severity, and then uses diminishing returns so long injury lists do not overwhelm the model.
+
+            Matchup probabilities come from the current adjusted rating gap, and bracket styles only change pick aggressiveness, not the underlying team ratings.
+            """
+        )
+
+    if injury_count:
+        active_injuries = injury_table[injury_table["AdjEM_delta"] != 0].copy()
+        active_injuries["AbsAdjEM"] = active_injuries["AdjEM_delta"].abs()
+        active_injuries = active_injuries.sort_values(["AbsAdjEM", "Team", "Player"], ascending=[False, True, True])
+        if "SourceType" in active_injuries.columns:
+            active_injuries["SourceType"] = active_injuries["SourceType"].astype(str).str.title()
+        display_cols = ["Team", "Player"]
+        if "Pos" in active_injuries.columns:
+            display_cols.append("Pos")
+        display_cols += ["Status", "AdjEM_delta"]
+        if "SourceType" in active_injuries.columns:
+            display_cols.append("SourceType")
+        if "Note" in active_injuries.columns:
+            display_cols.append("Note")
+        active_injuries["AdjEM_delta"] = active_injuries["AdjEM_delta"].map(lambda x: f"{x:+.2f}")
+        with st.expander("Active Injury Adjustments"):
+            st.dataframe(active_injuries[display_cols], width="stretch", height=260)
+
+    st.markdown('<div class="section-card"><p class="section-title">Current Top Teams By Blended Rating</p><p class="section-sub">The rating table driving BracketLab right now.</p></div>', unsafe_allow_html=True)
+    ratings_view = ratings.head(20).copy()
+    if not ratings_view.empty:
+        rating_rows = []
+        for _, row in ratings_view.iterrows():
+            sources_text = row.get("sources_used", "") if "sources_used" in ratings_view.columns else ""
+            injury_adj = float(row.get("InjuryAdj", 0.0))
+            current_adj = float(row.get("AdjEM_current", row["AdjEM_blend"]))
+            injury_text = f'{injury_adj:+.2f}' if abs(injury_adj) > 1e-9 else '0.00'
+            rating_rows.append(f'''<div style="display:grid;grid-template-columns:72px 1.7fr 0.7fr 0.7fr 1fr;gap:16px;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.06);"><div><img src="{logo_src(row['Team'])}" style="width:48px;height:48px;border-radius:999px;object-fit:cover;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);" /></div><div style="font-weight:700;color:#f8fafc;font-size:1rem;">{row['Team']}</div><div style="text-align:right;color:#e2e8f0;">{current_adj:.2f}</div><div style="text-align:right;color:{'#fca5a5' if injury_adj < 0 else ACCENT_PRIMARY_ALT if injury_adj > 0 else '#94a3b8'};">{injury_text}</div><div style="color:#94a3b8;">{sources_text}</div></div>''')
+        ratings_html = '<html><body style="margin:0;background:transparent;font-family:Inter,system-ui,sans-serif;"><div style="border:1px solid rgba(255,255,255,0.08);border-radius:22px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));"><div style="display:grid;grid-template-columns:72px 1.7fr 0.7fr 0.7fr 1fr;gap:16px;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:#94a3b8;font-weight:700;"><div>Logo</div><div>Team</div><div style="text-align:right;">AdjEM</div><div style="text-align:right;">Injury</div><div>Sources</div></div>' + ''.join(rating_rows) + '</div></body></html>'
+        components.html(ratings_html, height=1050, scrolling=False)
 
 st.markdown('<p class="footer-note">BracketLab • designed for shareable bracket analysis and polished tournament storytelling</p>', unsafe_allow_html=True)

@@ -105,6 +105,10 @@ def extract_evanmiya(rows):
 
 def extract_evanmiya_line_blocks(rows):
     tokens = [row[0].strip() for row in rows if row and row[0].strip()]
+    if tokens:
+        m = re.search(r"(\d+)\s*$", tokens[0])
+        if m and not tokens[0].strip().isdigit():
+            tokens[0] = m.group(1)
     out = []
     i = 0
     while i < len(tokens):
