@@ -3,15 +3,15 @@ import re
 import pandas as pd
 
 BLEND_WEIGHTS = {
-    "AdjEM_torvik": 0.40,
-    "AdjEM_kenpom": 0.40,
-    "AdjEM_evanmiya": 0.20,
+    "AdjEM_torvik": 0.375,
+    "AdjEM_kenpom": 0.375,
+    "AdjEM_evanmiya": 0.25,
 }
 
 TEMPO_WEIGHTS = {
-    "Tempo_torvik": 0.40,
-    "Tempo_kenpom": 0.40,
-    "Tempo_evanmiya": 0.20,
+    "Tempo_torvik": 0.375,
+    "Tempo_kenpom": 0.375,
+    "Tempo_evanmiya": 0.25,
 }
 
 INJURY_FILE = "injury_adjustments.csv"
@@ -70,16 +70,19 @@ ALIASES = {
     "FIU": "FIU",
     "Florida International": "FIU",
     "Fort Wayne": "Purdue Fort Wayne",
+    "Gardner-Webb": "Gardner Webb",
     "Grambling": "Grambling St.",
     "Illinois-Chicago": "Illinois Chicago",
     "LIU Brooklyn": "LIU",
     "LIU": "LIU",
     "Louisiana-Lafayette": "Louisiana",
+    "Louisiana-Monroe": "Louisiana Monroe",
     "Loyola Maryland": "Loyola MD",
     "Maryland-Eastern Shore": "Maryland Eastern Shore",
     "McNeese St.": "McNeese",
     "Miami (Fla.)": "Miami FL",
     "Mississippi State": "Mississippi St.",
+    "Missouri-Kansas City": "Kansas City",
     "Nicholls St.": "Nicholls",
     "Ohio State": "Ohio St.",
     "Ole Miss": "Mississippi",

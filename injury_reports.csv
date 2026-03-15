@@ -1,299 +1,392 @@
 Team,Player,Pos,Status,Reported,ImpactMultiplier,AutoAdjEM_delta,Source,Note
-Alabama,Keitenn Bristow,F,Out,Feb 6,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Bristow is out with undisclosed
-Alabama,Davion Hannah,G,Out,Feb 6,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Hannah is out with undisclosed
-Alabama,Collins Onyejiaka,C,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Onyejiaka is out with undisclosed
-Appalachian St.,KJ Vasser,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Vasser is out for season with foot
-Arizona St.,Adante' Holiman,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Holiman is out with elbow
-Arizona St.,Vijay Wallace,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Wallace is out for season with ankle
-Arizona St.,Dame Salane,C,Out for season,Jan 21,,0.0,covers_raw:injuries_raw.txt,is out for season Salane is out for season with redshirt
-Arkansas,Karter Knox,F,Out,Feb 20,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Knox is out with undisclosed
-Auburn,Emeka Opurum,C,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Opurum is out for season with undisclosed
-BYU,Dawson Baker,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Baker is out for season with knee
-BYU,Richie Saunders,G,Out for season,Feb 17,,-0.1,covers_raw:injuries_raw.txt,is out for season Saunders is out for season with knee
-BYU,Nate Pickens,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Pickens is out for season with undisclosed
-BYU,Brody Kozlowski,F,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Houston U Kozlowski is questionable with undisclosed"
-BYU,Xavion Staton,C,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Houston U Staton is questionable with undisclosed"
-BYU,KJ Perry,G,Out for season,Jan 21,,0.0,covers_raw:injuries_raw.txt,is out for season Perry is out for season with redshirt
-Baylor,JJ White,G,Questionable,Mar 10,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" White is questionable with undisclosed"
-Baylor,Juslin Bodo Bodo,C,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Bodo Bodo is out for season with arm
-Baylor,Maikcol Perez,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Perez is out for season with knee
-Belmont,Nic McClain,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely McClain is out with undisclosed
-Bethune-Cookman,Daniel Rouzan,F,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" to return Wednesday vs Prairie View A&M Rouzan is questionable with hand"
-Boise St.,Julian Bowie,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Bowie is out for season with personal
-Boston College,Donald Hand,G,Questionable,Mar 7,,-0.01,covers_raw:injuries_raw.txt,"left last game, is ""?"" Hand is questionable with leg"
-Boston College,Jason Asemota,F,Questionable,Mar 7,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Asemota is questionable with undisclosed"
-Boston College,Nick Petronio,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Petronio is out with undisclosed
-Boston University,Malcolm Chimezie,F,Questionable,Mar 8,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Wednesday vs Lehigh Chimezie is questionable with knee"
-Boston University,Kyrone Alexander,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Alexander is out with leg
-Bradley,Matthew Zobrist,G,Questionable,Mar 7,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Zobrist is questionable with undisclosed"
-Butler,Azavier Robinson,G,Out for season,Feb 11,,-0.1,covers_raw:injuries_raw.txt,is out for season Robinson is out for season with wrist
-California,Rytis Petraitis,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Petraitis is out for season with leg
-California,Stephon Marbury,G,Out,Mar 11,,-0.05,covers_raw:injuries_raw.txt,is downgraded to OUT Wednesday vs Florida State Marbury is out with undisclosed
-California,Jovani Ruff,G,Out,Mar 11,,-0.05,covers_raw:injuries_raw.txt,is downgraded to OUT Wednesday vs Florida State Ruff is out with undisclosed
-Charleston,Will Mortimore,F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Mortimore is out with concussion
-Charlotte,Ethan Butler,F,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Tulane Butler is questionable with undisclosed"
-Charlotte,Damoni Harrison,G,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Tulane Harrison is questionable with undisclosed"
-Charlotte,Major Freeman,G,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Tulane Freeman is questionable with undisclosed"
-Charlotte,David Gomez,F,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Tulane Gomez is questionable with undisclosed"
-Charlotte,Frank Oguche,G,Out,Jan 30,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Oguche is out with undisclosed
-Cincinnati,Jalen Haynes,F,Out for season,Feb 9,,-0.1,covers_raw:injuries_raw.txt,is out for season Haynes is out for season with lower body
-Clemson,Carter Welling,F,Questionable,Mar 12,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs North Carolina Welling is questionable with knee"
-Clemson,Zac Foster,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Foster is out for season with knee
-Clemson,Trent Steinour,F/C,Questionable,Mar 12,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs North Carolina Steinour is questionable with undisclosed"
-Cleveland St.,Josiah Harris,F,Questionable,Mar 5,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Harris is questionable with concussion"
-Cleveland St.,Dayan Nessah,F,Questionable,Mar 5,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Nessah is questionable with shoulder"
-Colorado,Sebastian Rancik,F,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Rancik is questionable with undisclosed"
-Colorado,Jon Mani,G,Out for season,Jan 21,,0.0,covers_raw:injuries_raw.txt,is out for season Mani is out for season with redshirt
-Colorado,Leonardo Van Elswyk,C,Out for season,Jan 21,,0.0,covers_raw:injuries_raw.txt,is out for season Van Elswyk is out for season with redshirt
-Connecticut,Jaylin Stewart,F,Out,Mar 10,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Stewart is out with undisclosed
-Creighton,Liam McChesney,F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely McChesney is out with undisclosed
-Creighton,Owen Freeman,F,Questionable,Mar 4,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Freeman is questionable with undisclosed"
-Creighton,Josh Townley-Thomas,F,Questionable,Mar 4,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Townley-Thomas is questionable with undisclosed"
-Creighton,Jackson McAndrew,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season McAndrew is out for season with foot
-Creighton,Aleksa Dimitrijevic,C,Out for season,Jan 21,,0.0,covers_raw:injuries_raw.txt,is out for season Dimitrijevic is out for season with redshirt
-Davidson,Joe Hurlburt,F/C,Out,Feb 6,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Hurlburt is out with undisclosed
-Davidson,Josh Scovens,G,Questionable,Mar 7,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Scovens is questionable with undisclosed"
-Davidson,Roberts Blums,G,Questionable,Mar 7,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Blums is questionable with undisclosed"
-Dayton,Evan Dickey,G,Questionable,Mar 6,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Dickey is questionable with undisclosed"
-Dayton,Jaron McKie,G,Out for season,Feb 27,,-0.1,covers_raw:injuries_raw.txt,is out for season McKie is out for season with shoulder
-DePaul,Jeremy Lorenz,F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Lorenz is out with hip
-DePaul,Amsal Delalic,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Delalic is out for season with knee
-Delaware,Jameel Brown,G,Questionable,Mar 5,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Brown is questionable with undisclosed"
-Delaware,Tyler Houser,F,Out for season,Feb 27,,-0.1,covers_raw:injuries_raw.txt,is out for season Houser is out for season with undisclosed
-Delaware,Cavan Reilly,G,Out,Feb 14,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Reilly is out with undisclosed
-Delaware,Lance Piper,G,Out,Feb 14,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Piper is out with undisclosed
-Delaware,Bouna Kebe,F,Questionable,Mar 5,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Kebe is questionable with undisclosed"
-Delaware,Mason Ellison,G,Out,Feb 12,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Ellison is out with thumb
-Duke,Ifeanyi Ufochukwu,C,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Florida State Ufochukwu is questionable with undisclosed"
-Duke,Caleb Foster,G,Out,Mar 10,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Foster is out with foot
-Duke,Patrick Ngongba,C,Out,Mar 10,,-0.05,covers_raw:injuries_raw.txt,is OUT for ACC Tournament Ngongba is out with undisclosed
-Duquesne,Stef van Bussel,C,Questionable,Mar 7,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" van Bussel is questionable with undisclosed"
-East Carolina,Eli DeLaurier,F,Questionable,Mar 8,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" DeLaurier is questionable with undisclosed"
-East Carolina,Tybo Bailey,G,Questionable,Mar 8,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Bailey is questionable with undisclosed"
-East Carolina,Trevion LaBeaux,G/F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season LaBeaux is out for season with lower body
-East Carolina,Jayshayne Woodard,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Woodard is out with ankle
-East Carolina,Daithi Quinn,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Quinn is out for season with knee
-Eastern Washington,Andrew Cook,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Cook is out for season with ankle
-Florida Atlantic,Devin Vanterpool,G,Questionable,Mar 12,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs North Texas Vanterpool is questionable with ankle"
-Florida Atlantic,Zion Sampaio,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Sampaio is out for season with undisclosed
-FIU,Amarion Nimmers,G,Out for season,Mar 7,,-0.1,covers_raw:injuries_raw.txt,is out for season Nimmers is out for season with undisclosed
-FIU,Gvidas Gicevicius,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Gicevicius is out for season with undisclosed
-Florida St.,AJ Swinton,F,Out for season,Mar 7,,-0.1,covers_raw:injuries_raw.txt,is out for season Swinton is out for season with knee
-Florida St.,Xavier Osceola,G,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Duke Osceola is questionable with undisclosed"
-Fordham,Ryan Pettis,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Pettis is out with undisclosed
-Fordham,Jack Whitbourn,C,Questionable,Mar 12,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Geo Washington Whitbourn is questionable with undisclosed"
-Fresno St.,Nathan Zulemie,G,Out for season,Mar 12,,-0.1,covers_raw:injuries_raw.txt,is out for season Zulemie is out for season with undisclosed
-George Mason,Brayden O'Connor,G,Out for season,Feb 16,,-0.1,covers_raw:injuries_raw.txt,is out for season O'Connor is out for season with foot
-George Mason,Jermahri Hill,G,Questionable,Mar 7,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Hill is questionable with undisclosed"
-George Washington,Ty Bevins,G,Questionable,Mar 12,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Fordham Bevins is questionable with undisclosed"
-George Washington,Jalen Rougier-Roane,G,Out for season,Feb 27,,-0.1,covers_raw:injuries_raw.txt,is out for season Rougier-Roane is out for season with undisclosed
-Georgetown,KJ Lewis,G,Out for season,Feb 27,,-0.1,covers_raw:injuries_raw.txt,is out for season Lewis is out for season with ankle
-Georgia St.,Clash Peters,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Peters is out for season with personal
-Georgia Tech,Dyllan Thompson,G/F,Questionable,Mar 7,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thompson is questionable with undisclosed"
-Georgia Tech,Mouhamed Sylla,C,Out,Feb 6,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Sylla is out with undisclosed
-Gonzaga,Braden Huff,F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Huff is out with knee
-Grand Canyon,Wilhelm Breidenbach,F,Out,Mar 12,,-0.05,covers_raw:injuries_raw.txt,is downgraded to OUT Thursday vs Nevada Breidenbach is out with undisclosed
-Hawaii,Aaron Hunkin-Claytor,G,Out for season,Feb 8,,-0.1,covers_raw:injuries_raw.txt,is out for season Hunkin-Claytor is out for season with toe
-Illinois,Jason Jakstys,C,Out for season,Feb 1,,-0.1,covers_raw:injuries_raw.txt,is out for season Jakstys is out for season with undisclosed
-Indiana,Jason Drake,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Drake is out with foot
-Indiana,Jordan Rayford,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Rayford is out for season with undisclosed
-Indiana St.,Zyair Greene,G,Questionable,Mar 5,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Greene is questionable with undisclosed"
-Indiana St.,Jayan Walker,G,Questionable,Mar 5,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Walker is questionable with undisclosed"
-Iowa,Peyton McCollum,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season McCollum is out for season with undisclosed
-Iowa St.,Xzavion Mitchell,F,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Texas Tech Mitchell is questionable with undisclosed"
-Jackson St.,Daeshun Ruffin,G,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Wednesday vs Florida A&M Ruffin is questionable with leg"
-Jacksonville St.,Bencao Vungo,G/F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Vungo is out with undisclosed
-Jacksonville St.,Jordan Vick,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Vick is out with undisclosed
-Kansas St.,Abdi Bashir,G,Out,Mar 10,,-0.05,covers_raw:injuries_raw.txt,is downgraded to OUT Tuesday vs BYU Bashir is out with undisclosed
-Kansas St.,Mobi Ikegwuruka,G,Out,Mar 10,,-0.05,covers_raw:injuries_raw.txt,is downgraded to OUT Tuesday vs BYU Ikegwuruka is out with undisclosed
-Kansas St.,Dorin Buca,C,Out,Mar 10,,-0.05,covers_raw:injuries_raw.txt,is downgraded to OUT Tuesday vs BYU Buca is out with undisclosed
-Kennesaw St.,Chase Clemmons,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Clemmons is out for season with undisclosed
-Kennesaw St.,Brendan Tousignaut,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Tousignaut is out for season with undisclosed
-Kennesaw St.,Darius Washington,G,Questionable,Mar 7,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Washington is questionable with undisclosed"
-Kentucky,Jaland Lowe,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Lowe is out for season with arm
-Kentucky,Jayden Quaintance,F,Out,Jan 25,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Quaintance is out with knee
-LSU,Dedan Thomas,G,Out for season,Feb 14,,-0.1,covers_raw:injuries_raw.txt,is out for season Thomas is out for season with foot
-Louisiana,Jamyron Keller,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Keller is out for season with foot
-Louisiana,Sean Elkinton,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Elkinton is out for season with foot
-Louisiana Tech,Will Jeffress,F,Out for season,Feb 28,,-0.1,covers_raw:injuries_raw.txt,is out for season Jeffress is out for season with knee
-Louisiana Tech,A'Meir Williams,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Williams is out for season with undisclosed
-Louisville,Mikel Brown,G,Out indefinitely,Mar 12,,-0.07,covers_raw:injuries_raw.txt,is OUT for ACC tournament Brown is injured with back
-Louisville,Dominick Harris,G,Out,Feb 6,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Harris is out with undisclosed
-Louisville,Kymany Houinsou,G,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Davidson Houinsou is questionable with undisclosed"
-Louisville,Caleb Reese,G,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Davidson Reese is questionable with undisclosed"
-Louisville,Justin Moore,G,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Davidson Moore is questionable with undisclosed"
-Louisville,Chuck Love,G,Out,Feb 6,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Love is out with undisclosed
-Marist,Jason Schofield,C,Out,Feb 22,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Schofield is out with knee
-Marist,Elijah Lewis,G,Out for season,Feb 13,,-0.1,covers_raw:injuries_raw.txt,is out for season Lewis is out for season with knee
-Marist,Tarik Watson,C,Out,Feb 5,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Watson is out with knee
-Marquette,Sean Jones,G,Out for season,Feb 24,,-0.1,covers_raw:injuries_raw.txt,is out for season Jones is out for season with foot
-Massachusetts,Dimitri Clerc,F/C,Questionable,Mar 3,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Clerc is questionable with leg"
-Memphis,Ashton Hardaway,F,Doubtful,Mar 11,,-0.03,covers_raw:injuries_raw.txt,is not in the starting lineup Wednesday vs Tulane Hardaway is doubtful with calf
-Memphis,Julius Thedford,G,Doubtful,Mar 11,,-0.03,covers_raw:injuries_raw.txt,is not in the starting lineup Wednesday vs Tulane Thedford is doubtful with undisclosed
-Miami FL,Marcus Allen,G/F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Allen is out for season with illness
-Miami FL,Treyvon Maddox,F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Maddox is out with undisclosed
-Michigan St.,Kaleb Glenn,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Glenn is out for season with knee
-Michigan St.,Divine Ugochukwu,G,Out for season,Feb 6,,-0.1,covers_raw:injuries_raw.txt,is out for season Ugochukwu is out for season with foot
-Michigan,Charlie May,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season May is out for season with thumb
-Michigan,L.J. Cason,G,Out for season,Feb 28,,-0.1,covers_raw:injuries_raw.txt,is out for season Cason is out for season with knee
-Minnesota,Robert Vaihola,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Vaihola is out for season with knee
-Minnesota,BJ Omot,F,Out for season,Jan 24,,-0.1,covers_raw:injuries_raw.txt,is out for season Omot is out for season with leg
-Minnesota,Chance Stephens,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Stephens is out with illness
-Minnesota,Jaylen Crocker-Johnson,F,Out,Feb 20,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Crocker-Johnson is out with foot
-Mississippi St.,Gai Chol,C,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Chol is out for season with knee
-Mississippi St.,King Grace,G,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Grace is questionable with undisclosed"
-Missouri St.,Antwan Burnett,G/F,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Burnett is questionable with undisclosed"
-Missouri St.,Amar Kuljuhovic,G/F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Kuljuhovic is out with undisclosed
-Missouri,Jevon Porter,F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Porter is out with lower body
-Missouri,Annor Boateng,G,Out for season,Feb 4,,-0.1,covers_raw:injuries_raw.txt,is out for season Boateng is out for season with leg
-Mount St. Mary's,Jaxon Hartman,G,Out,Mar 1,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Hartman is out with undisclosed
-Mount St. Mary's,Abdou Khadre Kebe,G,Out,Mar 1,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Khadre Kebe is out with undisclosed
-Mount St. Mary's,Justin May,G,Out,Mar 1,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely May is out with undisclosed
-Nebraska,Henry Burt,F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Burt is out with knee
-Nebraska,Connor Essegian,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Essegian is out for season with ankle
-Nebraska,Ugnius Jarusevicius,F,Out,Feb 13,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Jarusevicius is out with back
-New Mexico,Chris Howell,G,Questionable,Mar 7,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Howell is questionable with undisclosed"
-New Mexico,Milos Vicentic,F,Questionable,Mar 7,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Vicentic is questionable with undisclosed"
-North Carolina,Alyn Breed,G,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Virginia Breed is questionable with undisclosed"
-North Carolina,Colt Langdon,F,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Virginia Langdon is questionable with undisclosed"
-North Carolina,James Brown,C,Out for season,Feb 20,,-0.1,covers_raw:injuries_raw.txt,is out for season Brown is out for season with foot
-North Carolina,Ivan Matlekovic,C,Questionable,Mar 7,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Matlekovic is questionable with undisclosed"
-North Carolina,Caleb Wilson,F,Out for season,Mar 6,,-0.1,covers_raw:injuries_raw.txt,is out for season Wilson is out for season with thumb
-North Texas,Will McClendon,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season McClendon is out for season with leg
-Northern Iowa,Marino Dubravcic,F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Dubravcic is out with undisclosed
-Northern Iowa,Cade Courbat,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Courbat is out with undisclosed
-Northwestern,Arrinten Page,F,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Purdue Page is questionable with illness"
-Notre Dame,Markus Burton,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Burton is out with foot
-Notre Dame,Tommy Ahneman,C,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Ahneman is out with knee
-Ohio,Elijah Elliott,G,Out,Mar 7,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Elliott is out with undisclosed
-Ohio St.,Puff Johnson,G/F,Probable,Mar 12,,0.0,covers_raw:injuries_raw.txt,is upgraded to probable Thursday vs Iowa Johnson is probable with achilles
-Ohio St.,Brandon Noel,F,Probable,Mar 12,,0.0,covers_raw:injuries_raw.txt,is upgraded to probable Thursday vs Iowa Noel is probable with foot
-Ohio St.,Josh Ojianwuna,F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Ojianwuna is out with knee
-Ohio St.,Myles Herro,G,Out for season,Jan 21,,0.0,covers_raw:injuries_raw.txt,is out for season Herro is out for season with redshirt
-Oklahoma St.,Parsa Fallah,F,Out for season,Feb 25,,-0.1,covers_raw:injuries_raw.txt,is out for season Fallah is out for season with knee
-Old Dominion,Caelum Swanton-Rodger,F,Questionable,Mar 4,,-0.01,covers_raw:injuries_raw.txt,"left last game, is ""?"" Wednesday vs Georgia Southern Swanton-Rodger is questionable with ankle"
-Mississippi,Koren Johnson,G,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Georgia Johnson is questionable with undisclosed"
-Oregon,Jackson Shelstad,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Shelstad is out with hand
-Oregon,Devon Pryor,F,Out,Feb 2,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Pryor is out with groin
-Oregon,JJ Frakes,G,Questionable,Mar 10,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Frakes is questionable with undisclosed"
-Oregon,Ege Demir,C,Out for season,Feb 2,,-0.1,covers_raw:injuries_raw.txt,is out for season Demir is out for season with undisclosed
-Penn St.,Reggie Grodin,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Grodin is out for season with undisclosed
-Penn St.,Tibor Mirtic,F,Out for season,Feb 27,,-0.1,covers_raw:injuries_raw.txt,is out for season Mirtic is out for season with leg
-Penn,Dylan Williams,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Williams is out with undisclosed
-Penn,Ryan Altman,G/F,Out,Jan 30,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Altman is out with undisclosed
-Portland,Riley Parker,G,Out for season,Jan 29,,-0.1,covers_raw:injuries_raw.txt,is out for season Parker is out for season with undisclosed
-Portland,Timo George,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season George is out for season with shoulder
-Princeton,Jack Stanton,G,Out for season,Feb 13,,-0.1,covers_raw:injuries_raw.txt,is out for season Stanton is out for season with foot
-Providence,Rich Barron,F/G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Barron is out with concussion
-Providence,Jason Edwards,G,Out,Mar 12,,-0.05,covers_raw:injuries_raw.txt,is downgraded to OUT Thursday vs St. Johns Edwards is out with undisclosed
-Providence,Daquan Davis,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Davis is out for season with knee
-Providence,Jaylen Harrell,G/F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Harrell is out with undisclosed
-Rhode Island,Mouhamed Sow,F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Sow is out with leg
-Rhode Island,Moek Icke,C,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Icke is out with chest
-Rhode Island,Jaymien Aponte,G,Questionable,Mar 7,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Aponte is questionable with undisclosed"
-Rhode Island,Javon Perry,F,Questionable,Mar 7,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Perry is questionable with undisclosed"
-Rice,Dallas Hobbs,G,Questionable,Mar 8,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Hobbs is questionable with undisclosed"
-Rice,Aaron Powell,G,Out for season,Jan 24,,-0.1,covers_raw:injuries_raw.txt,is out for season Powell is out for season with undisclosed
-Richmond,Bryson McGlothin,F,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" McGlothin is questionable with undisclosed"
-Rutgers,Baye Fall,C,Out,Jan 24,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Fall is out with hand
-Rutgers,Dorian Jones,G,Out for season,Jan 21,,0.0,covers_raw:injuries_raw.txt,is out for season Jones is out for season with redshirt
-St. Joseph's,Steven Solano,C,Questionable,Mar 4,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Solano is questionable with undisclosed"
-St. Joseph's,Owen Verna,G,Questionable,Mar 7,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Verna is questionable with undisclosed"
-St. Mary's CA,Kevin Gad,F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Gad is out with shoulder
-St. Mary's CA,Isaiah Manning,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Manning is out for season with undisclosed
-St. Mary's CA,Justin Begg,G,Out for season,Feb 14,,-0.1,covers_raw:injuries_raw.txt,is out for season Begg is out for season with undisclosed
-St. Mary's CA,Jaxson Ford,F,Out for season,Jan 28,,-0.1,covers_raw:injuries_raw.txt,is out for season Ford is out for season with undisclosed
-St. Mary's CA,Noah Benny,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Benny is out for season with undisclosed
-St. Mary's CA,Nathan Nguyen,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Nguyen is out for season with undisclosed
-San Diego St.,Elzie Harrington,G,Out,Mar 12,,-0.05,covers_raw:injuries_raw.txt,is downgraded to OUT Thursday vs Colorado State Harrington is out with undisclosed
-San Jose St.,JaVaughn Hannah,G,Out,Jan 27,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Hannah is out with undisclosed
-San Jose St.,Pasha Goodarzi,G,Questionable,Mar 12,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs New Mexico Goodarzi is questionable with undisclosed"
-San Jose St.,Jaden Goodall,F,Out,Jan 27,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Goodall is out with undisclosed
-San Jose St.,Yaphet Moundi,F,Questionable,Mar 12,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs New Mexico Moundi is questionable with undisclosed"
-San Jose St.,Ben Roseborough,G,Questionable,Mar 12,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs New Mexico Roseborough is questionable with undisclosed"
-Santa Clara,Gehrig Normand,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Normand is out with undisclosed
-Santa Clara,Chris Tadjo,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Tadjo is out for season with undisclosed
-Seton Hall,Patrick Suemnick,F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Suemnick is out with shoulder
-Seton Hall,Godswill Erheriene,C,Questionable,Mar 7,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Erheriene is questionable with undisclosed"
-Seton Hall,Jahseem Felton,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Felton is out for season with knee
-Siena,Reid Ducharme,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Ducharme is out with shoulder
-Siena,Tasman Goodrick,F,Out for season,Feb 7,,-0.1,covers_raw:injuries_raw.txt,is out for season Goodrick is out for season with knee
-Siena,Antonio Chandler,F,Out,Mar 1,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Chandler is out with undisclosed
-Siena,Owen Schlager,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Schlager is out with ribs
-South Dakota,Josiah Dotzler,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Dotzler is out with knee
-South Florida,Xavier Brown,G,Out for season,Feb 4,,-0.1,covers_raw:injuries_raw.txt,is out for season Brown is out for season with undisclosed
-South Florida,De'Ante Green,F,Out for season,Feb 11,,-0.1,covers_raw:injuries_raw.txt,is out for season Green is out for season with achilles
-Southern,B.J. Edwards,G,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Edwards is questionable with ankle"
-St. Bonaventure,Amar'e Marshall,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Marshall is out with foot
-St. Bonaventure,Xander Wedlow,F/C,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Wedlow is out with undisclosed
-St. Bonaventure,Ilia Ermakov,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Ermakov is out with ankle
-St John's,Kelvin Odih,G,Questionable,Mar 7,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Odih is questionable with leg"
-St John's,Casper Pohto,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Pohto is out for season with hip
-St John's,Imran Suljanovic,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Suljanovic is out for season with knee
-Stanford,Chisom Okpara,F,Questionable,Mar 10,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Okpara is questionable with undisclosed"
-Stanford,Anthony Batson,G,Questionable,Mar 10,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Batson is questionable with undisclosed"
-Stanford,Tallis Toure,F/C,Questionable,Mar 10,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Toure is questionable with undisclosed"
-Stanford,Kristers Skrinda,F,Questionable,Mar 10,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Skrinda is questionable with undisclosed"
-Stetson,Jamie Phillips,G,Questionable,Mar 4,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Friday vs Austin Peay Phillips is questionable with undisclosed"
-Syracuse,Aaron Womack,G,Out for season,Jan 21,,0.0,covers_raw:injuries_raw.txt,is out for season Womack is out for season with redshirt
-TCU,Malick Diallo,C,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Diallo is out for season with knee
-Temple,AJ Smith,G,Out for season,Jan 24,,-0.1,covers_raw:injuries_raw.txt,is out for season Smith is out for season with undisclosed
-Tennessee,Cade Phillips,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Phillips is out for season with shoulder
-Tennessee,Nate Ament,F,Probable,Mar 12,,0.0,covers_raw:injuries_raw.txt,is upgraded to probable Thursday vs Auburn Ament is probable with leg
-Tennessee,Amari Evans,G,Questionable,Mar 10,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs winner of Mississippi St/Auburn Evans is questionable with ankle"
-Tennessee,Clarence Massamba,G,Questionable,Mar 10,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs winner of Mississippi St/Auburn Massamba is questionable with undisclosed"
-Texas A&M,Mackenzie Mgbako,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Mgbako is out for season with foot
-Texas,Lassina Traore,F,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Traore is questionable with undisclosed"
-Texas Tech,JT Toppin,F,Out for season,Feb 20,,-0.1,covers_raw:injuries_raw.txt,is out for season Toppin is out for season with knee
-Texas Tech,LaTrell Hoover,F,Out for season,Jan 21,,0.0,covers_raw:injuries_raw.txt,is out for season Hoover is out for season with redshirt
-UAB,Joao Das Chagas,C,Out for season,Feb 8,,-0.1,covers_raw:injuries_raw.txt,is out for season Das Chagas is out for season with undisclosed
-UAB,Ahmad Robinson,G,Questionable,Mar 8,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Robinson is questionable with hand"
-UCF,Tanner Jones,G,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Arizona Jones is questionable with undisclosed"
-UCLA,Evan Manjikian,F,Out,Jan 31,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Manjikian is out with undisclosed
-UNC Wilmington,Gavin Walsh,F,Questionable,Mar 3,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Walsh is questionable with knee"
-UNLV,Ladji Dembele,F,Out,Mar 12,,-0.05,covers_raw:injuries_raw.txt,is OUT Thursday vs Utah State Dembele is out with undisclosed
-UNLV,Myles Che,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Che is out with foot
-USC,Rodney Rice,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Rice is out for season with shoulder
-USC,Amarion Dickerson,G/F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Dickerson is out with hip
-UTEP,David Tubek,F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Tubek is out with calf
-UTEP,Tyreese Watson,G,Out for season,Jan 24,,-0.1,covers_raw:injuries_raw.txt,is out for season Watson is out for season with undisclosed
-UTSA,Pierce Spencer,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Spencer is out for season with undisclosed
-UTSA,Mo Njie,C,Questionable,Mar 8,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Njie is questionable with undisclosed"
-UTSA,Stanley Borden,C,Questionable,Mar 8,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Borden is questionable with undisclosed"
-UTSA,Austin Nunez,G,Questionable,Mar 8,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Nunez is questionable with undisclosed"
-UTSA,Macaleab Rich,G/F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Rich is out for season with groin
-UTSA,Vasean Allette,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Allette is out for season with undisclosed
-Utah St.,Elijah Perryman,G,Questionable,Mar 12,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs UNLV Perryman is questionable with undisclosed"
-VCU,Obinnaya Okafor,F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Okafor is out with undisclosed
-VCU,Christian Fermin,F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Fermin is out with personal
-Vanderbilt,Frankie Collins,G,Out for season,Mar 4,,-0.1,covers_raw:injuries_raw.txt,is out for season Collins is out for season with left team
-Villanova,Zion Stanford,G,Out,Mar 7,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Stanford is out with left team
-Villanova,Wade Chiddick,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Chiddick is out with knee
-Villanova,Matthew Hodge,F,Out for season,Mar 2,,-0.1,covers_raw:injuries_raw.txt,is out for season Hodge is out for season with knee
-Virginia Tech,Amani Hansberry,F,Out,Mar 10,,-0.05,covers_raw:injuries_raw.txt,is downgraded to OUT Tuesday vs Wake Forest Hansberry is out with leg
-Virginia Tech,Sin'Cere Jones,F,Out for season,Feb 23,,-0.1,covers_raw:injuries_raw.txt,is out for season Jones is out for season with foot
-Virginia Tech,Shamarius Peterkin,G,Out,Mar 10,,-0.05,covers_raw:injuries_raw.txt,is downgraded to OUT Tuesday vs Wake Forest Peterkin is out with undisclosed
-Washington,Jacob Ognacevic,F,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Wisconsin Ognacevic is questionable with undisclosed"
-Washington,Franck Kepnang,C,Out,Mar 12,,-0.05,covers_raw:injuries_raw.txt,is downgraded to OUT Thursday vs Wisconsin Kepnang is out with leg
-Washington,Desmond Claude,G,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Wisconsin Claude is questionable with undisclosed"
-Washington,Mady Traore,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Traore is out for season with foot
-Washington,Bryson Tucker,F,Out,Mar 12,,-0.05,covers_raw:injuries_raw.txt,is downgraded to OUT Thursday vs Wisconsin Tucker is out with personal
-Washington,JJ Mandaquit,G,Out for season,Feb 12,,-0.1,covers_raw:injuries_raw.txt,is out for season Mandaquit is out for season with undisclosed
-Washington,Jasir Rencher,F,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Wisconsin Rencher is questionable with undisclosed"
-Washington St.,Tomas Thrastarson,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Thrastarson is out with foot
-Washington St.,Kase Wynott,G,Out,Feb 10,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Wynott is out with undisclosed
-Weber St.,Jace Whiting,G,Out,Jan 22,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Whiting is out with foot
-West Georgia,Chas Lewless,G,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Lewless is out with arm
-Western Kentucky,Bryant Selebangue,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Selebangue is out for season with achilles
-Western Kentucky,Louie Semona,F,Out,Jan 21,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Semona is out with undisclosed
-Western Kentucky,Lawson Rice,G,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Rice is out for season with knee
-Wichita St.,Jaret Valencia,F,Out for season,Jan 21,,-0.1,covers_raw:injuries_raw.txt,is out for season Valencia is out for season with achilles
-Wichita St.,Pierre Couisnard,G,Out for season,Jan 21,,0.0,covers_raw:injuries_raw.txt,is out for season Couisnard is out for season with redshirt
-Wichita St.,Tyrus Rathan-Mayes,G,Out for season,Jan 21,,0.0,covers_raw:injuries_raw.txt,is out for season Rathan-Mayes is out for season with redshirt
-Wisconsin,Jack Janicki,G,Questionable,Mar 9,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday Janicki is questionable with undisclosed"
-Wisconsin,Nolan Winter,F,Out,Mar 12,,-0.05,covers_raw:injuries_raw.txt,is downgraded to OUT Thursday vs Washington U Winter is out with leg
-Wyoming,Matija Belic,F,Out,Jan 29,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Belic is out with lower body
-Wyoming,Jared Harris,G,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Harris is questionable with lower body"
-Xavier,Michael Wolf,G,Questionable,Mar 11,,-0.01,covers_raw:injuries_raw.txt,"is ""?"" Thursday vs Connecticut Wolf is questionable with undisclosed"
-Xavier,Gabriel Pozzato,F,Out,Feb 28,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Pozzato is out with undisclosed
-Xavier,Luke Naser,G,Out,Feb 28,,-0.07,covers_raw:injuries_raw.txt,is out indefinitely Naser is out with undisclosed
+Air Force,R. Dering,F,Questionable,"Thu, Mar 5",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Air Force,S. Imade,F,Questionable,"Thu, Feb 19",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Air Force,K. Frisch,F,Questionable,"Thu, Jan 22",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Alabama,K. Bristow,F,Questionable,"Mon, Jan 12",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Alabama,D. Hannah,G,Questionable,"Sun, Dec 28",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Alabama,C. Onyejiaka,C,Out,"Sun, Dec 28",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Appalachian St.,K. Vasser,G,Out,"Thu, Nov 6",,-0.08,covers_raw:injuries_raw.txt,Foot
+Arizona,B. James,G,Out,"Mon, Feb 2",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Arizona St.,Q. McCoy,G,Questionable,"Mon, Jan 19",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Arizona St.,K. Polk,F,Questionable,"Mon, Jan 5",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Arizona St.,J. Icitovic,F,Out,"Mon, Jan 5",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Arizona St.,D. Salane,C,Out,"Mon, Jan 5",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Arizona St.,M. Adams Jr.,F,Questionable,"Mon, Jan 5",,-0.015,covers_raw:injuries_raw.txt,Leg
+Arizona St.,A. Holiman,G,Out,"Mon, Nov 3",,-0.08,covers_raw:injuries_raw.txt,Elbow
+Arizona St.,V. Wallace,G,Out,"Sat, Oct 25",,-0.08,covers_raw:injuries_raw.txt,Ankle
+Arkansas,K. Knox,F,Questionable,"Mon, Feb 16",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Arkansas St.,C. Dioramma,F,Questionable,"Wed, Feb 18",,-0.015,covers_raw:injuries_raw.txt,Ankle
+Auburn,E. Opurum,C,Out,"Fri, Dec 12",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Baylor,M. Perez,F,Out,"Tue, Dec 23",,-0.08,covers_raw:injuries_raw.txt,Knee
+Baylor,M. Soyoye,C,Out,"Mon, Dec 1",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Baylor,J. White,G,Questionable,"Sun, Nov 23",,-0.015,covers_raw:injuries_raw.txt,Foot
+Baylor,J. Bodo Bodo,C,Questionable,"Sun, Oct 12",,-0.015,covers_raw:injuries_raw.txt,Arm
+Baylor,A. Iguodala II,G,Out,"Wed, Sep 17",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Belmont,N. McClain,G,Out,"Tue, Jan 6",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Bethune-Cookman,R. Ward Jr.,F,Out,"Wed, Dec 3",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Boise St.,J. Bowie,G,Out,"Wed, Dec 17",,-0.08,covers_raw:injuries_raw.txt,Personal
+Boston College,D. Hand Jr.,G,Questionable,"Fri, Mar 6",,-0.015,covers_raw:injuries_raw.txt,Knee
+Boston College,J. Asemota,F,Questionable,"Fri, Mar 6",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Boston College,N. Petronio,G,Questionable,"Fri, Jan 2",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Boston College,K. Alexander,G,Out,"Thu, Nov 6",,-0.08,covers_raw:injuries_raw.txt,Leg
+Bradley,M. Zobrist,G,Questionable,"Thu, Mar 5",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Bradley,R. Saunders,G,Out,"Sat, Feb 14",,-0.08,covers_raw:injuries_raw.txt,Knee
+Bradley,X. Staton,C,Questionable,"Mon, Jan 12",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Bradley,K. Perry,G,Out,"Thu, Jan 1",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Bradley,D. Baker,G,Out,"Sun, Nov 30",,-0.08,covers_raw:injuries_raw.txt,Knee
+Bradley,N. Pickens,G,Out,"Fri, Nov 7",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Bradley,B. Kozlowski,F,Out,"Sun, Nov 2",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Buffalo,D. Freitag,G,Questionable,"Tue, Mar 3",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Butler,A. Robinson,G,Out,"Tue, Feb 3",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Butler,J. Jackson,G,Out,"Thu, Nov 27",,-0.08,covers_raw:injuries_raw.txt,Ankle
+California,S. Marbury II,G,Out,"Fri, Feb 27",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+California,J. Ruff,G,Out,"Sun, Dec 28",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+California,R. Petraitis,F,Out,"Mon, Dec 8",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Campbell,D. Marcellinus,F,Out,"Tue, Dec 30",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Canisius,A. Benard,G,Out,"Wed, Jan 21",,-0.08,covers_raw:injuries_raw.txt,Shoulder
+Central Arkansas,J. Foumena,C,Questionable,"Fri, Feb 27",,-0.015,covers_raw:injuries_raw.txt,Ankle
+Central Arkansas,T. Jones,G,Out,"Thu, Jan 1",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Charleston,W. Mortimore,F,Questionable,"Mon, Dec 15",,-0.015,covers_raw:injuries_raw.txt,Concussion
+Charleston,M. Dean,G,Out,"Sun, Nov 23",,-0.08,covers_raw:injuries_raw.txt,Knee
+Charlotte,E. Butler,F,Questionable,"Sat, Mar 7",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Charlotte,M. Freeman,G,Questionable,"Tue, Mar 3",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Charlotte,F. Oguche,G,Questionable,"Fri, Jan 2",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Charlotte,D. Gomez,F,Questionable,"Fri, Jan 2",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Chattanooga,L. Vitters,G,Out,"Tue, Dec 16",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Chattanooga,S. Cusano,G,Out,"Fri, Dec 5",,-0.08,covers_raw:injuries_raw.txt,Knee
+Cincinnati,J. Haynes,F,Questionable,"Mon, Oct 13",,-0.015,covers_raw:injuries_raw.txt,Lower Body
+Clemson,Z. Foster,G,Out,"Mon, Dec 15",,-0.08,covers_raw:injuries_raw.txt,Knee
+Buffalo,S. Rancik,F,Out,"Wed, Mar 4",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Buffalo,J. Mani,G,Out,"Tue, Nov 4",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Buffalo,L. Van Elswyk,C,Out,"Tue, Nov 4",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Colorado St.,N. Djapa,C,Questionable,"Fri, Mar 6",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Colorado St.,J. Mekonnen,F,Questionable,"Fri, Mar 6",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Colorado St.,J. Pascarelli,G,Questionable,"Fri, Feb 13",,-0.015,covers_raw:injuries_raw.txt,Foot
+Connecticut,J. Stewart,F,Out,"Tue, Feb 24",,-0.08,covers_raw:injuries_raw.txt,Knee
+Creighton,O. Freeman,F,Questionable,"Tue, Feb 24",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Creighton,L. McChesney,F,Questionable,"Fri, Dec 19",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Creighton,J. Townley-Thomas,F,Questionable,"Fri, Dec 19",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Creighton,A. Dimitrijevic,C,Questionable,"Fri, Dec 19",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Creighton,J. McAndrew,F,Out,"Thu, Nov 20",,-0.08,covers_raw:injuries_raw.txt,Foot
+Davidson,J. Scovens,G,Questionable,"Fri, Mar 6",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Davidson,R. Blums,G,Questionable,"Tue, Mar 3",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Davidson,J. Hurlburt,F,Questionable,"Fri, Jan 2",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Dayton,E. Dickey,G,Questionable,"Sat, Feb 14",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Dayton,J. McKie,G,Out,"Sat, Oct 18",,-0.08,covers_raw:injuries_raw.txt,Shoulder
+Delaware,T. Houser,F,Out,"Tue, Feb 24",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Delaware,B. Kebe,F,Questionable,"Fri, Feb 6",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Delaware,M. Ellison,G,Questionable,"Fri, Dec 5",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Delaware,J. Brown,G,Questionable,"Sat, Nov 22",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Delaware,C. Reilly,G,Questionable,"Thu, Nov 6",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Delaware,L. Piper,G,Questionable,"Sun, Nov 2",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+DePaul,I. Milijasevic,G,Questionable,"Tue, Mar 3",,-0.015,covers_raw:injuries_raw.txt,Concussion
+DePaul,I. Medina,F,Questionable,"Tue, Feb 10",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+DePaul,J. Lorenz,F,Out,"Fri, Jan 2",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+DePaul,A. Delalic,G,Out,"Sun, Jun 29",,-0.08,covers_raw:injuries_raw.txt,Knee
+Drake,B. Appelhans,G,Questionable,"Sat, Feb 28",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Drake,W. Exacte,F,Out,"Sat, Jan 3",,-0.08,covers_raw:injuries_raw.txt,Foot
+Duke,C. Foster,G,Out,"Mon, Mar 9",,-0.08,covers_raw:injuries_raw.txt,Foot
+Duke,P. Ngongba II,C,Out,"Thu, Mar 5",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Duke,I. Ufochukwu,C,Out,"Mon, Dec 29",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Duke,S. Wilkins,G,Out,"Sun, Nov 9",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Duke,S. van Bussel,C,Questionable,"Fri, Mar 6",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+East Carolina,E. DeLaurier,F,Questionable,"Sat, Mar 7",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+East Carolina,T. Bailey,G,Questionable,"Tue, Jan 27",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+East Carolina,G. Smith,F,Out,"Tue, Dec 30",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+East Carolina,D. Quinn,G,Out,"Tue, Dec 30",,-0.08,covers_raw:injuries_raw.txt,Knee
+East Carolina,J. Woodard,G,Out,"Wed, Dec 17",,-0.08,covers_raw:injuries_raw.txt,Ankle
+East Carolina,T. LaBeaux,G,Out,"Wed, Nov 12",,-0.08,covers_raw:injuries_raw.txt,Lower Body
+Eastern Michigan,A. Cook,G,Out,"Sun, Nov 2",,-0.08,covers_raw:injuries_raw.txt,Ankle
+FIU,A. Nimmers,G,Out,"Wed, Feb 11",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+FIU,M. Kelvin II,F,Out,"Thu, Jan 1",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+FIU,G. Gicevicius,F,Out,"Thu, Jan 1",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+FIU,J. Santos,F,Out,"Thu, Jan 1",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Florida Atlantic,D. Vanterpool,G,Questionable,"Tue, Feb 17",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Florida Atlantic,Z. Sampaio,G,Out,"Tue, Dec 30",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Florida St.,K. MaGee,G,Probable,"Mon, Mar 9",,0.0,covers_raw:injuries_raw.txt,Undisclosed
+Florida St.,A. Swinton,F,Out,"Tue, Mar 3",,-0.08,covers_raw:injuries_raw.txt,Knee
+Florida St.,X. Osceola,G,Out,"Sun, Dec 28",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Fordham,J. Whitbourn,C,Questionable,"Fri, Feb 6",,-0.015,covers_raw:injuries_raw.txt,Back
+Fordham,R. Pettis,G,Questionable,"Sun, Dec 14",,-0.015,covers_raw:injuries_raw.txt,Concussion
+Fresno St.,J. Mani,F,Questionable,"Thu, Mar 5",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Fresno St.,Z. Collins,G,Questionable,"Mon, Feb 23",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Fresno St.,D. Stickman,G,Out,"Mon, Feb 16",,-0.08,covers_raw:injuries_raw.txt,Leg
+Fresno St.,D. Douglas Jr.,G,Out,"Thu, Feb 12",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Fresno St.,T. Jenkins,G,Questionable,"Thu, Jan 22",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Fresno St.,N. Zulemie,G,Out,"Thu, Dec 18",,-0.08,covers_raw:injuries_raw.txt,Knee
+George Mason,F. Hill,G,Questionable,"Sat, Feb 28",,-0.015,covers_raw:injuries_raw.txt,Ankle
+George Mason,B. O'Connor,G,Out,"Sat, Nov 8",,-0.08,covers_raw:injuries_raw.txt,Foot
+Georgetown,K. Lewis,G,Out,"Mon, Feb 23",,-0.08,covers_raw:injuries_raw.txt,Ankle
+Georgetown,G. Landeira,G,Questionable,"Tue, Feb 17",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Georgetown,D. Harris-Smith,G,Questionable,"Wed, Dec 3",,-0.015,covers_raw:injuries_raw.txt,Personal
+Georgia St.,C. Peters,F,Questionable,"Thu, Nov 13",,-0.015,covers_raw:injuries_raw.txt,Personal
+Georgia Tech,M. Sylla,C,Questionable,"Sun, Jan 25",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Georgia Tech,D. Thompson,G,Questionable,"Mon, Dec 29",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Gonzaga,B. Huff,F,Out,"Wed, Jan 14",,-0.08,covers_raw:injuries_raw.txt,Knee
+Grand Canyon,W. Breidenbach,F,Questionable,"Sun, Mar 1",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Green Bay,T. Bevins,G,Questionable,"Mon, Jan 5",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Green Bay,J. Rougier-Roane,G,Questionable,"Fri, Jan 2",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Hawaii,A. Hunkin-Claytor,G,Out,"Fri, Feb 6",,-0.08,covers_raw:injuries_raw.txt,Toe
+Hawaii,T. Cuff,G,Out,"Mon, Nov 17",,-0.08,covers_raw:injuries_raw.txt,Knee
+Houston,K. Jefferson,G,Out,"Fri, Jan 2",,-0.08,covers_raw:injuries_raw.txt,Knee
+Houston,B. Jackson,G,Out,"Mon, Dec 8",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Illinois,J. Jakstys,C,Out,"Tue, Feb 17",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Illinois,T. Rodgers,G,Questionable,"Sun, Oct 12",,-0.015,covers_raw:injuries_raw.txt,Knee
+Indiana,J. Drake,G,Questionable,"Tue, Nov 4",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Indiana,J. Rayford,G,Out,"Tue, Nov 4",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Indiana,J. Harris,F,Questionable,"Tue, Nov 4",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Indiana St.,J. Walker,G,Questionable,"Wed, Feb 11",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Indiana St.,Z. Greene,G,Questionable,"Sat, Jan 3",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Iona,K. Williams,G,Out,"Thu, Jan 8",,-0.08,covers_raw:injuries_raw.txt,Knee
+Iowa,P. McCollum,G,Out,"Sat, Jan 10",,-0.08,covers_raw:injuries_raw.txt,Foot
+Iowa St.,X. Mitchell,F,Questionable,"Mon, Jan 5",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Iowa St.,M. Williams,G,Out,"Thu, Jun 19",,-0.08,covers_raw:injuries_raw.txt,Hip
+Jackson St.,K. Hunt,G,Out,"Sun, Jan 25",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Jacksonville St.,B. Vungo,G,Questionable,"Thu, Jan 22",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Jacksonville St.,J. Vick,G,Questionable,"Thu, Jan 22",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Kansas St.,D. Buca,C,Questionable,"Sun, Mar 8",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Kansas St.,A. Bashir Jr.,G,Questionable,"Sun, Jan 18",,-0.015,covers_raw:injuries_raw.txt,Foot
+Kansas St.,M. Ikegwuruka,G,Questionable,"Thu, Jan 8",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Kennesaw St.,D. Washington III,G,Questionable,"Wed, Mar 4",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Kennesaw St.,B. Tousignaut,G,Out,"Fri, Jan 16",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Kennesaw St.,C. Clemmons,G,Out,"Tue, Dec 16",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Kennesaw St.,D. Cosby Jr.,G,Out,"Sat, Jul 12",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Kentucky,B. Garrison,F,Probable,"Mon, Mar 9",,0.0,covers_raw:injuries_raw.txt,Undisclosed
+Kentucky,B. Hawthorne,F,Out,"Sun, Jan 25",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Kentucky,K. Williams,G,Probable,"Tue, Jan 20",,0.0,covers_raw:injuries_raw.txt,Foot
+Kentucky,J. Lowe,G,Out,"Mon, Jan 12",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Kentucky,J. Quaintance,F,Out,"Thu, Jan 8",,-0.08,covers_raw:injuries_raw.txt,Knee
+La Salle,J. Harris,F,Questionable,"Wed, Mar 4",,-0.015,covers_raw:injuries_raw.txt,Foot
+La Salle,J. Brewer Jr.,F,Out,"Sat, Feb 21",,-0.08,covers_raw:injuries_raw.txt,Lower Leg
+La Salle,J. Marshall,G,Questionable,"Fri, Feb 20",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+La Salle,B. Beatty,F,Out,"Tue, Jan 13",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+La Salle,J. Archer,F,Out,"Tue, Dec 30",,-0.08,covers_raw:injuries_raw.txt,Shoulder
+La Salle,N. Collier,F,Out,"Tue, Dec 30",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+La Salle,J. Grullon,G,Questionable,"Tue, Dec 30",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Liberty,I. Ihnen,F,Out,"Sun, Oct 12",,-0.08,covers_raw:injuries_raw.txt,Knee
+Louisiana,R. Miller III,F,Out,"Mon, Mar 9",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Louisiana,D. Thomas Jr.,G,Out,"Thu, Jan 29",,-0.08,covers_raw:injuries_raw.txt,Foot
+Louisiana,J. Reed,F,Out,"Sat, Nov 29",,-0.16,covers_raw:injuries_raw.txt,Achilles
+Louisiana Tech,A. Williams,F,Out,"Thu, Jan 22",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Louisville,M. Brown Jr.,G,Out,"Thu, Feb 26",,-0.08,covers_raw:injuries_raw.txt,Back
+Loyola Marymount,C. Reese,G,Questionable,"Fri, Mar 6",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Loyola Marymount,J. Moore,G,Questionable,"Fri, Feb 20",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Loyola Marymount,K. Houinsou,G,Questionable,"Thu, Jan 29",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Loyola Marymount,D. Harris,G,Questionable,"Mon, Jan 12",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Loyola Marymount,C. Love III,G,Questionable,"Tue, Dec 30",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Marist,J. Schofield,C,Questionable,"Sat, Feb 28",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Marist,E. Lewis,G,Out,"Wed, Feb 11",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Marquette,S. Jones,G,Out,"Sat, Jan 3",,-0.08,covers_raw:injuries_raw.txt,Foot
+Marquette,N. Walker,G,Out,"Mon, Dec 29",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Marquette,I. Miletic,F,Out,"Wed, Oct 22",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Marquette,S. Pearson,F,Out,"Sun, Jul 27",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Maryland,L. Sotell,G,Questionable,"Sat, Mar 7",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Maryland,M. Rice,G,Questionable,"Wed, Feb 4",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Maryland,P. Payne,F,Questionable,"Sat, Dec 13",,-0.015,covers_raw:injuries_raw.txt,Leg
+Maryland,R. Passmore,G,Out,"Mon, Sep 29",,-0.16,covers_raw:injuries_raw.txt,Achilles
+Memphis,J. Thedford,G,Questionable,"Sat, Mar 7",,-0.015,covers_raw:injuries_raw.txt,Calf
+Memphis,A. Hardaway,F,Questionable,"Wed, Feb 25",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Miami OH,E. Ipsaro,G,Out,"Sun, Dec 21",,-0.08,covers_raw:injuries_raw.txt,Knee
+Miami OH,T. Malovec,F,Questionable,"Tue, Mar 3",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Miami OH,T. Maddox,F,Questionable,"Sun, Dec 28",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Miami OH,M. Allen,G,Out,"Mon, Dec 1",,-0.08,covers_raw:injuries_raw.txt,Illness
+Michigan,L. Cason,G,Out,"Fri, Feb 27",,-0.08,covers_raw:injuries_raw.txt,Knee
+Michigan,W. Grady,G,Questionable,"Thu, Jan 22",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Michigan,R. Liburd,G,Out,"Tue, Jul 8",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Michigan St.,D. Ugochukwu,G,Out,"Wed, Feb 4",,-0.08,covers_raw:injuries_raw.txt,Foot
+Michigan St.,K. Glenn,F,Out,"Tue, Jun 17",,-0.08,covers_raw:injuries_raw.txt,Knee
+Michigan St.,B. Oloumou,C,Questionable,"Wed, Feb 11",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Michigan St.,C. Ambrose,G,Questionable,"Thu, Jan 22",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Michigan St.,J. Howard,G,Questionable,"Thu, Jan 22",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Michigan St.,S. Wykle,G,Questionable,"Thu, Jan 22",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Minnesota,J. Crocker-Johnson,F,Out,"Fri, Feb 13",,-0.08,covers_raw:injuries_raw.txt,Foot
+Minnesota,N. Turner,F,Questionable,"Tue, Jan 27",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Minnesota,M. Lorenson,G,Out,"Tue, Dec 9",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Minnesota,C. Willis Jr.,G,Out,"Thu, Nov 27",,-0.08,covers_raw:injuries_raw.txt,Foot
+Minnesota,R. Vaihola,F,Out,"Fri, Nov 21",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Minnesota,B. Omot,F,Out,"Sun, Nov 2",,-0.08,covers_raw:injuries_raw.txt,Leg
+Minnesota,C. Stephens,G,Questionable,"Tue, Oct 14",,-0.015,covers_raw:injuries_raw.txt,Illness
+Mississippi,K. Johnson,G,Out,"Fri, Mar 6",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Missouri,A. Boateng,G,Out,"Fri, Jan 30",,-0.08,covers_raw:injuries_raw.txt,Leg
+Missouri,J. Porter,F,Questionable,"Sun, Dec 21",,-0.015,covers_raw:injuries_raw.txt,Lower Leg
+Missouri St.,A. Burnett,G,Questionable,"Mon, Mar 9",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Missouri St.,A. Kuljuhovic,G,Questionable,"Wed, Feb 11",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Mount St. Mary's,J. Hartman,G,Out,"Fri, Nov 28",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Mount St. Mary's,J. May,G,Out,"Fri, Nov 28",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Mount St. Mary's,S. Jones Jr.,G,Questionable,"Mon, Mar 9",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Mount St. Mary's,K. Grace,G,Out,"Mon, Mar 9",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+N.C. St.,J. Deng,F,Out,"Sun, Jan 25",,0.0,covers_raw:injuries_raw.txt,Redshirt
+N.C. St.,C. Langdon,F,Out,"Sun, Jan 25",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Nebraska,U. Jarusevicius,F,Questionable,"Fri, Jan 9",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Nebraska,C. Essegian,G,Out,"Fri, Nov 28",,-0.08,covers_raw:injuries_raw.txt,Ankle
+Nebraska,H. Burt,F,Questionable,"Sun, Nov 2",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+New Mexico,M. Vicentic,F,Questionable,"Thu, Feb 5",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+New Mexico,K. Patton Jr.,G,Questionable,"Thu, Dec 18",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+New Mexico,K. Patton,G,Out,"Thu, Dec 18",,0.0,covers_raw:injuries_raw.txt,Redshirt
+New Mexico,S. Jones,G,Out,"Thu, Dec 18",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+New Mexico,C. Howell,G,Questionable,"Sun, Dec 14",,-0.015,covers_raw:injuries_raw.txt,Wrist
+North Carolina,C. Wilson,F,Out,"Tue, Feb 10",,-0.08,covers_raw:injuries_raw.txt,Thumb
+North Carolina,J. Brown,C,Out,"Mon, Jan 19",,-0.08,covers_raw:injuries_raw.txt,Foot
+North Carolina,I. Matlekovic,C,Questionable,"Thu, Jan 15",,-0.015,covers_raw:injuries_raw.txt,Hand
+North Texas,W. McClendon,G,Out,"Tue, Dec 30",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Northern Iowa,C. Courbat,F,Questionable,"Tue, Feb 24",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Northern Iowa,M. Dubravcic,F,Questionable,"Tue, Jan 6",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Northern Iowa,C. Courbat,G,Questionable,"Tue, Jan 6",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Northwestern,A. Page,F,Questionable,"Fri, Mar 6",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Notre Dame,K. Njie,F,Out,"Thu, Jan 15",,-0.08,covers_raw:injuries_raw.txt,Knee
+Notre Dame,M. Burton,G,Out,"Thu, Dec 4",,-0.08,covers_raw:injuries_raw.txt,Ankle
+Notre Dame,T. Ahneman,C,Out,"Wed, Oct 15",,-0.08,covers_raw:injuries_raw.txt,Knee
+Ohio,E. Elliott,G,Out,"Thu, Feb 12",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Ohio St.,P. Johnson,G,Questionable,"Tue, Mar 3",,-0.015,covers_raw:injuries_raw.txt,Lower Leg
+Ohio St.,B. Noel,F,Questionable,"Tue, Jan 6",,-0.015,covers_raw:injuries_raw.txt,Foot
+Ohio St.,M. Herro,G,Out,"Thu, Nov 6",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Ohio St.,J. Ojianwuna,F,Questionable,"Mon, Oct 27",,-0.015,covers_raw:injuries_raw.txt,Knee
+Oklahoma,D. Forsythe,G,Probable,"Mon, Mar 9",,0.0,covers_raw:injuries_raw.txt,Undisclosed
+Oklahoma St.,A. Vukovic,F,Questionable,"Mon, Mar 9",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Oklahoma St.,P. Fallah,F,Out,"Mon, Feb 23",,-0.08,covers_raw:injuries_raw.txt,Knee
+Oklahoma St.,R. Jennings II,F,Out,"Tue, Nov 18",,-0.08,covers_raw:injuries_raw.txt,Hip
+Oregon,J. Frakes,G,Questionable,"Mon, Mar 9",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Oregon,D. Pryor,F,Questionable,"Wed, Jan 28",,-0.015,covers_raw:injuries_raw.txt,Groin
+Oregon,E. Demir,C,Questionable,"Mon, Jan 19",,-0.015,covers_raw:injuries_raw.txt,Shoulder
+Oregon,J. Shelstad,G,Out,"Thu, Jan 1",,-0.08,covers_raw:injuries_raw.txt,Hand
+Oregon St.,M. Samar,G,Out,"Sat, Feb 21",,-0.08,covers_raw:injuries_raw.txt,Leg
+Penn St.,T. Mirtic,F,Out,"Mon, Jan 5",,-0.08,covers_raw:injuries_raw.txt,Leg
+Penn St.,R. Grodin,G,Out,"Fri, Nov 7",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Penn,D. Williams,G,Questionable,"Sun, Jan 4",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Penn,R. Altman,G,Questionable,"Sun, Jan 4",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Pittsburgh,B. Cummings,G,Out,"Sun, Feb 1",,-0.08,covers_raw:injuries_raw.txt,Ankle
+Pittsburgh,P. Amadou Kante,F,Out,"Mon, Dec 1",,-0.08,covers_raw:injuries_raw.txt,Knee
+Pittsburgh,D. Jackson,C,Out,"Wed, Nov 12",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Portland,C. Briggs,G,Questionable,"Wed, Mar 4",,-0.015,covers_raw:injuries_raw.txt,Knee
+Portland,P. Lee,G,Out,"Wed, Mar 4",,-0.08,covers_raw:injuries_raw.txt,Shoulder
+Portland,N. Long,G,Out,"Fri, Feb 27",,-0.08,covers_raw:injuries_raw.txt,Hand
+Portland,R. Parker,G,Questionable,"Mon, Jan 5",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Portland,T. George,F,Out,"Mon, Jan 5",,-0.08,covers_raw:injuries_raw.txt,Shoulder
+Princeton,J. Stanton,G,Out,"Thu, Feb 12",,-0.08,covers_raw:injuries_raw.txt,Foot
+Providence,C. Floyd,G,Questionable,"Fri, Feb 13",,-0.015,covers_raw:injuries_raw.txt,Hamstring
+Providence,D. Davis,G,Out,"Mon, Nov 17",,-0.08,covers_raw:injuries_raw.txt,Knee
+Rhode Island,J. Aponte,G,Questionable,"Fri, Mar 6",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Rhode Island,J. Perry,F,Out,"Fri, Jan 9",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Rhode Island,M. Icke,C,Out,"Tue, Dec 30",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Rhode Island,M. Sow,F,Out,"Sun, Nov 23",,-0.08,covers_raw:injuries_raw.txt,Leg
+Rice,A. Powell,G,Out,"Fri, Jan 23",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Rice,D. Hobbs,G,Questionable,"Sat, Jan 10",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Richmond,J. Beagle,F,Out,"Tue, Feb 17",,-0.08,covers_raw:injuries_raw.txt,Finger
+Richmond,B. McGlothin,F,Questionable,"Fri, Jan 23",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Rutgers,B. Dortch,F,Questionable,"Wed, Mar 4",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Rutgers,G. Ware,C,Questionable,"Thu, Jan 22",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Rutgers,B. Fall,C,Out,"Fri, Jan 16",,-0.08,covers_raw:injuries_raw.txt,Hand
+Rutgers,D. Jones,G,Out,"Tue, Nov 4",,0.0,covers_raw:injuries_raw.txt,Redshirt
+St. Joseph's,W. Lange,G,Questionable,"Fri, Mar 6",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+St. Joseph's,O. Verna,G,Questionable,"Tue, Feb 3",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+St. Joseph's,S. Solano,C,Questionable,"Tue, Jan 6",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+St. Louis,K. Anya,F,Out,"Wed, Oct 22",,0.0,covers_raw:injuries_raw.txt,Redshirt
+St. Mary's CA,K. Gad,F,Out,"Sun, Dec 14",,-0.08,covers_raw:injuries_raw.txt,Shoulder
+Sam Houston St.,P. King,G,Questionable,"Fri, Mar 6",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Sam Houston St.,J. Begg,G,Out,"Fri, Feb 6",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Sam Houston St.,J. Ford,F,Out,"Tue, Jan 20",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Sam Houston St.,I. Manning,F,Out,"Tue, Jan 13",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Sam Houston St.,C. Ndiaye,F,Out,"Sat, Dec 20",,-0.08,covers_raw:injuries_raw.txt,Arm
+Sam Houston St.,N. Nguyen,G,Out,"Sat, Dec 20",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Sam Houston St.,N. Benny,G,Out,"Sat, Dec 20",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+San Diego,D. Goodwin,F,Questionable,"Thu, Jan 1",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+San Francisco,N. Newbury,F,Questionable,"Fri, Oct 31",,-0.015,covers_raw:injuries_raw.txt,Leg
+San Jose St.,Y. Moundi,F,Questionable,"Fri, Feb 20",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+San Jose St.,P. Goodarzi,G,Questionable,"Thu, Feb 19",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+San Jose St.,B. Roseborough,G,Questionable,"Thu, Jan 15",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+San Jose St.,J. Goodall,F,Questionable,"Mon, Jan 12",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+San Jose St.,J. Hannah,G,Questionable,"Sun, Dec 28",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+San Jose St.,C. Wise,F,Questionable,"Thu, Dec 18",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Seton Hall,G. Erheriene,C,Questionable,"Tue, Feb 17",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Seton Hall,P. Suemnick,F,Questionable,"Mon, Jan 19",,-0.015,covers_raw:injuries_raw.txt,Shoulder
+Seton Hall,J. Felton,G,Out,"Sun, Nov 9",,-0.08,covers_raw:injuries_raw.txt,Knee
+Siena,A. Chandler,F,Questionable,"Thu, Feb 26",,-0.015,covers_raw:injuries_raw.txt,Personal
+Siena,T. Jones,F,Questionable,"Sat, Jan 3",,-0.015,covers_raw:injuries_raw.txt,Back
+Siena,T. Goodrick,F,Out,"Thu, Jan 1",,-0.08,covers_raw:injuries_raw.txt,Knee
+Siena,O. Schlager,G,Questionable,"Thu, Dec 4",,-0.015,covers_raw:injuries_raw.txt,Upper Body
+Siena,R. Ducharme,G,Questionable,"Sun, Nov 2",,-0.015,covers_raw:injuries_raw.txt,Shoulder
+SMU,B. Edwards,G,Questionable,"Wed, Feb 25",,-0.015,covers_raw:injuries_raw.txt,Ankle
+South Alabama,P. Law,F,Out,"Mon, Dec 8",,-0.08,covers_raw:injuries_raw.txt,Knee
+South Carolina,H. Assemian,F,Questionable,"Mon, Mar 9",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+South Florida,D. Green,F,Out,"Sat, Jan 3",,-0.16,covers_raw:injuries_raw.txt,Achilles
+South Florida,X. Brown,G,Out,"Sat, Jan 3",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+St. Bonaventure,A. Marshall,G,Questionable,"Fri, Jan 9",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+St. Bonaventure,X. Wedlow,F,Questionable,"Tue, Dec 30",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+St. Bonaventure,I. Ermakov,G,Questionable,"Tue, Dec 30",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+St John's,K. Odih,G,Questionable,"Fri, Feb 20",,-0.015,covers_raw:injuries_raw.txt,Leg
+St John's,C. Pohto,G,Out,"Mon, Dec 8",,-0.08,covers_raw:injuries_raw.txt,Hip
+St John's,I. Suljanovic,F,Out,"Thu, Oct 16",,-0.08,covers_raw:injuries_raw.txt,Knee
+Stanford,A. Batson Jr.,G,Questionable,"Fri, Feb 20",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Stanford,C. Okpara,F,Out,"Mon, Jan 12",,-0.08,covers_raw:injuries_raw.txt,Lower Body
+Stanford,K. Skrinda,F,Questionable,"Mon, Dec 29",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Stanford,T. Toure,F,Questionable,"Fri, Dec 26",,-0.015,covers_raw:injuries_raw.txt,Lower Body
+Syracuse,K. Anthony,G,Questionable,"Thu, Mar 5",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Syracuse,A. Womack,G,Out,"Thu, Dec 4",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Temple,A. Smith,G,Out,"Fri, Dec 5",,-0.08,covers_raw:injuries_raw.txt,Shoulder
+Tennessee,N. Ament,F,Questionable,"Thu, Mar 5",,-0.015,covers_raw:injuries_raw.txt,Leg
+Tennessee,C. Phillips,F,Out,"Sun, Dec 7",,-0.08,covers_raw:injuries_raw.txt,Shoulder
+Texas,L. Traore,F,Out,"Thu, Feb 12",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Texas A&M,N. Mundey,G,Out,"Thu, Jan 15",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Texas A&M,M. Mgbako,F,Out,"Sun, Dec 28",,-0.08,covers_raw:injuries_raw.txt,Foot
+Texas,M. Diallo,C,Out,"Mon, Nov 3",,-0.08,covers_raw:injuries_raw.txt,Knee
+Texas Tech,J. Toppin,F,Out,"Tue, Feb 17",,-0.08,covers_raw:injuries_raw.txt,Knee
+Texas Tech,L. Hoover,F,Out,"Thu, Jan 1",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Texas,D. Tubek,F,Questionable,"Fri, Jan 9",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Texas,T. Watson,G,Out,"Fri, Jan 9",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Tulsa,T. Ford Jr.,G,Questionable,"Tue, Dec 30",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+UAB,A. Robinson,G,Questionable,"Fri, Feb 13",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+UAB,J. Das Chagas,C,Out,"Mon, Dec 15",,-0.08,covers_raw:injuries_raw.txt,Wrist
+UC Santa Barbara,J. Fontenet II,G,Out,"Mon, Dec 15",,-0.08,covers_raw:injuries_raw.txt,Knee
+UCLA,E. Manjikian,F,Questionable,"Fri, Jan 16",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+UCLA,J. Keller,G,Out,"Sun, Dec 7",,-0.08,covers_raw:injuries_raw.txt,Foot
+UCLA,S. Elkinton,F,Out,"Sun, Dec 7",,-0.08,covers_raw:injuries_raw.txt,Foot
+UNC Wilmington,C. Luster II,G,Out,"Wed, Jan 21",,0.0,covers_raw:injuries_raw.txt,Redshirt
+UNLV,L. Dembele,F,Out,"Wed, Nov 26",,-0.08,covers_raw:injuries_raw.txt,Foot
+UNLV,M. Che,G,Out,"Wed, Oct 22",,-0.08,covers_raw:injuries_raw.txt,Foot
+USC,A. Dickerson,G,Out,"Fri, Dec 5",,-0.08,covers_raw:injuries_raw.txt,Hip
+USC,R. Rice,G,Out,"Mon, Nov 24",,-0.08,covers_raw:injuries_raw.txt,Shoulder
+Utah,J. Patrick,G,Questionable,"Thu, Jan 1",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Utah,B. Faye,F,Out,"Sun, Sep 21",,-0.08,covers_raw:injuries_raw.txt,Leg
+UTSA,M. Njie,C,Questionable,"Tue, Feb 10",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+UTSA,A. Nunez,G,Questionable,"Tue, Feb 10",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+UTSA,M. Rich,G,Out,"Wed, Jan 14",,-0.08,covers_raw:injuries_raw.txt,Groin
+UTSA,P. Spencer,G,Out,"Tue, Dec 30",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+UTSA,S. Borden,C,Questionable,"Tue, Dec 30",,-0.015,covers_raw:injuries_raw.txt,Hand
+UTSA,V. Allette,G,Out,"Tue, Dec 30",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Valparaiso,M. Brown Jr.,G,Questionable,"Wed, Mar 4",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Valparaiso,N. Lombardi,G,Questionable,"Thu, Feb 5",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Valparaiso,J. Watson,F,Questionable,"Fri, Jan 16",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Vanderbilt,G. Kimble III,G,Out,"Wed, Jun 4",,-0.08,covers_raw:injuries_raw.txt,Knee
+VCU,O. Okafor,F,Questionable,"Tue, Feb 10",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+VCU,C. Fermin,F,Out,"Fri, Nov 21",,-0.08,covers_raw:injuries_raw.txt,Personal
+Villanova,M. Hodge,F,Out,"Fri, Feb 27",,-0.08,covers_raw:injuries_raw.txt,Knee
+Virginia Tech,A. Hansberry,F,Questionable,"Sun, Mar 8",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Virginia Tech,S. Jones,F,Out,"Mon, Feb 9",,-0.08,covers_raw:injuries_raw.txt,Foot
+Virginia Tech,S. Peterkin,G,Questionable,"Mon, Feb 9",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Wake Forest,M. Marion,F,Questionable,"Thu, Feb 26",,-0.015,covers_raw:injuries_raw.txt,Chest
+Washington,B. Tucker,F,Questionable,"Tue, Mar 3",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Washington,J. Ognacevic,F,Questionable,"Fri, Feb 27",,-0.015,covers_raw:injuries_raw.txt,Foot
+Washington,F. Kepnang,C,Questionable,"Mon, Feb 23",,-0.015,covers_raw:injuries_raw.txt,Lower Body
+Washington,J. Mandaquit,G,Out,"Tue, Feb 3",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Washington,D. Claude,G,Questionable,"Fri, Jan 16",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Washington,J. Rencher,F,Questionable,"Sat, Jan 10",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Washington,M. Traore,F,Out,"Wed, Oct 8",,-0.08,covers_raw:injuries_raw.txt,Foot
+Washington St.,E. Ugbo,F,Out,"Fri, Jan 30",,-0.08,covers_raw:injuries_raw.txt,Suspension
+Western Kentucky,B. Selebangue,F,Out,"Fri, Jan 9",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Western Kentucky,L. Rice,G,Out,"Fri, Jan 9",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Western Kentucky,L. Semona,F,Questionable,"Thu, Jan 1",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Wichita St.,J. Valencia,F,Out,"Tue, Dec 30",,-0.16,covers_raw:injuries_raw.txt,Achilles
+Wichita St.,T. Rathan-Mayes,G,Out,"Tue, Dec 30",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Wichita St.,P. Couisnard,G,Out,"Tue, Dec 30",,-0.08,covers_raw:injuries_raw.txt,Undisclosed
+Wichita St.,J. Ighovodja,G,Questionable,"Fri, Nov 21",,-0.015,covers_raw:injuries_raw.txt,Foot
+Winthrop,L. Duncomb,C,Probable,"Wed, Feb 25",,0.0,covers_raw:injuries_raw.txt,Foot
+Wisconsin,N. Winter,F,Questionable,"Wed, Mar 4",,-0.015,covers_raw:injuries_raw.txt,Lower Body
+Wisconsin,J. Janicki,G,Questionable,"Tue, Feb 24",,-0.015,covers_raw:injuries_raw.txt,Wrist
+Wyoming,N. Summers,F,Questionable,"Sun, Mar 1",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Wyoming,M. Belic,F,Questionable,"Thu, Jan 1",,-0.015,covers_raw:injuries_raw.txt,Ankle
+Wyoming,J. Harris,G,Questionable,"Thu, Jan 1",,-0.015,covers_raw:injuries_raw.txt,Toe
+Xavier,T. Carroll,F,Questionable,"Wed, Mar 4",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Xavier,M. Wolf,G,Questionable,"Fri, Jan 30",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Xavier,L. Naser,G,Questionable,"Tue, Dec 30",,-0.015,covers_raw:injuries_raw.txt,Undisclosed
+Xavier,K. Westphal,C,Out,"Wed, Nov 5",,0.0,covers_raw:injuries_raw.txt,Redshirt
+Xavier,G. Pozzato,F,Questionable,"Wed, Oct 29",,-0.015,covers_raw:injuries_raw.txt,Knee

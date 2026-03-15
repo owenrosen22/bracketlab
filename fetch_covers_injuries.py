@@ -97,6 +97,10 @@ TABLE_ENTRY_RE = re.compile(
     r"(?P<status>Out for season|Out indefinitely|Out|Questionable|Doubtful|Probable)\s+"
     r"(?P<rest>.+?)\s+(?P<updated>[A-Z][a-z]{2} \d{1,2})$"
 )
+COMPACT_ENTRY_RE = re.compile(
+    r"^(?P<player>.+?)\s+(?P<pos>[A-Z](?:/[A-Z])?(?:/[A-Z])?)\s+"
+    r"(?P<status>Out for season|Out indefinitely|Out|Questionable|Doubtful|Probable)(?:\s*-\s*(?P<note>.+))?$"
+)
 
 
 def is_header_window(lines: list[str], idx: int) -> bool:
@@ -105,6 +109,8 @@ def is_header_window(lines: list[str], idx: int) -> bool:
 
 
 def parse_lines(lines: list[str], source: str) -> list[dict]:
+    if any(normalize_raw_line(line).lower() == "player pos status" for line in lines):
+        return parse_compact_lines(lines, source)
     if (
         any(normalize_raw_line(line).lower() == "name pos status injury update updated" for line in lines)
         or (
@@ -172,6 +178,73 @@ def parse_lines(lines: list[str], source: str) -> list[dict]:
                 i = j
                 continue
 
+        i += 1
+
+    deduped = []
+    seen = set()
+    for row in rows:
+        key = (row["Team"], row["Player"], row["Status"], row["Reported"])
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(row)
+    return deduped
+
+
+def parse_compact_lines(lines: list[str], source: str) -> list[dict]:
+    variants = team_variants()
+    rows = []
+    current_team = None
+    i = 0
+
+    while i < len(lines):
+        line = normalize_raw_line(lines[i])
+        if not line:
+            i += 1
+            continue
+
+        if line.lower() == "player pos status":
+            i += 1
+            continue
+
+        if line == "No injuries to report.":
+            i += 1
+            continue
+
+        team = match_team_header(line, variants)
+        if team:
+            current_team = team
+            i += 1
+            continue
+
+        if re.fullmatch(r"[A-Z .&'()-]+ \(\d+\)", line):
+            i += 1
+            continue
+
+        if current_team:
+            match = COMPACT_ENTRY_RE.match(line)
+            if match:
+                note = normalize_raw_line(match.group("note") or "")
+                reported = ""
+                if i + 1 < len(lines):
+                    nxt = normalize_raw_line(lines[i + 1])
+                    if re.fullmatch(r"\(\s*[A-Z][a-z]{2},\s*[A-Z][a-z]{2}\s+\d{1,2}\)", nxt):
+                        reported = nxt.strip("() ")
+                        i += 1
+
+                rows.append(
+                    {
+                        "Team": current_team,
+                        "Player": normalize_raw_line(match.group("player")),
+                        "Pos": normalize_raw_line(match.group("pos")),
+                        "Status": normalize_raw_line(match.group("status")),
+                        "Reported": reported,
+                        "ImpactMultiplier": "",
+                        "AutoAdjEM_delta": injury_status_delta(match.group("status"), note),
+                        "Source": source,
+                        "Note": note,
+                    }
+                )
         i += 1
 
     deduped = []

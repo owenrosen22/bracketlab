@@ -116,6 +116,23 @@ st.markdown(
         max-width: 860px;
     }
 
+    .hero-head {
+        display: grid;
+        grid-template-columns: 112px minmax(0, 1fr);
+        gap: 1rem;
+        align-items: start;
+    }
+
+    .hero-brandmark {
+        width: 112px;
+        height: 112px;
+        border-radius: 26px;
+        object-fit: contain;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.12);
+        box-shadow: 0 16px 34px rgba(0,0,0,0.28);
+    }
+
     .pill-row {
         display: flex;
         flex-wrap: wrap;
@@ -552,6 +569,15 @@ st.markdown(
             font-size: 2.15rem;
         }
 
+        .hero-head {
+            grid-template-columns: 96px minmax(0, 1fr);
+        }
+
+        .hero-brandmark {
+            width: 96px;
+            height: 96px;
+        }
+
         .insight-strip {
             grid-template-columns: 1fr 1fr;
         }
@@ -594,6 +620,17 @@ st.markdown(
             font-size: 1.95rem;
         }
 
+        .hero-head {
+            grid-template-columns: 82px minmax(0, 1fr);
+            gap: 0.85rem;
+        }
+
+        .hero-brandmark {
+            width: 82px;
+            height: 82px;
+            border-radius: 22px;
+        }
+
         .matchup-card {
             padding: 1rem 1rem;
         }
@@ -631,6 +668,17 @@ st.markdown(
         .hero {
             padding: 1.1rem 1rem;
             border-radius: 22px;
+        }
+
+        .hero-head {
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+        }
+
+        .hero-brandmark {
+            width: 76px;
+            height: 76px;
+            border-radius: 20px;
         }
 
         .hero-title {
@@ -807,6 +855,24 @@ def monogram_logo_data_uri(team: str):
     return "data:image/svg+xml;utf8," + urllib.parse.quote(svg)
 
 
+def bracketlab_logo_data_uri():
+    svg = f"""
+    <svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'>
+      <defs>
+        <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
+          <stop offset='0%' stop-color='{ACCENT_PRIMARY_ALT}'/>
+          <stop offset='100%' stop-color='{ACCENT_PRIMARY}'/>
+        </linearGradient>
+      </defs>
+      <rect x='8' y='8' width='104' height='104' rx='28' fill='url(#bg)'/>
+      <rect x='13' y='13' width='94' height='94' rx='24' fill='none' stroke='rgba(255,255,255,0.18)' stroke-width='1.8'/>
+      <text x='60' y='72' text-anchor='middle' font-family='Inter, Arial, sans-serif' font-size='50' font-weight='800' fill='white' letter-spacing='-1.5'>BL</text>
+      <text x='60' y='94' text-anchor='middle' font-family='Inter, Arial, sans-serif' font-size='10' font-weight='700' fill='rgba(216,224,232,0.90)' letter-spacing='2.2'>BRACKETLAB</text>
+    </svg>
+    """
+    return "data:image/svg+xml;utf8," + urllib.parse.quote(svg)
+
+
 def logo_url(team: str):
     team = canonical_team(team)
     return TEAM_LOGOS.get(team, "")
@@ -830,6 +896,9 @@ def format_latest_timestamp(*paths: str):
         return "Missing"
     latest = max(existing, key=lambda p: p.stat().st_mtime)
     return format_timestamp(str(latest))
+
+
+BRACKETLAB_LOGO = bracketlab_logo_data_uri()
 
 
 @st.cache_data
@@ -903,30 +972,120 @@ def simulate_tournament(games, rng):
 
 
 @st.cache_data
-def run_simulations(n_sims):
-    rng = np.random.default_rng(42)
+def build_simulation_context():
     playins = load_playins()
     round1 = load_round1()
-    sweet16, elite8, final4, champ = {}, {}, {}, {}
-    for _ in range(n_sims):
-        winners = resolve_playins(playins, rng)
-        games = substitute_slots(round1, winners)
-        depth = simulate_tournament(games, rng)
-        for t, d in depth.items():
-            if d >= 2:
-                sweet16[t] = sweet16.get(t, 0) + 1
-            if d >= 3:
-                elite8[t] = elite8.get(t, 0) + 1
-            if d >= 4:
-                final4[t] = final4.get(t, 0) + 1
-            if d == 6:
-                champ[t] = champ.get(t, 0) + 1
+    slot_names = {slot for slot, _, _ in playins}
+    teams = sorted(
+        {team for _, a, b in playins for team in (a, b)}
+        | {team for a, b in round1 for team in (a, b) if team not in slot_names}
+    )
+    team_to_idx = {team: idx for idx, team in enumerate(teams)}
+    n_teams = len(teams)
+    prob_matrix = np.empty((n_teams, n_teams), dtype=np.float32)
+    np.fill_diagonal(prob_matrix, 0.5)
+    for i, team_a in enumerate(teams):
+        for j in range(i + 1, n_teams):
+            p = float(win_prob(team_a, teams[j]))
+            prob_matrix[i, j] = p
+            prob_matrix[j, i] = 1.0 - p
 
-    def to_df(d, label):
-        rows = [{"Team": k, label: v / n_sims} for k, v in d.items()]
+    playin_map = {
+        slot: (team_to_idx[a], team_to_idx[b])
+        for slot, a, b in playins
+    }
+
+    base_round_a = []
+    base_round_b = []
+    slot_refs_a = []
+    slot_refs_b = []
+    for game_idx, (a, b) in enumerate(round1):
+        if a in slot_names:
+            base_round_a.append(-1)
+            slot_refs_a.append((game_idx, a))
+        else:
+            base_round_a.append(team_to_idx[a])
+        if b in slot_names:
+            base_round_b.append(-1)
+            slot_refs_b.append((game_idx, b))
+        else:
+            base_round_b.append(team_to_idx[b])
+
+    return {
+        "teams": teams,
+        "prob_matrix": prob_matrix,
+        "playin_map": playin_map,
+        "base_round_a": np.array(base_round_a, dtype=np.int16),
+        "base_round_b": np.array(base_round_b, dtype=np.int16),
+        "slot_refs_a": slot_refs_a,
+        "slot_refs_b": slot_refs_b,
+    }
+
+
+def _simulate_round_batch(team_a, team_b, prob_matrix, rng):
+    probs = prob_matrix[team_a, team_b]
+    draws = rng.random(team_a.shape, dtype=np.float32)
+    return np.where(draws < probs, team_a, team_b)
+
+
+@st.cache_data
+def run_simulations(n_sims):
+    ctx = build_simulation_context()
+    rng = np.random.default_rng(42)
+    teams = ctx["teams"]
+    prob_matrix = ctx["prob_matrix"]
+    n_teams = len(teams)
+    sweet16 = np.zeros(n_teams, dtype=np.int64)
+    elite8 = np.zeros(n_teams, dtype=np.int64)
+    final4 = np.zeros(n_teams, dtype=np.int64)
+    champ = np.zeros(n_teams, dtype=np.int64)
+
+    batch_size = 100_000 if n_sims >= 250_000 else 50_000 if n_sims >= 100_000 else 20_000
+    sims_left = n_sims
+
+    while sims_left > 0:
+        batch = min(batch_size, sims_left)
+        sims_left -= batch
+
+        playin_winners = {}
+        for slot, (team_a, team_b) in ctx["playin_map"].items():
+            a = np.full(batch, team_a, dtype=np.int16)
+            b = np.full(batch, team_b, dtype=np.int16)
+            playin_winners[slot] = _simulate_round_batch(a, b, prob_matrix, rng)
+
+        round_a = np.broadcast_to(ctx["base_round_a"], (batch, len(ctx["base_round_a"]))).copy()
+        round_b = np.broadcast_to(ctx["base_round_b"], (batch, len(ctx["base_round_b"]))).copy()
+
+        for game_idx, slot in ctx["slot_refs_a"]:
+            round_a[:, game_idx] = playin_winners[slot]
+        for game_idx, slot in ctx["slot_refs_b"]:
+            round_b[:, game_idx] = playin_winners[slot]
+
+        r64_winners = _simulate_round_batch(round_a, round_b, prob_matrix, rng)
+        r32_winners = _simulate_round_batch(r64_winners[:, 0::2], r64_winners[:, 1::2], prob_matrix, rng)
+        s16_winners = _simulate_round_batch(r32_winners[:, 0::2], r32_winners[:, 1::2], prob_matrix, rng)
+        e8_winners = _simulate_round_batch(s16_winners[:, 0::2], s16_winners[:, 1::2], prob_matrix, rng)
+        f4_winners = _simulate_round_batch(e8_winners[:, 0::2], e8_winners[:, 1::2], prob_matrix, rng)
+        champs = _simulate_round_batch(f4_winners[:, 0:1], f4_winners[:, 1:2], prob_matrix, rng)
+
+        sweet16 += np.bincount(r32_winners.ravel(), minlength=n_teams)
+        elite8 += np.bincount(s16_winners.ravel(), minlength=n_teams)
+        final4 += np.bincount(e8_winners.ravel(), minlength=n_teams)
+        champ += np.bincount(champs.ravel(), minlength=n_teams)
+
+    def to_df(counts, label):
+        rows = [
+            {"Team": teams[idx], label: counts[idx] / n_sims}
+            for idx in np.flatnonzero(counts)
+        ]
         return pd.DataFrame(rows).sort_values(label, ascending=False).reset_index(drop=True)
 
-    return to_df(sweet16, "Sweet16Prob"), to_df(elite8, "Elite8Prob"), to_df(final4, "Final4Prob"), to_df(champ, "ChampProb")
+    return (
+        to_df(sweet16, "Sweet16Prob"),
+        to_df(elite8, "Elite8Prob"),
+        to_df(final4, "Final4Prob"),
+        to_df(champ, "ChampProb"),
+    )
 
 
 @st.cache_data
@@ -1521,13 +1680,18 @@ ratings_lookup = ratings.set_index("Team").to_dict("index") if not ratings.empty
 st.markdown(
     f"""
     <div class="hero">
-        <p class="hero-kicker">BracketLab • share-ready analytics</p>
-        <h1 class="hero-title">BracketLab</h1>
-        <p class="hero-sub">Build sharper March Madness brackets with a blended ratings model, live injury adjustments, tournament simulations, and a full responsive bracket board that still feels clean on desktop, split-screen, and mobile.</p>
-        <div class="pill-row">
-            <div class="pill">Blended Ratings</div>
-            <div class="pill">Injury-Adjusted Picks</div>
-            <div class="pill">Responsive Bracket Board</div>
+        <div class="hero-head">
+            <img src="{BRACKETLAB_LOGO}" class="hero-brandmark" />
+            <div>
+                <p class="hero-kicker">BracketLab • share-ready analytics</p>
+                <h1 class="hero-title">BracketLab</h1>
+                <p class="hero-sub">Build sharper March Madness brackets with a blended ratings model, live injury adjustments, tournament simulations, and a full responsive bracket board that still feels clean on desktop, split-screen, and mobile.</p>
+                <div class="pill-row">
+                    <div class="pill">Blended Ratings</div>
+                    <div class="pill">Injury-Adjusted Picks</div>
+                    <div class="pill">Responsive Bracket Board</div>
+                </div>
+            </div>
         </div>
         <div class="hero-meta">
             <div class="hero-meta-card">
@@ -1563,7 +1727,8 @@ with controls_col:
             """,
             unsafe_allow_html=True,
         )
-        n_sims = st.slider("Number of simulations", min_value=1000, max_value=100000, step=1000, value=20000)
+        n_sims = st.number_input("Number of simulations", min_value=1000, max_value=1000000, step=1000, value=50000)
+        st.caption("The simulation engine is optimized for large runs, including 1,000,000 sims, but higher counts will still take longer.")
         bracket_style = st.selectbox("Bracket style", ["Safe", "Balanced", "Chaos", "Upset-heavy"], index=1, help="Safe hugs favorites. Balanced mixes value and realism. Chaos creates a wilder bracket. Upset-heavy hunts for separation.")
         run_button = st.button("Run tournament simulations", width="stretch")
         st.markdown(
